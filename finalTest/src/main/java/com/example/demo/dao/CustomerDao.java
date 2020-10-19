@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,5 +30,18 @@ public class CustomerDao {
 	public CustomerVO logIn(HashMap map) {
 		return CustomerManager.logInCustomer(map);
 	}
+
+
+	public List<CustomerVO> findAll(){
+		return CustomerManager.findAll();
+	}
 	
+	public CustomerVO findByCust_No(int cust_no) {
+		return CustomerManager.findByCust_No(cust_no);
+	}
+	
+	public int update(CustomerVO c) {
+		return CustomerManager.update(c);
+	}
+
 }

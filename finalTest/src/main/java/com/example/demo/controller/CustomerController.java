@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,12 +19,12 @@ import com.example.demo.vo.CustomerVO;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerDao customerDao;
+	private CustomerDao dao;
 
-	public void setCustomerDao(CustomerDao customerDao) {
-		this.customerDao = customerDao;
+	public void setDao(CustomerDao dao) {
+		this.dao = dao;
 	}
-	
+
 	//홈화면 임시
 	@RequestMapping("/Home.do")
 	public void home(HttpServletRequest request) {
@@ -41,10 +42,10 @@ public class CustomerController {
 	public ModelAndView insertCustomerOk(CustomerVO c) {
 		ModelAndView mav = new ModelAndView("redirect:/LoginPage.do");
 		c.setFname("1");
-		c.setCust_no(customerDao.getNextNo());
+		c.setCust_no(dao.getNextNo());
 		System.out.println(c.getCust_no());
 		
-		int re = customerDao.insertCustomer(c);
+		int re = dao.insertCustomer(c);
 		if(re<0) {
 			mav.setViewName("/error");
 		}
@@ -109,7 +110,7 @@ public class CustomerController {
 		HashMap map = new HashMap();
 		map.put("pw",pw);
 		map.put("email",email);
-		c = customerDao.logIn(map);
+		c = dao.logIn(map);
 			if(c !=null) {
 			//세션유지파트
 			session = request.getSession();
@@ -139,7 +140,7 @@ public class CustomerController {
 	public ModelAndView deleteCustomerOk(String email, String emailer, String pw, HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect:/Home");
 		HashMap map = new HashMap();
-		int re = customerDao.deleteCustomer(map);
+		int re = dao.deleteCustomer(map);
 		String completeEmail = email + emailer;
 		System.out.println("이메일!!!!" + completeEmail);
 		map.put("email",completeEmail);
@@ -151,11 +152,21 @@ public class CustomerController {
 		return mav;	
 	}
 
-	//사이트맵
-	@RequestMapping("/siteMap.do")
-	public void siteMap(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		request.setAttribute("cust_no", session.getAttribute("cust_no"));
+	@RequestMapping("/MyPage_Info.do")
+	public void detail(int cust_no, Model model, HttpServletRequest request) {
+		
+		CustomerVO c = dao.findByCust_No(cust_no);
+		
+		request.setAttribute("c", c);
+		String Email = c.getEmail();
+		String id = Email.substring(0, Email.indexOf("@"));
+		System.out.println(id);
+		String email = Email.substring(Email.indexOf("@")+1);
+		System.out.println(email);
+		request.setAttribute("id", id);
+		request.setAttribute("email", email);
+		
+		model.addAttribute("c",dao.findByCust_No(cust_no));
 	}
 
 }
