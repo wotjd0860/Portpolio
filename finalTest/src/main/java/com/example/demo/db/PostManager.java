@@ -22,10 +22,11 @@ public class PostManager {
 		InputStream inputStream=Resources.getResourceAsStream(resource);		
 		sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
 		}catch (Exception e) {
-			System.out.print("?��?��발생:"+e.getMessage());
+			System.out.print("예외발생:"+e.getMessage());
 		}
 	}
 	
+	//게시판 전체글 가져오기
 	public static List<PostVO> findAll(HashMap map){
 		List<PostVO> list = null;
 		SqlSession session=sqlSessionFactory.openSession();
@@ -34,6 +35,7 @@ public class PostManager {
 		return list;
 	}
 	
+	//새글 번호 불러오기
 	public static int getNextNo() {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession();
@@ -42,6 +44,7 @@ public class PostManager {
 		return re;
 	}
 	
+	//게시판 전체글 수 조회
 	public static int getTotalCount(HashMap map) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession();
@@ -50,6 +53,7 @@ public class PostManager {
 		return re;
 	}
 	
+	//게시판 상세글 보기
 	public static PostVO findById(HashMap map) {
 		PostVO p = null;
 		SqlSession session=sqlSessionFactory.openSession();

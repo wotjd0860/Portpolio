@@ -13,7 +13,6 @@ import com.example.demo.vo.PostVO;
 
 
 public class QnaManager {
-	
 	public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
@@ -23,7 +22,7 @@ public class QnaManager {
 			sqlSessionFactory =
 			  new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 	}
 	

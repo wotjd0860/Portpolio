@@ -12,32 +12,32 @@ import com.example.demo.vo.ReplyVO;
 @Repository
 public class PostDAO {
 	
-	//ê²Œì‹œ?Œ ? „ì²´ê? ?ˆ˜ ì¡°íšŒ
+	//ê²Œì‹œíŒ ì „ì²´ê¸€ ìˆ˜ ì¡°íšŒ
 	public int getTotalCount(HashMap map) {
 		return PostManager.getTotalCount(map);
 	}	
 	
-	//ê²Œì‹œ?Œ ? „ì²´ê? ê°?? ¸?˜¤ê¸?
+	//ê²Œì‹œíŒ ì „ì²´ê¸€ ê°€ì ¸ì˜¤ê¸°
 	public List<PostVO> findAll(HashMap map){
 		return PostManager.findAll(map);
 	}
 	
-	//ê²Œì‹œ?Œ ?ƒ?„¸ê¸? ë³´ê¸°
+	//ê²Œì‹œíŒ ìƒì„¸ê¸€ ë³´ê¸°
 	public PostVO findById(HashMap map) {
 		return PostManager.findById(map);
 	}
 	
-	//?ƒˆê¸? ?‘?„±
+	//ìƒˆê¸€ ì‘ì„±
 	public int insertCreate(PostVO p) {
 		return PostManager.insertCreate(p);
 	}
 	
-	//ê¸? ?ˆ˜? •
+	//ê¸€ ìˆ˜ì •
 	public int update(PostVO b) {
 		return PostManager.update(b);
 	}
 	
-	//ê¸? ?‚­? œ
+	//ê¸€ ì‚­ì œ
 	public int delete(HashMap map) {
 		return PostManager.delete(map);
 	}

@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.example.demo.vo.PostVO;
 import com.example.demo.vo.ReplyVO;
 
 
@@ -27,7 +26,7 @@ public class ReplyManager {
 		}
 	}
 	
-	//?��체댓�? �??��?���?
+	//전체댓글 가져오기
 	public static List<ReplyVO> findAll(HashMap map){
 		List<ReplyVO> list = null;
 		SqlSession session=sqlSessionFactory.openSession();
@@ -35,32 +34,7 @@ public class ReplyManager {
 		session.close();
 		return list;
 	}
-	/*
-	public static List<ReplyVO> findReplyBull(int p_id){
-		List<ReplyVO> list = null;
-		SqlSession session=sqlSessionFactory.openSession();
-		list=session.selectList("reply.selectReplyBull", p_id);
-		session.close();
-		return list;
-	}
-	public static List<ReplyVO> findReplyCreate(int p_id){
-		List<ReplyVO> list = null;
-		SqlSession session=sqlSessionFactory.openSession();
-		list=session.selectList("reply.selectReplyCreate", p_id);
-		session.close();
-		return list;
-	}
-	public static List<ReplyVO> findReplyUsed(int p_id){
-		List<ReplyVO> list = null;
-		SqlSession session=sqlSessionFactory.openSession();
-		list=session.selectList("reply.selectReplyUse", p_id);
-		session.close();
-		return list;
-	}
-	*/
 	
-	
-	//?���? 번호 불러?���?
 	public static int getNextNo() {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession();

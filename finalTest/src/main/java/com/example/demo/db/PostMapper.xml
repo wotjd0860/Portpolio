@@ -17,6 +17,11 @@
 		select * from post where p_id=#{p_id} and p_no like ''||#{group}||'%'
 	</select>
 	
+	<!-- 게시글 조회수 -->
+  	<update id="updateHit">
+  		update post set p_hit=p_hit+1 where p_id = #{p_id}
+  	</update>
+	
 	<!-- 새글 작성 -->
 	<insert id="insert">
 		insert into post values(#{p_id},#{p_no},#{p_title},#{p_writer},#{p_content},#{p_hit},sysdate,#{cust_no})

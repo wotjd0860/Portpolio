@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.db.QnaManager;
 import com.example.demo.vo.PostVO;
 
-
 @Repository
 public class QnaDAO {
 	public List<PostVO> findAll(HashMap map){
