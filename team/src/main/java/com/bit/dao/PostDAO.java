@@ -1,13 +1,13 @@
-package com.example.demo.dao;
+package com.bit.dao;
 
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.db.PostManager;
-import com.example.demo.vo.PostVO;
-import com.example.demo.vo.ReplyVO;
+import com.bit.db.PostManager;
+import com.bit.vo.PostVO;
+import com.bit.vo.ReplyVO;
 
 @Repository
 public class PostDAO {

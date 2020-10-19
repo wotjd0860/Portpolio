@@ -1,4 +1,4 @@
-package com.example.demo.db;
+package com.bit.db;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -9,8 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.example.demo.vo.PostVO;
-import com.example.demo.vo.ReplyVO;
+import com.bit.vo.PostVO;
+import com.bit.vo.ReplyVO;
 
 
 public class PostManager {
