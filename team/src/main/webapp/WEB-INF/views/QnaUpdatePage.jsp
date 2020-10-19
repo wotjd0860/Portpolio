@@ -111,7 +111,7 @@
 		
 		<div id="title">
 			<a href="Home.do">
-			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
+			<img alt="홈페이지" src="img/DelibraryLogo.png" width=500px; height=150px;>
 			</a>
 		</div>
 		<nav id="main_gnb">
@@ -131,9 +131,9 @@
 				<li><a href="#">도서대여</a></li>
 				<li><a href="listPost.do?group=10">커뮤니티</a>
 					<ul class="sub">
-						<li><a href="postList.do?group=10">공지사항</a></li>
-						<li><a href="postList.do?group=20">창작물 게시판</a></li>
-						<li><a href="postList.do?group=30">중고장터</a></li>
+						<li><a href="listPost.do?group=10">공지사항</a></li>
+						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
+						<li><a href="listPost.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.jsp">고객지원</a>
@@ -147,7 +147,7 @@
 					<ul class="sub">
 						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
 						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
-						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
+						<li><a href="optOutCustomer.jsp">회원탈퇴</a></li>
 					</ul>
 				</li>
 				<li><a href="siteMap.jsp">사이트맵</a></li>
@@ -155,54 +155,65 @@
 		</nav>
 	</header>
 	
-<div id="content">
+	<div id="content">
 		<aside id="main_aside">
-      	<br><br>
-        	<h2>고객 지원</h2>
-        	<br><br>
-				<p><a href="faqViewpage.jsp">FAQ</a></p><br/>
-		    	<p><a href="listQna.do">QNA</a></p><br/>
-		    	<p><a href="addrViewpageAPI.jsp">오시는 길</a></p>
-      	</aside>
+			<br><br>
+			<h3>고객지원</h3><br><br>
+			<li><a href="faqViewpage.jsp">FAQ</a></li>
+			<li><a href="listQna.do">Q&A</a></li>
+			<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
+		</aside>
 		<section id="main_section">
 			<article class="main_article">
-				QNA 게시판
-	        <div id="move_list">
-	        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
-	        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-	        	<a href="listQna.do">목록</a>
-	        </div>
-	        <div id="move_list2">
-					<a href="QnaDeletePage.do?p_no=${p_no }">삭제하기</a>	        	
-					<a href="QnaUpdatePage.do?p_no=${p_no }&&p_id=${p_id}">수정하기</a>
-	        </div>
-	        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
-				<div id="p_title">
-					<p>${p_title }</p>
-					<br>
-					<p style="font-size: 15px; color: #aaa;">게시일 ${p_regdate} | 작성자 ${p_writer} | 조회 ${p_hit }</p>
-				</div>
-				<div id="p_content">
-					${p_content }
-				</div>
-				<div>
-					<div id="re_Submit">
-						<span>댓글</span>
-						<input type="submit" value="등록하기">
-						<textarea></textarea>
+				
+					<h3>QNA<br>&nbsp;</h3>
+				
+		        <div id="move_list">
+		        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
+		        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
+		        	<a href="listPost.do">목록</a>
+		        </div>
+		        
+		     <%--    <div id="move_list2">
+						<a href="post_Update.do?p_no=${p.p_no }&&p_id=${p.p_id}&&cust_no=${cust_no}">삭제하기</a>	        	
+						<a href="post_Delete.do?p_no=${p.p_no }&&p_id=${p.p_id}&&cust_no=${cust_no}">수정하기</a>
+		        </div> --%>
+		        
+		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
+		        
+		        <form action="QnaUpdateOk.do" method="post">
+					<div id="p_title">
+						제목:<input type="text" name="p_title" value="${p_title }">
+						<input type="hidden" name="p_no" value="${p_no }">
+						<input type="hidden" name="cust_no" value="${cust_no }">
+						<br>
+						<%-- <p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p> --%>
 					</div>
-					<div id="re_content">
-						<c:forEach var="r" items="${listReply }">
-							<div>
-								<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
-								<p style="font-size: 15px; color: #aaa;">${r.date }</p>
-								<p>${r.re_content }</p>
-							</div>
-						</c:forEach>
+					<div id="p_content">
+						<textarea rows="15" cols="90" name="p_content">${p_content }</textarea>
 					</div>
+					<%-- <input type="hidden" value="${cust_no }"> --%>
+					<input type="submit" value="수정하기">
+				</form>	
+				
+					<%-- <div>
+						<div id="re_Submit">
+							<span>댓글</span>
+							<input type="submit" value="등록하기">
+							<textarea></textarea>
+						</div>
+						<div id="re_content">
+							<c:forEach var="r" items="${listReply }">
+								<div>
+									<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
+									<p style="font-size: 15px; color: #aaa;">${r.date }</p>
+									<p>${r.re_content }</p>
+								</div>
+							</c:forEach>
+						</div>
+					</div> --%>
 				</div>
-			</div>
-			
+			</article>
 		</section>
 	</div>
 	<footer id="main_footer">
