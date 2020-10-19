@@ -39,7 +39,7 @@ public class PostController {
 		totalCount = dao.getTotalCount(map);
 		totalPage = (int)Math.ceil( (double)totalCount/pageSIZE ) ;
 		int start = (pageNUM-1)*pageSIZE + 1;
-		int end = start + pageSIZE;
+		int end = start + pageSIZE-1;
 		if(end > totalCount) {
 			end = totalCount;
 		}
@@ -49,6 +49,8 @@ public class PostController {
 		
 		model.addAttribute("list", dao.findAll(map));
 		model.addAttribute("group", group);
+		model.addAttribute("start", start-1);
+		model.addAttribute("end", end-1);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("totalPage", totalPage);
 	}
