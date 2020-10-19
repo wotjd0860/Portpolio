@@ -119,8 +119,8 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
-					<li><a href="LoginPage.jsp">로그인</a></li>
-					<li><a href="insertCustomer.jsp">회원가입</a></li>
+					<li><a href="LoginPage.do">로그인</a></li>
+					<li><a href="insertCustomer.do">회원가입</a></li>
 				</c:if>
 				<c:if test="${not empty cust_no }">
 					<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a></li>
@@ -149,10 +149,10 @@
 					<ul class="sub">
 						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
 						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
-						<li><a href="optOutCustomer.jsp">회원탈퇴</a></li>
+						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
 					</ul>
 				</li>
-				<li><a href="siteMap.jsp">사이트맵</a></li>
+				<li><a href="siteMap.do">사이트맵</a></li>
 			</ul>
 		</nav>
 	</header>

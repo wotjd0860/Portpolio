@@ -31,7 +31,7 @@ public class PostInsertController {
 		ModelAndView mav=new ModelAndView("redirect:/postList.do");
 		int re=dao.insertCreate(p);
 		if(re<=0) {
-			mav.addObject("msg", "게시�? ?���? ?��?��");
+			mav.addObject("msg", "게시물 추가에 다음과 같은 오류가 발생했습니다.");
 			mav.setViewName("error");
 		}
 		

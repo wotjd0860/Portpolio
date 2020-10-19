@@ -31,7 +31,7 @@ public class PostUpdateController {
 		ModelAndView mav=new ModelAndView("redirect:/postListCreate.do");
 		int re=dao.update(p);
 		if(re<=0) {
-			mav.addObject("msg", "ê²Œì‹œë¬? ?ˆ˜? •?— ?‹¤?Œ¨?•˜???Šµ?‹ˆ?‹¤.");
+			mav.addObject("msg", "ê²Œì‹œë¬¼ ìˆ˜ì •ì— ë‹¤ìŒê³¼ ê°™ì€ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 			mav.setViewName("error");
 		}
 		return mav;

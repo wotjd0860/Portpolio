@@ -36,7 +36,7 @@ public class PostDeleteController {
 		ModelAndView mav=new ModelAndView("redirect:/postListCreate.do");
 		int re=dao.delete(map);
 		if(re<=0) {
-			mav.addObject("msg", "ê²Œì‹œë¬? ?ˆ˜? •?— ?‹¤?Œ¨?•˜???Šµ?‹ˆ?‹¤.");
+			mav.addObject("msg", "ê²Œì‹œë¬¼ ì‚­ì œì— ë‹¤ìŒê³¼ ê°™ì€ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 			mav.setViewName("error");
 		}
 		return mav;

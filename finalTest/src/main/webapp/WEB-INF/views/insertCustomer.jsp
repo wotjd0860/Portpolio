@@ -26,8 +26,8 @@
 		</div>
 		<nav id="main_gnb">
 			<ul>
-				<li><a href="LoginPage.jsp">로그인</a></li>
-				<li><a href="insertCustomer.jsp">회원가입</a></li>
+				<li><a href="LoginPage.do">로그인</a></li>
+				<li><a href="insertCustomer.do">회원가입</a></li>
 			</ul>
 		</nav>
 		<nav id="main_lnb">
@@ -40,21 +40,21 @@
 						<li><a href="listPost.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
-				<li><a href="faqViewpage.jsp">고객지원</a>
+				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
-						<li><a href="faqViewpage.jsp">FAQ</a></li>
+						<li><a href="faqViewpage.do">FAQ</a></li>
 						<li><a href="listQna.do">Q&A</a></li>
-						<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
+						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
 				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>
 					<ul class="sub">
 						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
 						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
-						<li><a href="optOutCustomer.jsp">회원탈퇴</a></li>
+						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
 					</ul>
 				</li>
-				<li><a href="siteMap.jsp">사이트맵</a></li>
+				<li><a href="siteMap.do">사이트맵</a></li>
 			</ul>
 		</nav>
 	</header>
