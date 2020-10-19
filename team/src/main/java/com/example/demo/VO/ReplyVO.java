@@ -1,4 +1,4 @@
-package com.bit.vo;
+package com.example.demo.VO;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ public class ReplyVO {
 	private int p_no;
 	private String re_content;
 	private String re_writer;
-	private Date re_regdate;
+	private Date date;
 	private int re_ref;
 	private int re_level;
 	private int re_step;
@@ -19,7 +19,7 @@ public class ReplyVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ReplyVO(int re_no, int p_id, int p_no, String re_content, String re_writer, Date re_regdate, int re_ref,
+	public ReplyVO(int re_no, int p_id, int p_no, String re_content, String re_writer, Date date, int re_ref,
 			int re_level, int re_step, int cust_no) {
 		super();
 		this.re_no = re_no;
@@ -27,7 +27,7 @@ public class ReplyVO {
 		this.p_no = p_no;
 		this.re_content = re_content;
 		this.re_writer = re_writer;
-		this.re_regdate = re_regdate;
+		this.date = date;
 		this.re_ref = re_ref;
 		this.re_level = re_level;
 		this.re_step = re_step;
@@ -64,11 +64,11 @@ public class ReplyVO {
 	public void setRe_writer(String re_writer) {
 		this.re_writer = re_writer;
 	}
-	public Date getRe_regdate() {
-		return re_regdate;
+	public Date getDate() {
+		return date;
 	}
-	public void setRe_regdate(Date re_regdate) {
-		this.re_regdate = re_regdate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public int getRe_ref() {
 		return re_ref;

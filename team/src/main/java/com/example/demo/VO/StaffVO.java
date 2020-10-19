@@ -1,4 +1,4 @@
-package com.bit.vo;
+package com.example.demo.VO;
 
 public class StaffVO {
 	private int staff_no;

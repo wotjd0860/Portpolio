@@ -1,4 +1,4 @@
-package com.bit.vo;
+package com.example.demo.VO;
 
 import java.util.Date;
 

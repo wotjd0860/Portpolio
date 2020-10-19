@@ -1,4 +1,4 @@
-package com.bit.vo;
+package com.example.demo.VO;
 
 public class FilesVO {
 	private int f_no;
