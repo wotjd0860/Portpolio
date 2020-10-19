@@ -98,7 +98,7 @@
 		                  <th nowrap width="80">조회</th>
                			</tr>
 		
-					<c:forEach var="p" items="${list }">
+					<c:forEach var="p" items="${list }" begin="${start }" end="${end }">
 						<tr>
 							<td align="center">${p.p_id }</td>
 							<td>
