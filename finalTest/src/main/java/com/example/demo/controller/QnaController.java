@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.dao.PostDAO;
+import com.example.demo.dao.QnaDAO;
 
 @Controller
 public class QnaController {
@@ -18,9 +18,9 @@ public class QnaController {
 	public static int totalPage = 1;
 	
 	@Autowired
-	private PostDAO dao;
+	private QnaDAO dao;
 
-	public void setDao(PostDAO dao) {
+	public void setDao(QnaDAO dao) {
 		this.dao = dao;
 	}
 	

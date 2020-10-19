@@ -13,56 +13,101 @@ import com.example.demo.vo.PostVO;
 
 
 public class PostManager {
+	
 	public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
+		String resource = "com/example/demo/db/sqlMapConfig.xml";
 		try {
-			String resource = "com/example/demo/db/sqlMapConfig.xml";
-			InputStream inputStream = Resources.getResourceAsStream(resource);
-			sqlSessionFactory =
-			  new SqlSessionFactoryBuilder().build(inputStream);
-		} catch (Exception e) {
-			System.out.println("ÏòàÏô∏Î∞úÏÉù:"+e.getMessage());
+		InputStream inputStream=Resources.getResourceAsStream(resource);		
+		sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+		}catch (Exception e) {
+			System.out.print("?òà?ô∏Î∞úÏÉù:"+e.getMessage());
 		}
 	}
 	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	public static int getNextNo() {
-	      int re =  -1;
-	      SqlSession session=sqlSessionFactory.openSession();
-	      re=session.selectOne("post.nextNo");
-	      session.close();
-	      return re;
-	   }
-
-	
 	public static List<PostVO> findAll(HashMap map){
 		List<PostVO> list = null;
-		SqlSession session = sqlSessionFactory.openSession();
-		list = session.selectList("post.selectAll", map);
+		SqlSession session=sqlSessionFactory.openSession();
+		list=session.selectList("post.selectAll", map);
 		session.close();
 		return list;
 	}
 	
-	
-	public static int getTotalCount() {
+	public static int getNextNo() {
 		int re =  -1;
-		SqlSession session = sqlSessionFactory.openSession();
-		re = session.selectOne("post.selectCount");
+		SqlSession session=sqlSessionFactory.openSession();
+		re=session.selectOne("post.nextNo");
 		session.close();
 		return re;
 	}
-
-
-	public static PostVO findById(int p_id) {
-		// TODO Auto-generated method stub
+	
+	public static int getTotalCount(HashMap map) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession();
+		re=session.selectOne("post.selectCount", map);
+		session.close();
+		return re;
+	}
+	
+	public static PostVO findById(HashMap map) {
 		PostVO p = null;
-		SqlSession session = sqlSessionFactory.openSession();
-		p = session.selectOne("post.selectById",p_id);
+		SqlSession session=sqlSessionFactory.openSession();
+		p=session.selectOne("post.selectById", map);
 		session.close();
 		return p;
 	}
 	
+	public static int insertCreate(PostVO p) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession(true);
+		re=session.insert("post.insertCreate", p);
+		session.close();
+		return re;
+	}
+	
+	public static int update(PostVO p) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession(true);
+		re = session.update("post.update", p);
+		session.close();
+		return re;
+	}
+	
+	public static int delete(HashMap map) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession(true);
+		re = session.delete("post.delete", map);
+		session.close();
+		return re;
+	}
+//	
+//	public static int updateStep(HashMap map) {
+//		int re =  -1;
+//		SqlSession session=sqlSessionFactory.openSession(true);
+//		re = session.update("post.updateStep", map);
+//		session.close();
+//		return re;
+//	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
