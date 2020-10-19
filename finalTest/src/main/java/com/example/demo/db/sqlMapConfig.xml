@@ -7,7 +7,9 @@
 	<properties resource="com/example/demo/db/db.properties"/>
 	
 	<typeAliases>
-		<typeAlias type="com.example.demo.vo.PostVO" alias="postVo"/>
+	<typeAlias type="com.example.demo.vo.PostVO" alias="postVo"/>
+	<typeAlias type="com.example.demo.vo.BookstoreVO" alias="bookstoreVO"/>
+	<typeAlias type="com.example.demo.vo.BookVO" alias="bookVO"/>
 	</typeAliases>
 
 
@@ -32,6 +34,10 @@
   
   <mappers>
     <mapper resource="com/example/demo/db/PostMapper.xml"/>
+    
+    <mapper resource="com/example/demo/db/BookstoreMapper.xml"/>
+    <mapper resource="com/example/demo/db/BookMapper.xml"/>
+    
   </mappers>
   
   
