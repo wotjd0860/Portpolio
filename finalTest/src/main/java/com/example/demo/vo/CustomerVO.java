@@ -1,6 +1,10 @@
 package com.example.demo.vo;
+import java.sql.Date;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
+import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class CustomerVO {
 	private int cust_no;
@@ -12,13 +16,22 @@ public class CustomerVO {
 	private String name;
 	private String m_phone;
 	private Date birthday;
+	private String fname;
+	private MultipartFile uploadFile;
 	
 	public CustomerVO() {
 		super();
 	}
 	
+	public CustomerVO(int cust_no, String email, String pw) {
+		super();
+		this.cust_no = cust_no;
+		this.email = email;
+		this.pw = pw;
+	}
+
 	public CustomerVO(int cust_no, String email, String pw, String addr, String nickname, String interest, String name,
-			String m_phone, Date birthday) {
+			String m_phone, Date birthday, String fname, MultipartFile uploadFile) {
 		super();
 		this.cust_no = cust_no;
 		this.email = email;
@@ -29,8 +42,18 @@ public class CustomerVO {
 		this.name = name;
 		this.m_phone = m_phone;
 		this.birthday = birthday;
+		this.fname = fname;
+		this.uploadFile = uploadFile;
 	}
 	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
 	public int getCust_no() {
 		return cust_no;
 	}
@@ -85,4 +108,11 @@ public class CustomerVO {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
 }
+
