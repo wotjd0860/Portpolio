@@ -20,4 +20,5 @@ public class PostVO {
 	private Date p_regdate;
 	private int cust_no;
 	private String fname;
+	private String oldfname;
 }
