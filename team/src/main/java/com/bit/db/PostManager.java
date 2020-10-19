@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.vo.PostVO;
-import com.bit.vo.ReplyVO;
 
 
 public class PostManager {

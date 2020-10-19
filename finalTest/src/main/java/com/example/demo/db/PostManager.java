@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.vo.PostVO;
-import com.example.demo.vo.ReplyVO;
 
 
 public class PostManager {
@@ -18,7 +17,7 @@ public class PostManager {
 	public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
-		String resource = "com/bit/db/sqlMapConfig.xml";
+		String resource = "com/example/demo/db/sqlMapConfig.xml";
 		try {
 		InputStream inputStream=Resources.getResourceAsStream(resource);		
 		sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);

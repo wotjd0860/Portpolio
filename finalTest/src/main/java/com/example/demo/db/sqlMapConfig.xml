@@ -33,6 +33,7 @@
   
   <mappers>
     <mapper resource="com/example/demo/db/PostMapper.xml"/>
+    <mapper resource="com/example/demo/db/QnaMapper.xml"/>
     <mapper resource="com/example/demo/db/ReplyMapper.xml"/>
   </mappers>
   

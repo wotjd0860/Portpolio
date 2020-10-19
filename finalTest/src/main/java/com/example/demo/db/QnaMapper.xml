@@ -10,7 +10,7 @@
     </select>
   
     <!-- 전체 게시글수 -->
-    <select id="selectCount" resultType="Integer">
+    <select id="selectCount" resultType="java.lang.Integer">
    		select count(*) from post where p_no like '40%'
     </select>
   
@@ -27,16 +27,16 @@
   
 <!--  -->
        
- <!-- 댓글 불러오기 -->
-  <select id="selectReplyBull" resultType="replyVo">
+ <!-- 댓글 불러오기 
+  <select id="selectReplyQna" resultType="replyVo">
   	select * from reply where p_no like '40%' and p_id=#{p_id}
   </select>
-  
-<!-- 새글 작성 -->
- <insert id="insertBull">
+  -->
+<!-- 새글 작성
+ <insert id="insert">
  	insert into post values(#{p_id},#{p_no},#{p_title},#{p_writer},#{p_content},#{p_hit},sysdate,#{cust_no})
  </insert>
- 
+  -->
 
  
 <!-- 
