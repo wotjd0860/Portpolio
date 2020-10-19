@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="customer">
+
+	<insert id="insertCustomer" parameterType="customerVO">
+		insert into customer values(#{CUST_NO},#{EMAIL},#{PW},#{ADDR},#{NICKNAME},#{INTEREST},#{NAME},#{M_PHONE},#{BIRTHDAY},#{FNAME})
+	</insert>
+	
+	<select id="login" resultType="customerVO">
+		select * from customer where email=#{email} and pw=#{pw}
+	</select>
+	
+	<delete id="deleteCustomer" parameterType="customerVO">
+		delete customer where email=#{email} and pw=#{pw}
+	</delete>
+	
+	<select id="getNextNo" resultType="java.lang.Integer">
+    	select nvl(max(cust_no),0)+1 from customer
+  	</select>
+  
+</mapper>
+
