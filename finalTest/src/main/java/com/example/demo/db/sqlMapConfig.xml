@@ -11,6 +11,7 @@
   	<typeAlias type="com.example.demo.vo.ReplyVO" alias="replyVo"/>
 	<typeAlias type="com.example.demo.vo.BookstoreVO" alias="bookstoreVO"/>
 	<typeAlias type="com.example.demo.vo.BookVO" alias="bookVO"/>
+	<typeAlias type="com.example.demo.vo.CustomerVO" alias="customerVO"/>
   </typeAliases>
 	
 
@@ -32,6 +33,7 @@
 	<mapper resource="com/example/demo/db/ReplyMapper.xml"/>
     <mapper resource="com/example/demo/db/BookstoreMapper.xml"/>
     <mapper resource="com/example/demo/db/BookMapper.xml"/>
+    <mapper resource="com/example/demo/db/CustomerMapper.xml"/>
   </mappers>
   
 </configuration>
