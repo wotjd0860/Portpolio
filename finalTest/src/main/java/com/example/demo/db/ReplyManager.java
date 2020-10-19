@@ -18,16 +18,16 @@ public class ReplyManager {
 	public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
-		String resource = "com/bit/db/sqlMapConfig.xml";
+		String resource = "com/example/demo/db/sqlMapConfig.xml";
 		try {
 		InputStream inputStream=Resources.getResourceAsStream(resource);		
 		sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
 		}catch (Exception e) {
-			System.out.print("?˜ˆ?™¸ë°œìƒ:"+e.getMessage());
+			System.out.print("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 	}
 	
-	//? „ì²´ëŒ“ê¸? ê°?? ¸?˜¤ê¸?
+	//?ï¿½ï¿½ì²´ëŒ“ï¿½? ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½?
 	public static List<ReplyVO> findAll(HashMap map){
 		List<ReplyVO> list = null;
 		SqlSession session=sqlSessionFactory.openSession();
@@ -60,7 +60,7 @@ public class ReplyManager {
 	*/
 	
 	
-	//?ƒˆê¸? ë²ˆí˜¸ ë¶ˆëŸ¬?˜¤ê¸?
+	//?ï¿½ï¿½ï¿½? ë²ˆí˜¸ ë¶ˆëŸ¬?ï¿½ï¿½ï¿½?
 	public static int getNextNo() {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession();

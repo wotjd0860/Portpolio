@@ -5,9 +5,9 @@
 <configuration>
 
   <properties resource="com/example/demo/db/db.properties"/>
+  
   <typeAliases>
   	<typeAlias type="com.example.demo.vo.PostVO" alias="postVo"/>
-  	<typeAlias type="com.example.demo.vo.QnaVO" alias="qnaVo"/>
   	<typeAlias type="com.example.demo.vo.ReplyVO" alias="replyVo"/>
 	<typeAlias type="com.example.demo.vo.BookstoreVO" alias="bookstoreVO"/>
 	<typeAlias type="com.example.demo.vo.BookVO" alias="bookVO"/>

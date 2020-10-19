@@ -10,7 +10,7 @@
     </select>
   
     <!-- 전체 게시글수 -->
-    <select id="selectCount" resultType="Integer">
+    <select id="selectCount" resultType="java.lang.Integer">
    		select count(*) from post where p_no like '40%'
     </select>
   
