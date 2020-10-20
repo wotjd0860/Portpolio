@@ -37,11 +37,11 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.jsp">고객지원</a>
@@ -101,7 +101,7 @@
 		</section>
 		<aside id="main_aside">
 			<div class="tab_item">
-				<h3><a href="listPost.do?group=10">공지사항</a></h3>
+				<h3><a href="postList.do?group=10">공지사항</a></h3>
 				<ul>
 					<c:forEach items="${HNlist}" var="hn">
 						<li><a href="postDetail.do?p_id=${hn.p_id}&&p_no=${hn.p_no}&&group=10">${hn.p_title }</a></li>
@@ -109,7 +109,7 @@
 				</ul>
 			</div>
 			<div class="tab_item">
-				<h3><a href="listPost.do?group=20">창작물 게시판</a></h3>
+				<h3><a href="postList.do?group=20">창작물 게시판</a></h3>
 				<ul>
 					<c:forEach items="${HMakinglist}" var="hmaking">
 						<li><a href="postDetail.do?p_id=${hmaking.p_id}&&p_no=${hmaking.p_no}&&group=20">${hmaking.p_title }</a></li>
@@ -117,7 +117,7 @@
 				</ul>
 			</div>
 			<div class="tab_item">
-				<h3><a href="listPost.do?group=30">중고장터</a></h3>
+				<h3><a href="postList.do?group=30">중고장터</a></h3>
 				<ul>
 					<c:forEach items="${HMarketlist}" var="hmarket">
 						<li><a href="postDetail.do?p_id=${hmarket.p_id}&&p_no=${hmarket.p_no}&&group=30">${hmarket.p_title }</a></li>

@@ -129,11 +129,11 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
@@ -159,9 +159,9 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 		<aside id="main_aside">
 			<br><br>
 			<h3>커뮤니티</h3><br><br>
-			<p><a href="listPost.do?group=10">공지사항</a></p><br>
-			<p><a href="listPost.do?group=20">창작물 게시판</a></p><br>
-			<p><a href="listPost.do?group=30">중고장터</a></p><br>
+			<p><a href="postList.do?group=10">공지사항</a></p><br>
+			<p><a href="postList.do?group=20">창작물 게시판</a></p><br>
+			<p><a href="postList.do?group=30">중고장터</a></p><br>
 		</aside>
 		<section id="main_section">
 			<article class="main_article">
@@ -177,7 +177,7 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 		        <div id="move_list">
 		        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
 		        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-		        	<a href="listPost.do">목록</a>
+		        	<a href="postList.do">목록</a>
 		        </div>
 		        
 		     <%--    <div id="move_list2">

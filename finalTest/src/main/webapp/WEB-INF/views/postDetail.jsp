@@ -131,7 +131,7 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
 						<li><a href="postList.do?group=10">공지사항</a></li>
 						<li><a href="postList.do?group=20">창작물 게시판</a></li>

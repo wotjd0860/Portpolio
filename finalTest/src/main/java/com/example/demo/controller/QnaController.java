@@ -47,7 +47,7 @@ public class QnaController {
 	
 	}
 	
-	@RequestMapping("/detailQna.do")
+	@RequestMapping("/QnaDetail")
 	public void detail(int p_id, Model model) {
 		model.addAttribute("p", dao.getQna(p_id));
 	}
