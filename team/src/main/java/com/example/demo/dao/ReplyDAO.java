@@ -22,17 +22,6 @@ public class ReplyDAO {
 	public List<ReplyVO> findAll(HashMap map){
 		return ReplyManager.findAll(map);
 	}
-	/*
-	public List<ReplyVO> findReplyBull(int p_id){
-		return ReplyManager.findReplyBull(p_id);
-	}
-	public List<ReplyVO> findReplyCreate(int p_id){
-		return ReplyManager.findReplyCreate(p_id);
-	}
-	public List<ReplyVO> findReplyUsed(int p_id){
-		return ReplyManager.findReplyUsed(p_id);
-	}
-	*/
 	
 	
 //	//댓글 작성
