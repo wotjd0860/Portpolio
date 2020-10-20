@@ -28,10 +28,11 @@ public class PostInsertController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView submit(HttpServletRequest request, PostVO p) {
+			
 		ModelAndView mav=new ModelAndView("redirect:/postList.do");
 		int re=dao.insertCreate(p);
 		if(re<=0) {
-			mav.addObject("msg", "ê²Œì‹œë¬¼ ì¶”ê°€ì— ë‹¤ìŒê³¼ ê°™ì€ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
+			mav.addObject("msg", "°Ô½Ã±Û µî·ÏÀÌ Á¤»óÀûÀ¸·Î ¿Ï·áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
 			mav.setViewName("error");
 		}
 		

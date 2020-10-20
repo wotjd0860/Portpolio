@@ -45,7 +45,7 @@ public class UpdateCustomerController {
 				fos.write(data);
 				fos.close();
 			}catch (Exception e) {
-				System.out.println("ì˜ˆì™¸ë°œìƒ updateCustomer : " + e.getMessage());
+				System.out.println("¿¹¿Ü¹ß»ı updateCustomer : " + e.getMessage());
 			}
 			c.setFname(fname);
 		}else {
@@ -54,7 +54,7 @@ public class UpdateCustomerController {
 		ModelAndView mav = new ModelAndView("redirect:/MyPage_Info.do");
 		int re = dao.update(c);
 		if(re <= 0) {
-			mav.addObject("msg", "ìˆ˜ì • ì˜¤ë¥˜ ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
+			mav.addObject("msg", "¼öÁ¤ ¿À·ù ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
 			mav.setViewName("error");
 		}else {
 			if(fname != null && !fname.equals("") && !oldFname.equals("")) {
