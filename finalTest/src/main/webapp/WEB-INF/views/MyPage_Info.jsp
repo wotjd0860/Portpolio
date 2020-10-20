@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="StyleSheet" type="text/css" href="resource/TeamCSS.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+	
+	</script>
 </head>
 <body>
 	<header id="main_header">
@@ -77,9 +81,10 @@
          <form action="UpdateCustomer.do" method="post" enctype="multipart/form-data"><br>
               <input type="hidden" name="cust_no" value="${c.cust_no}"><br>
               <input type="hidden" name="birthday" value="${c.birthday }">
+              <input type="hidden" name="name" value="${c.name }">
               <img src="img/${c.fname}" width="100" height="100"><br>
-			    파일명 : <input type="hidden" name="oldFname" value="${c.fname}">
-		      <input type="file" name="fname" ><br><br>
+			    파일명 : <input type="hidden" name="fname" value="${c.fname}">
+		      <input type="file" name="uploadFile" ><br><br>
                 <h2>아이디 : NoEscape</h2>
                 <br>
                 <hr style="border: #e6e6e6 1px dotted">
