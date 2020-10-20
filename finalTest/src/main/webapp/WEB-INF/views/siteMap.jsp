@@ -48,7 +48,7 @@
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="listQna.do">Q&A</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
@@ -101,7 +101,7 @@
 						<ul class="maplist">
 							<li><h4 class="each_title">고객지원센터</h4></li>
 							<li><a href="faqViewpage.do">FAQ</a></li>
-							<li><a href="listQna.do">고객센터</a></li>
+							<li><a href="QnaList.do">고객센터</a></li>
 							<li><a href="addrViewpageAPI.do">오시는길</a></li>
 						</ul>
 					</div>

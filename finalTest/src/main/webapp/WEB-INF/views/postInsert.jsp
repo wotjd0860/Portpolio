@@ -139,7 +139,7 @@
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.jsp">FAQ</a></li>
-						<li><a href="listQna.do">Q&A</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
 					</ul>
 				</li>

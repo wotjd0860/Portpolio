@@ -13,7 +13,7 @@ import com.example.demo.dao.QnaDAO;
 @Controller
 public class QnaController {
 	
-	public static int pageSIZE =  10;
+	public static int pageSIZE =  2;
 	public static int totalCount  = 0;
 	public static int totalPage = 1;
 	
@@ -24,7 +24,7 @@ public class QnaController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping("/listQna.do")
+	@RequestMapping("/QnaList.do")
 	public void list(Model model, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
 		totalCount = dao.getTotalCount();
 		totalPage = (int)Math.ceil( (double)totalCount/pageSIZE ) ;
@@ -40,6 +40,8 @@ public class QnaController {
 		
 	
 		model.addAttribute("list", dao.findAll(map));
+		model.addAttribute("start", start-1);
+		model.addAttribute("end", end-1);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("totalCount", totalCount);
 	
