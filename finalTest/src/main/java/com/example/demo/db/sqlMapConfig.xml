@@ -4,17 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="com/example/demo/db/db.properties"/>
+  <properties resource="com/example/demo/db/db.properties"/>
+  
+  <typeAliases>
+  	<typeAlias type="com.example.demo.vo.PostVO" alias="postVo"/>
+  	<typeAlias type="com.example.demo.vo.ReplyVO" alias="replyVo"/>
+	<typeAlias type="com.example.demo.vo.BookstoreVO" alias="bookstoreVO"/>
+	<typeAlias type="com.example.demo.vo.BookVO" alias="bookVO"/>
+	<typeAlias type="com.example.demo.vo.CustomerVO" alias="customerVO"/>
+  </typeAliases>
 	
-	<typeAliases>
-		<typeAlias type="com.example.demo.vo.PostVO" alias="postVo"/>
-		<typeAlias type="com.example.demo.vo.ReplyVO" alias="replyVo"/>
-	</typeAliases>
-
-
-
-
-
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -27,15 +26,13 @@
     </environment>
   </environments>
   
-  
-  
-  
-  
   <mappers>
-    <mapper resource="com/example/demo/db/PostMapper.xml"/>
-    <mapper resource="com/example/demo/db/QnaMapper.xml"/>
-    <mapper resource="com/example/demo/db/ReplyMapper.xml"/>
+    <mapper resource="com/example/demo/db/PostMapper.xml"/> 
+    <mapper resource="com/example/demo/db/QnaMapper.xml"/> 
+	<mapper resource="com/example/demo/db/ReplyMapper.xml"/>
+    <mapper resource="com/example/demo/db/BookstoreMapper.xml"/>
+    <mapper resource="com/example/demo/db/BookMapper.xml"/>
+    <mapper resource="com/example/demo/db/CustomerMapper.xml"/>
   </mappers>
-  
   
 </configuration>

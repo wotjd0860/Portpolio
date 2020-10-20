@@ -23,6 +23,17 @@ public class QnaDAO {
 		return QnaManager.getNextNo();
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	////////////////////////////////////////
 //	public int insert(PostVO p) {
 //		return PostManager.insert(p);

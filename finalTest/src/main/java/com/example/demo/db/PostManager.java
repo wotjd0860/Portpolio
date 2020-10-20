@@ -62,7 +62,6 @@ public class PostManager {
 		return p;
 	}
 	
-	//새글 작성
 	public static int insertCreate(PostVO p) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession(true);
@@ -71,7 +70,6 @@ public class PostManager {
 		return re;
 	}
 	
-	//글 수정
 	public static int update(PostVO p) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession(true);
@@ -80,7 +78,6 @@ public class PostManager {
 		return re;
 	}
 	
-	//글 삭제
 	public static int delete(HashMap map) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession(true);
@@ -96,9 +93,6 @@ public class PostManager {
 //		session.close();
 //		return re;
 //	}
-	
-	
-	
 
 }
 

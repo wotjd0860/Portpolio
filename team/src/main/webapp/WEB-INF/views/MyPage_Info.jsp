@@ -26,7 +26,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
-					<li><a href="LoginPage.jsp">로그인</a></li>
+					<li><a href="LoginPage.do">로그인</a></li>
 					<li><a href="insertCustomer.jsp">회원가입</a></li>
 				</c:if>
 				<c:if test="${not empty cust_no }">
@@ -38,17 +38,17 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤티니</a>
+				<li><a href="postList.do?group=10">커뮤티니</a>
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.jsp">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.jsp">FAQ</a></li>
-						<li><a href="listQna.do">Q&A</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
 					</ul>
 				</li>

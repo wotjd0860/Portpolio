@@ -24,7 +24,7 @@ public class QnaController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping("/listQna.do")
+	@RequestMapping("/QnaList.do")
 	public void list(Model model, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
 		totalCount = dao.getTotalCount();
 		totalPage = (int)Math.ceil( (double)totalCount/pageSIZE ) ;

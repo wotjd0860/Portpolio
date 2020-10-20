@@ -67,7 +67,13 @@
          	<artifactId>tomcat-embed-jasper</artifactId>
          	<scope>provided</scope>
       	</dependency>
-      
+      	
+      	<!-- 코드 수정 실시간 반영 -->
+      	<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-devtools</artifactId>
+      	</dependency>
+      	
 	</dependencies>
 
 	<build>
