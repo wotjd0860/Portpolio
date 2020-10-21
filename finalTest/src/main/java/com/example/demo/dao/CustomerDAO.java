@@ -45,5 +45,9 @@ public class CustomerDAO {
 	public int update(CustomerVO c) {
 		return CustomerManager.update(c);
 	}
-
+	
+	public CustomerVO getLoginInfo(HashMap map) {
+		// TODO Auto-generated method stub
+		return CustomerManager.getLoginInfo(map);
+	}
 }

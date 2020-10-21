@@ -51,6 +51,14 @@ public static SqlSessionFactory sqlSessionFactory;
 		return re;
 	}
 	
+	public static CustomerVO getLoginInfo(HashMap map) {
+		CustomerVO c = null;
+		SqlSession session = sqlSessionFactory.openSession(true);
+		c  = session.selectOne("customer.getLoginInfo",map);
+		session.close();
+		return c;
+	}
+	
 	//
 	public static CustomerVO logInCustomer(HashMap map) {
 		CustomerVO c = null;
