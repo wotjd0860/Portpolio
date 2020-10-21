@@ -35,5 +35,8 @@
   	update customer set fname=#{fname}, nickname=#{nickname}, pw=#{pw}, m_phone=#{m_phone}, addr=#{addr}, email=#{email}, interest=#{interest}, name=#{name} where cust_no=#{cust_no}
   </update>
   
+  <select id="getLoginInfo" resultType="customerVO">
+  	select cust_no, email, pw from customer where email=#{email} and pw=#{pw}
+  </select>
 </mapper>
 

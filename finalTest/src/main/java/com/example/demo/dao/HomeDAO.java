@@ -42,4 +42,5 @@ public class HomeDAO {
 	public void OptOut(Map map) {
 		DBManager.OptOut(map);
 	}
+
 }
