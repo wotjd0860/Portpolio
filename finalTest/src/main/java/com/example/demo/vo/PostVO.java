@@ -12,10 +12,10 @@ public class PostVO {
 	private Date p_regdate;
 	private int cust_no;
 	private String fname;
+	
 	public PostVO() {
 		super();
 	}
-	
 	
 	public PostVO(int p_id, int p_no, String p_title) {
 		super();
@@ -44,7 +44,7 @@ public class PostVO {
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-
+	
 	public int getP_id() {
 		return p_id;
 	}
@@ -93,5 +93,4 @@ public class PostVO {
 	public void setCust_no(int cust_no) {
 		this.cust_no = cust_no;
 	}
-	
 }

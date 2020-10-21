@@ -29,7 +29,7 @@ public class CustomerVO {
 	}
 
 	public CustomerVO(int cust_no, String email, String pw, String addr, String nickname, String interest, String name,
-			String m_phone, Date birthday, String fname) {
+			String m_phone, Date birthday, String fname, MultipartFile uploadFile) {
 		super();
 		this.cust_no = cust_no;
 		this.email = email;
@@ -41,8 +41,17 @@ public class CustomerVO {
 		this.m_phone = m_phone;
 		this.birthday = birthday;
 		this.fname = fname;
+		this.uploadFile = uploadFile;
 	}
 	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
 	public int getCust_no() {
 		return cust_no;
 	}
@@ -102,11 +111,5 @@ public class CustomerVO {
 	}
 	public void setFname(String fname) {
 		this.fname = fname;
-	}
-	public MultipartFile getUploadFile() {
-		return uploadFile;
-	}
-	public void setUploadFile(MultipartFile uploadFile) {
-		this.uploadFile = uploadFile;
 	}
 }
