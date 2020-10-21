@@ -64,6 +64,7 @@ public class PostController {
 		map.put("group", group);
 		
 		model.addAttribute("p",dao.findById(map));
+		model.addAttribute("group", group);
 		model.addAttribute("listReply",re_dao.findAll(map));
 	}
 }

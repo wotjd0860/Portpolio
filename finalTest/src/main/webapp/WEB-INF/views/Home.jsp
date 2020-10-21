@@ -44,10 +44,10 @@
 						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
-				<li><a href="faqViewpage.jsp">고객지원</a>
+				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="listQna.do">Q&A</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>

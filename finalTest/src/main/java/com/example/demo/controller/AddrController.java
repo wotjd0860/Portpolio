@@ -10,4 +10,9 @@ public class AddrController {
 	public void addr() {
 		
 	}
+	
+	@RequestMapping("/siteMap.do")
+	public void sitemap() {
+		
+	}
 }
