@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 
 <title>Insert title here</title>
+<<<<<<< HEAD
 	<link rel="StyleSheet" type="text/css" href="TeamCSS_nonAside.css">
+=======
+	<link rel="StyleSheet" type="text/css" href="../resource/TeamCSS_nonAside.css">
+>>>>>>> branch 'kimin' of https://github.com/ohna93/Delibrary.git
 </head>
 <body>
 	<header id="main_header">

@@ -84,7 +84,7 @@ public class DBManager {
 	public static List<PostVO> getpostList(Map map) {
 		List<PostVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
-		list = session.selectList("main.getpostList", map);
+		list = session.selectList("main.getListPost", map);
 		return list;
 	}
 	

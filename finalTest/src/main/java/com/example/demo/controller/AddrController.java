@@ -1,0 +1,18 @@
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class AddrController {
+
+	@RequestMapping("/addrViewpageAPI.do")
+	public void addr() {
+		
+	}
+	
+	@RequestMapping("/siteMap.do")
+	public void sitemap() {
+		
+	}
+}

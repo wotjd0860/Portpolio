@@ -64,6 +64,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
+<<<<<<< HEAD
 					<li><a href="LoginPage.jsp">로그인</a></li>
 					<li><a href="insertCustomer.jsp">회원가입</a></li>
 				</c:if>
@@ -109,6 +110,53 @@
         	<br><br>
 				<p><a href="faqViewpage.do">FAQ</a></p><br/>
 		    	<p><a href="listQna.do">Q&A</a></p><br/>
+=======
+					<li><a href="LoginPage.do">로그인</a></li>
+					<li><a href="insertCustomer.do">회원가입</a></li>
+				</c:if>
+				<c:if test="${not empty cust_no }">
+					<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a></li>
+					<li><a href="logout.do?cust_no=${cust_no }">로그아웃</a></li>
+				</c:if>
+			</ul>
+		</nav>
+		<nav id="main_lnb">
+			<ul>
+				<li><a href="#">도서대여</a></li>
+				<li><a href="postList.do?group=10">커뮤니티</a>
+					<ul class="sub">
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
+					</ul>
+				</li>
+				<li><a href="faqViewpage.do">고객지원</a>
+					<ul class="sub">
+						<li><a href="faqViewpage.do">FAQ</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
+						<li><a href="addrViewpageAPI.do">오시는길</a></li>
+					</ul>
+				</li>
+				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>
+					<ul class="sub">
+						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
+						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
+						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
+					</ul>
+				</li>
+				<li><a href="siteMap.do">사이트맵</a></li>
+			</ul>
+		</nav>
+	</header>
+   
+   	<div id="content">
+    	<aside id="main_aside">
+      	<br><br>
+        	<h2>고객 지원</h2>
+        	<br><br>
+				<p><a href="faqViewpage.do">FAQ</a></p><br/>
+		    	<p><a href="QnaList.do">Q&A</a></p><br/>
+>>>>>>> branch 'kimin' of https://github.com/ohna93/Delibrary.git
 		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
       	</aside>
 
