@@ -8,7 +8,7 @@ import com.example.demo.vo.BookVO;
 import com.example.demo.vo.BookstoreVO;
 
 @Repository
-public class BookStoreDao {
+public class BookStoreDAO {
 	public BookstoreVO findByNo() {
 		return BookManager.findByNo2();
 	}

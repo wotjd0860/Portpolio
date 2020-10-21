@@ -11,7 +11,7 @@ import com.example.demo.vo.CustomerVO;
 
 public class CustomerManager {
 	
-	public static SqlSessionFactory sqlSessionFactory;
+public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
 		String resource = "com/example/demo/db/sqlMapConfig.xml";
@@ -60,6 +60,7 @@ public class CustomerManager {
 		return c;
 	}
 	
+	//회원 전체 출력하기 [현왕]
 	public static List<CustomerVO> findAll(){
 		List<CustomerVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -68,6 +69,7 @@ public class CustomerManager {
 		return list;
 	}
 	
+	//회원 갖고오기(detail)[현왕]
 	public static CustomerVO findByCust_No(int cust_no) {
 		CustomerVO c = null;
 		SqlSession session = 
@@ -77,6 +79,7 @@ public class CustomerManager {
 		return c;
 	}
 	
+	//회원 수정 [현왕]
 	public static int update(CustomerVO c) {
 		int re = -1;
 		SqlSession session

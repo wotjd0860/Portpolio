@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dao.CustomerDao;
+import com.example.demo.dao.CustomerDAO;
 import com.example.demo.vo.CustomerVO;
 
 @Controller
@@ -21,9 +21,9 @@ import com.example.demo.vo.CustomerVO;
 public class UpdateCustomerController {
 	
 	@Autowired
-	private CustomerDao dao;
+	private CustomerDAO dao;
 
-	public void setDao(CustomerDao dao) {
+	public void setDao(CustomerDAO dao) {
 		this.dao = dao;
 	}
 	

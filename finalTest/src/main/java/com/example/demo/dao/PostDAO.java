@@ -2,12 +2,13 @@ package com.example.demo.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.db.DBManager;
 import com.example.demo.db.PostManager;
 import com.example.demo.vo.PostVO;
-import com.example.demo.vo.ReplyVO;
 
 @Repository
 public class PostDAO {
@@ -42,8 +43,14 @@ public class PostDAO {
 		return PostManager.delete(map);
 	}
 	
-//	public int updateStep(HashMap map) {
-//		return PostManager.updateStep(map);
-//	}
+	// 홈화면에서 커뮤니티 클릭 or 공지사항으로 이동[재성]
+		public List<PostVO> getListPost(Map map) {
+			return DBManager.getListPost(map);
+		}
+	
+	// 페이징 처리 시 총 게시물 목록을 받아오는 메소드[재성]
+	public int getTotalCount(Map map) {
+		return DBManager.getTotalCount(map);
+	}
 	
 }

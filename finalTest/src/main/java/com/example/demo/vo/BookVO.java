@@ -20,7 +20,6 @@ public class BookVO {
 		super();
 	}
 	
-	// Ȩȭ�� ��õ���� �޾ƿ��� ���� ������
 	public BookVO(int b_no, String b_title, String b_writer, String b_image) {
 		super();
 		this.b_no = b_no;

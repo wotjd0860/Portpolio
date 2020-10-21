@@ -5,7 +5,7 @@
 <mapper namespace="qna">
 
 	<!-- 전체 게시글 목록 -->
-  	<select id="selectAll" resultType="postVo">
+  	<select id="selectAll" resultType="postVO">
     	select * from post where p_no like '40%'
     </select>
   
@@ -15,7 +15,7 @@
     </select>
   
     <!-- 게시글 상세보기 -->
-    <select id="selectById" resultType="postVo">
+    <select id="selectById" resultType="postVO">
    		 select * from post where p_id = #{p_id}
     </select>
   
@@ -26,7 +26,7 @@
   
   
  <!-- 댓글 불러오기 -->
-  <select id="selectReplyBull" resultType="replyVo">
+  <select id="selectReplyBull" resultType="replyVO">
   	select * from reply where p_no like '40%' and p_id=#{p_id}
   </select>
   

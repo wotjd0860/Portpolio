@@ -12,22 +12,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dao.CustomerDao;
+import com.example.demo.dao.CustomerDAO;
+import com.example.demo.dao.HomeDAO;
 import com.example.demo.vo.CustomerVO;
 
 @Controller
 public class CustomerController {
+	@Autowired
+	private CustomerDAO dao;
 	
 	@Autowired
-	private CustomerDao dao;
-
-	public void setDao(CustomerDao dao) {
+	private HomeDAO dao2;
+	
+	public void setDao(CustomerDAO dao) {
 		this.dao = dao;
 	}
 
 	//홈화면 임시
 	@RequestMapping("/Home.do")
-	public void home(HttpServletRequest request) {
+	public void home(Model model, CustomerVO
+			  custVO, String loginOk, HttpServletRequest request) {
+		
+		model.addAttribute("SRlist", dao2.getStaffRecommend());
+		model.addAttribute("Newlist", dao2.getNewRecommend());
+		model.addAttribute("HNlist", dao2.getHomePost(10));
+		model.addAttribute("HMakinglist", dao2.getHomePost(20));
+     	model.addAttribute("HMarketlist", dao2.getHomePost(30));
+		
 		HttpSession session = request.getSession();
 		request.setAttribute("cust_no", session.getAttribute("cust_no"));
 	}
@@ -152,6 +163,7 @@ public class CustomerController {
 		return mav;	
 	}
 
+	// 회원정보 디테일 and 수정
 	@RequestMapping("/MyPage_Info.do")
 	public void detail(int cust_no, Model model, HttpServletRequest request) {
 		
