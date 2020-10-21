@@ -140,9 +140,9 @@
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
-						<li><a href="faqViewpage.jsp">FAQ</a></li>
+						<li><a href="faqViewpage.do">FAQ</a></li>
 						<li><a href="qna.do">Q&A</a></li>
-						<li><a href="addrViewpage.jsp">오시는길</a></li>
+						<li><a href="addrViewpage.do">오시는길</a></li>
 					</ul>
 				</li>
 				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>

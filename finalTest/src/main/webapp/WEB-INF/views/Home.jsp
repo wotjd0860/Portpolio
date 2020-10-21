@@ -44,7 +44,7 @@
 						<li><a href="listPost.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
-				<li><a href="faqViewpage.jsp">고객지원</a>
+				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
 						<li><a href="listQna.do">Q&A</a></li>
