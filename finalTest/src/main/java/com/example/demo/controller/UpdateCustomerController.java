@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dao.CustomerDao;
+import com.example.demo.dao.CustomerDAO;
 import com.example.demo.vo.CustomerVO;
 
 @Controller
@@ -21,9 +21,9 @@ import com.example.demo.vo.CustomerVO;
 public class UpdateCustomerController {
 	
 	@Autowired
-	private CustomerDao dao;
+	private CustomerDAO dao;
 
-	public void setDao(CustomerDao dao) {
+	public void setDao(CustomerDAO dao) {
 		this.dao = dao;
 	}
 	
@@ -33,10 +33,21 @@ public class UpdateCustomerController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView submit(HttpServletRequest request, CustomerVO c) {
+	public ModelAndView submit(HttpServletRequest request, CustomerVO c, MultipartFile uploadFile) {
 		String path = request.getRealPath("img");
-		String oldFname = c.getFname();
-		MultipartFile uploadFile = c.getUploadFile();
+		String Email = request.getParameter("id")+"@"+request.getParameter("email");
+		c.setEmail(Email);
+		String[] values = request.getParameterValues("genre");
+		String interest = "";
+		for (int i = 0; i < values.length; i++) {
+			if (i == values.length-1) {
+				interest += values[i];
+			} else {
+				interest += (values[i] + ",");
+			}
+		}
+		c.setInterest(interest);
+		
 		String fname = uploadFile.getOriginalFilename();
 		if(fname != null && !fname.equals("")) {
 			try {
@@ -45,20 +56,18 @@ public class UpdateCustomerController {
 				fos.write(data);
 				fos.close();
 			}catch (Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ý updateCustomer : " + e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ updateCustomer : " + e.getMessage());
 			}
 			c.setFname(fname);
-		}else {
-			c.setFname(oldFname);
 		}
 		ModelAndView mav = new ModelAndView("redirect:/MyPage_Info.do");
 		int re = dao.update(c);
 		if(re <= 0) {
-			mav.addObject("msg", "¼öÁ¤ ¿À·ù ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+			mav.addObject("msg", "ìˆ˜ì • ì˜¤ë¥˜ ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 			mav.setViewName("error");
 		}else {
-			if(fname != null && !fname.equals("") && !oldFname.equals("")) {
-				File file = new File(path + "/" + oldFname);
+			if(fname != null && !fname.equals("") && !c.getFname().equals("")) {
+				File file = new File(path + "/" + c.getFname());
 				file.delete();
 			}
 		}

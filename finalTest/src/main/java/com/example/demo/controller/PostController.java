@@ -30,7 +30,7 @@ public class PostController {
 		this.re_dao = re_dao;
 	}
 	
-	//°Ô½ÃÆÇ ÀüÃ¼±Û °¡Á®¿À±â
+	//ê²Œì‹œíŒ ì „ì²´ê¸€ ê°€ì ¸ì˜¤ê¸°
 	@RequestMapping("/postList.do")
 	public void postList(Model model, String group, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
 		HashMap map=new HashMap();
@@ -48,14 +48,15 @@ public class PostController {
 		map.put("end", end);
 		
 		model.addAttribute("list", dao.findAll(map));
+		model.addAttribute("group", group);
 		model.addAttribute("start", start-1);
 		model.addAttribute("end", end-1);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("totalPage", totalPage);
 	}
 
-	//°Ô½ÃÆÇ »ó¼¼±Û º¸±â
-	//´ñ±Û ºÒ·¯¿À±â
+	//ê²Œì‹œíŒ ìƒì„¸ê¸€ ë³´ê¸°
+	//ëŒ“ê¸€ ë¶ˆëŸ¬ì˜¤ê¸°
 	@RequestMapping("/postDetail.do")
 	public void detail(int p_id, String group, Model model) {
 		HashMap map=new HashMap();
@@ -63,7 +64,6 @@ public class PostController {
 		map.put("group", group);
 		
 		model.addAttribute("p",dao.findById(map));
-		model.addAttribute("group", group);
 		model.addAttribute("listReply",re_dao.findAll(map));
 	}
 }

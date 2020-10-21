@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reply">
 	<!-- 댓글 불러오기 -->
-	<select id="selectAll" resultType="replyVo">
+	<select id="selectAll" resultType="replyVO">
     	select * from reply where p_id=#{p_id}
 	</select>
 	<!-- 

@@ -15,7 +15,7 @@ import com.example.demo.vo.BookstoreVO;
 
 public class BookManager {
 	
-	public static SqlSessionFactory sqlSessionFactory;
+public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
 		try {

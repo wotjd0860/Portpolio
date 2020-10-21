@@ -168,56 +168,48 @@
 		
 		<section id="main_section">
 			<article class="main_article">
-				<c:if test="${group eq 10}">
-					<h3>공지사항<br>&nbsp;</h3>
-				</c:if>
-				<c:if test="${group eq 20}">
-					<h3>창작물 게시판<br>&nbsp;</h3>
-				</c:if>
-				<c:if test="${group eq 30}">
-					<h3>중고장터<br>&nbsp;</h3>
-				</c:if>
-				<!-- 
-		  		<div style="background-color: #aaa; width: 100%; padding: 10px;">
-					<h3>공지사항<br>&nbsp;</h3>
-		        </div>
-		         -->
-		        <div id="move_list">
-		        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
-		        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-		        	<a href="postListBull.do">목록</a>
-	        	</div>
-	        	<!--  삭제수정링크 -->
-		        <div id="move_list2">
-						<a href="postDelete.do?p_no=${p.p_no }&&p_id=${p.p_id}">삭제하기</a>	        	
-						<a href="postUpdate.do?p_no=${p.p_no }&&p_id=${p.p_id}">수정하기</a>
-		        </div>
-		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
-					<div id="p_title">
-						<p>${p.p_title }</p>
-						<br>
-						<p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p>
+			<h3>공지사항<br>&nbsp;</h3>
+			<!-- 
+	  		<div style="background-color: #aaa; width: 100%; padding: 10px;">
+				<h3>공지사항<br>&nbsp;</h3>
+	        </div>
+	         -->
+	        <div id="move_list">
+	        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
+	        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
+	        	<a href="postListBull.do">목록</a>
+        	</div>
+        	<!--  삭제수정링크 -->
+	        <div id="move_list2">
+					<a href="postDelete.do?p_no=${p.p_no }&&p_id=${p.p_id}">삭제하기</a>	        	
+					<a href="postUpdate.do?p_no=${p.p_no }&&p_id=${p.p_id}">수정하기</a>
+	        </div>
+	        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
+				<div id="p_title">
+					<p>${p.p_title }</p>
+					<br>
+					<p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p>
+				</div>
+				<div id="p_content">
+					${p.p_content }
+				</div>
+				<div>
+					<div id="re_Submit">
+						<span>댓글</span>
+						<input type="submit" value="등록하기">
+						<textarea></textarea>
 					</div>
-					<div id="p_content">
-						${p.p_content }
-					</div>
-					<div>
-						<div id="re_Submit">
-							<span>댓글</span>
-							<input type="submit" value="등록하기">
-							<textarea></textarea>
-						</div>
-						<div id="re_content">
-							<c:forEach var="r" items="${listReply }">
-								<div>
-									<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
-									<p style="font-size: 15px; color: #aaa;">${r.re_regdate }</p>
-									<p>${r.re_content }</p>
-								</div>
-							</c:forEach>
-						</div>
+					<div id="re_content">
+						<c:forEach var="r" items="${listReply }">
+							<div>
+								<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
+								<p style="font-size: 15px; color: #aaa;">${r.re_regdate }</p>
+								<p>${r.re_content }</p>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
+			</div>
 			</article>
 		</section>
 	</div>

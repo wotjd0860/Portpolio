@@ -47,7 +47,7 @@
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="QnaList.do">Q&A</a></li>
+						<li><a href="listQna.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
@@ -69,7 +69,7 @@
         	<h2>고객 지원</h2>
         	<br><br>
 				<p><a href="faqViewpage.do">FAQ</a></p><br/>
-		    	<p><a href="QnaList.do">Q&A</a></p><br/>
+		    	<p><a href="listQna.do">Q&A</a></p><br/>
 		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
       	</aside>
 <section id="main_section">
@@ -79,7 +79,7 @@
 				<img src="img/icon.PNG" width="80" height="60"><h2>QNA</h2>
 			</div>
 			
-			<form action="QnaList.do" method="post" id="search">
+			<form action="listQna.do" method="post" id="search">
 		       	
 		        <p align="right">총 ${totalCount} 개    
 			        <select name="option" size="1">

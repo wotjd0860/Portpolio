@@ -12,27 +12,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dao.CustomerDao;
+import com.example.demo.dao.CustomerDAO;
+import com.example.demo.dao.HomeDAO;
 import com.example.demo.vo.CustomerVO;
 
 @Controller
 public class CustomerController {
+	@Autowired
+	private CustomerDAO dao;
 	
 	@Autowired
-	private CustomerDao dao;
-
-	public void setDao(CustomerDao dao) {
+	private HomeDAO dao2;
+	
+	public void setDao(CustomerDAO dao) {
 		this.dao = dao;
 	}
 
-	//È¨È­¸é ÀÓ½Ã
+	//í™ˆí™”ë©´ ì„ì‹œ
 	@RequestMapping("/Home.do")
-	public void home(HttpServletRequest request) {
+	public void home(Model model, CustomerVO
+			  custVO, String loginOk, HttpServletRequest request) {
+		
+		model.addAttribute("SRlist", dao2.getStaffRecommend());
+		model.addAttribute("Newlist", dao2.getNewRecommend());
+		model.addAttribute("HNlist", dao2.getHomePost(10));
+		model.addAttribute("HMakinglist", dao2.getHomePost(20));
+     	model.addAttribute("HMarketlist", dao2.getHomePost(30));
+		
 		HttpSession session = request.getSession();
 		request.setAttribute("cust_no", session.getAttribute("cust_no"));
 	}
 	
-	//È¸¿ø°¡ÀÔFORM
+	//íšŒì›ê°€ì…FORM
 	@RequestMapping(value="/insertCustomer.do", method=RequestMethod.GET)
 	public void insertCustomer() {
 		
@@ -54,7 +65,7 @@ public class CustomerController {
 	}
 	
 	/*
-	//È¸¿ø°¡ÀÔOK
+	//íšŒì›ê°€ì…OK
 	@RequestMapping(value="/insertCustomer.do", method=RequestMethod.POST)
 	public ModelAndView insertCustomerOk(CustomerVO c, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
@@ -66,7 +77,7 @@ public class CustomerController {
 			try {
 				data = uploadFile.getBytes();
 			} catch(Exception e) {
-				System.out.println("È¸¿ø°¡ÀÔ »çÁø¾÷·Îµå ¿¹¿Ü¹ß»ı1 " + e.getMessage());
+				System.out.println("íšŒì›ê°€ì… ì‚¬ì§„ì—…ë¡œë“œ ì˜ˆì™¸ë°œìƒ1 " + e.getMessage());
 			}
 		} else {
 			fname = "";
@@ -79,7 +90,7 @@ public class CustomerController {
 		int re = customerDao.insertCustomer(c);
 		
 		if(re>0) {
-			mav.addObject("msg","È¸¿ø°¡ÀÔ¿À·ù");
+			mav.addObject("msg","íšŒì›ê°€ì…ì˜¤ë¥˜");
 		}else {
 			if(!fname.equals("")) {
 				try {
@@ -88,7 +99,7 @@ public class CustomerController {
 					fos.write(data);
 					fos.close();
 				} catch (Exception e) {
-					System.out.println("È¸¿ø°¡ÀÔ »çÁø¾÷·Îµå ¿¹¿Ü¹ß»ı2 " + e.getMessage());
+					System.out.println("íšŒì›ê°€ì… ì‚¬ì§„ì—…ë¡œë“œ ì˜ˆì™¸ë°œìƒ2 " + e.getMessage());
 				}
 			}
 		}
@@ -96,13 +107,13 @@ public class CustomerController {
 	}
 	*/
 	
-	//·Î±×ÀÎ FORM
+	//ë¡œê·¸ì¸ FORM
 	@RequestMapping(value="/LoginPage.do", method=RequestMethod.GET)
 	public void logInForm() {
 		
 	}
 	
-	//·Î±×ÀÎ OK
+	//ë¡œê·¸ì¸ OK
 	@RequestMapping(value="/LoginPage.do", method=RequestMethod.POST)
 	public ModelAndView logInOk(String email, String pw, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect:/Home.do");
@@ -112,16 +123,16 @@ public class CustomerController {
 		map.put("email",email);
 		c = dao.logIn(map);
 			if(c !=null) {
-			//¼¼¼ÇÀ¯ÁöÆÄÆ®
+			//ì„¸ì…˜ìœ ì§€íŒŒíŠ¸
 			session = request.getSession();
-			request.setAttribute("cust_no",c.getCust_no());
+			request.setAttribute("cust_no",c.getCust_no());			
 			} else {
 				mav.setViewName("/LoginPage.do");
 			}
 			return mav;
 		}
 	
-	//·Î±×¾Æ¿ô
+	//ë¡œê·¸ì•„ì›ƒ
 	@RequestMapping(value="/logout.do")
 	public ModelAndView logOut(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("redirect:/LoginPage.do");
@@ -130,7 +141,7 @@ public class CustomerController {
 		return mav;
 	}
 	
-	//È¸¿øÅ»Åğ
+	//íšŒì›íƒˆí‡´
 	@RequestMapping(value="/optOutCustomer.do", method=RequestMethod.GET)
 	public void deleteCustomerForm() {
 		
@@ -142,7 +153,7 @@ public class CustomerController {
 		HashMap map = new HashMap();
 		int re = dao.deleteCustomer(map);
 		String completeEmail = email + emailer;
-		System.out.println("ÀÌ¸ŞÀÏ!!!!" + completeEmail);
+		System.out.println("ì´ë©”ì¼!!!!" + completeEmail);
 		map.put("email",completeEmail);
 		map.put("pw",pw);
 		
@@ -152,6 +163,7 @@ public class CustomerController {
 		return mav;	
 	}
 
+	// íšŒì›ì •ë³´ ë””í…Œì¼ and ìˆ˜ì •
 	@RequestMapping("/MyPage_Info.do")
 	public void detail(int cust_no, Model model, HttpServletRequest request) {
 		

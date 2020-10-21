@@ -117,7 +117,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
-					<li><a href="LoginPage.do">로그인</a></li>
+					<li><a href="LoginPage.jsp">로그인</a></li>
 					<li><a href="insertCustomer.jsp">회원가입</a></li>
 				</c:if>
 				<c:if test="${not empty cust_no }">
@@ -139,7 +139,7 @@
 				<li><a href="faqViewpage.jsp">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.jsp">FAQ</a></li>
-						<li><a href="QnaList.do">Q&A</a></li>
+						<li><a href="listQna.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
 					</ul>
 				</li>
@@ -161,7 +161,7 @@
         	<h2>고객 지원</h2>
         	<br><br>
 				<p><a href="faqViewpage.jsp">FAQ</a></p><br/>
-		    	<p><a href="QnaList.do">QNA</a></p><br/>
+		    	<p><a href="listQna.do">QNA</a></p><br/>
 		    	<p><a href="addrViewpageAPI.jsp">오시는 길</a></p>
       	</aside>
 		<section id="main_section">
@@ -170,7 +170,7 @@
 	        <div id="move_list">
 	        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
 	        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-	        	<a href="QnaList.do">목록</a>
+	        	<a href="listQna.do">목록</a>
 	        </div>
 	        <div id="move_list2">
 					<a href="QnaDeletePage.do?p_no=${p_no }">삭제하기</a>	        	
