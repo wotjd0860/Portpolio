@@ -1,4 +1,4 @@
-package com.example.demo.vo;
+package com.example.demo.VO;
 
 public class CategoryVO {
 	

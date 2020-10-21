@@ -52,7 +52,7 @@ public class PostManager {
 		session.close();
 		return p;
 	}
-
+	
 	//게시글 조회수 
 	public static int updateHit(int p_id) {
 		int re =  -1;
@@ -98,7 +98,14 @@ public class PostManager {
 		return re;
 	}
 	
-
+//	public static int updateStep(HashMap map) {
+//		int re =  -1;
+//		SqlSession session=sqlSessionFactory.openSession(true);
+//		re = session.update("post.updateStep", map);
+//		session.close();
+//		return re;
+//	}
+	
 }
 
 

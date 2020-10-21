@@ -27,6 +27,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
+<<<<<<< HEAD
 					<li><a href="LoginPage.do">로그인</a></li>
 					<li><a href="insertCustomer.do">회원가입</a></li>
 				</c:if>

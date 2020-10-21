@@ -64,6 +64,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
+<<<<<<< HEAD
 					<li><a href="LoginPage.do">로그인</a></li>
 					<li><a href="insertCustomer.do">회원가입</a></li>
 				</c:if>
@@ -109,7 +110,7 @@
         	<br><br>
 				<p><a href="faqViewpage.do">FAQ</a></p><br/>
 		    	<p><a href="QnaList.do">Q&A</a></p><br/>
-		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
+				<p><a href="addrViewpageAPI.do">오시는 길</a></p>
       	</aside>
 
 		<section id="main_section">      
