@@ -25,7 +25,6 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
-<<<<<<< HEAD
 					<li><a href="LoginPage.do">로그인</a></li>
 					<li><a href="insertCustomer.do">회원가입</a></li>
 				</c:if>
@@ -81,6 +80,7 @@
 			</div>
 			
 			<form action="QnaList.do" method="post" id="search">
+		       	
 		        <p align="right">총 ${totalCount} 개    
 			        <select name="option" size="1">
 			           <option value="제목">제목</option>

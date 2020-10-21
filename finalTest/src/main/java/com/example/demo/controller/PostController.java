@@ -17,6 +17,7 @@ public class PostController {
 	public static int pageSIZE =  2;
 	public static int totalCount  = 0;
 	public static int totalPage = 1;
+	public static int updateHit=0;
 	
 	@Autowired
 	private PostDAO dao;
@@ -33,6 +34,8 @@ public class PostController {
 	//게시판 전체글 가져오기
 	@RequestMapping("/postList.do")
 	public void postList(Model model, String group, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
+
+
 		HashMap map=new HashMap();
 		map.put("group", group);
 		
@@ -43,9 +46,6 @@ public class PostController {
 		if(end > totalCount) {
 			end = totalCount;
 		}
-		
-		map.put("start", start);
-		map.put("end", end);
 		
 		model.addAttribute("list", dao.findAll(map));
 		model.addAttribute("group", group);
@@ -59,11 +59,15 @@ public class PostController {
 	//댓글 불러오기
 	@RequestMapping("/postDetail.do")
 	public void detail(int p_id, String group, Model model) {
+		
+		updateHit=dao.updateHit(p_id);
+		
 		HashMap map=new HashMap();
 		map.put("p_id", p_id);
 		map.put("group", group);
 		
 		model.addAttribute("p",dao.findById(map));
+		model.addAttribute("group", group);
 		model.addAttribute("listReply",re_dao.findAll(map));
 	}
 }

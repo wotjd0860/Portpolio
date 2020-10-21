@@ -110,7 +110,12 @@
       <dependency>
           <groupId>wsdl4j</groupId>
           <artifactId>wsdl4j</artifactId>
-          <version>1.6.3</version>
+      </dependency>
+      
+      <!-- 코드 수정 실시간 반영 -->
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-devtools</artifactId>
       </dependency>
       
    </dependencies>

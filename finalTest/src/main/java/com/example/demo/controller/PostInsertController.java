@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,14 @@ public class PostInsertController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView submit(HttpServletRequest request, PostVO p) {
+	public ModelAndView submit(HttpServletRequest request, PostVO p, int group) {
+		
+		String path=request.getRealPath("upload");
+		System.out.println("path : "+path);
+		
 		ModelAndView mav=new ModelAndView("redirect:/postList.do");
-		int re=dao.insertCreate(p);
+		int re=dao.insert(p);
+
 		if(re<=0) {
 			mav.addObject("msg", "게시물 추가에 다음과 같은 오류가 발생했습니다.");
 			mav.setViewName("error");
