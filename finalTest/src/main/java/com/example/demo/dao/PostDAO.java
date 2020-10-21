@@ -53,8 +53,8 @@ public class PostDAO {
 	}
 	
 	// 홈화면에서 커뮤니티 클릭 or 공지사항으로 이동[재성]
-		public List<PostVO> getListPost(Map map) {
-			return DBManager.getListPost(map);
+		public List<PostVO> getpostList(Map map) {
+			return DBManager.getpostList(map);
 		}
 	
 	// 페이징 처리 시 총 게시물 목록을 받아오는 메소드[재성]

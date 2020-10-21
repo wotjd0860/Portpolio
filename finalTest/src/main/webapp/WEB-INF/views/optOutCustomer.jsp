@@ -40,6 +40,7 @@
 			<ul>
 				<li><a href="#">도서대여</a></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
 						<li><a href="postList.do?group=10">공지사항</a></li>
@@ -53,17 +54,24 @@
 						<li><a href="QnaList.do">Q&A</a></li>
 =======
 				<li><a href="listPost.do?group=10">커뮤니티</a>
+=======
+				<li><a href="postList.do?group=10">커뮤니티</a>
+>>>>>>> branch '현왕' of https://github.com/ohna93/Delibrary
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
+<<<<<<< HEAD
 						<li><a href="listQna.do">Q&A</a></li>
 >>>>>>> branch 'master' of https://github.com/ohna93/Delibrary
+=======
+						<li><a href="QnaList.do">Q&A</a></li>
+>>>>>>> branch '현왕' of https://github.com/ohna93/Delibrary
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>

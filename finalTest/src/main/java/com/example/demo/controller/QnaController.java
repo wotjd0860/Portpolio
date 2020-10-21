@@ -13,7 +13,7 @@ import com.example.demo.dao.QnaDAO;
 @Controller
 public class QnaController {
 	
-	public static int pageSIZE =  10;
+	public static int pageSIZE =  2;
 	public static int totalCount  = 0;
 	public static int totalPage = 1;
 	
@@ -40,12 +40,14 @@ public class QnaController {
 		
 	
 		model.addAttribute("list", dao.findAll(map));
+		model.addAttribute("start", start-1);
+		model.addAttribute("end", end-1);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("totalCount", totalCount);
 	
 	}
 	
-	@RequestMapping("/detailQna.do")
+	@RequestMapping("/QnaDetail")
 	public void detail(int p_id, Model model) {
 		model.addAttribute("p", dao.getQna(p_id));
 	}

@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -112,14 +111,9 @@
 		
 		<div id="title">
 			<a href="Home.do">
-<<<<<<< HEAD
-			<img alt="홈페이지" src="../img/Logo.png" width=500px; height=150px;>
-=======
 			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
->>>>>>> branch '현왕' of https://github.com/ohna93/Delibrary
 			</a>
 		</div>
-		
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
@@ -145,8 +139,8 @@
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="qna.do">Q&A</a></li>
-						<li><a href="addrViewpage.do">오시는길</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
+						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
 				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>
@@ -161,68 +155,54 @@
 		</nav>
 	</header>
 	
-	<div id="content">
+<div id="content">
 		<aside id="main_aside">
-			<br><br>
-			<h3>커뮤니티</h3><br><br>
-				<p><a href="postList.do?group=10">공지사항</a></p><br>
-				<p><a href="postList.do?group=20">창작물 게시판</a></p><br>
-				<p><a href="postList.do?group=30">중고장터</a></p><br>
-		</aside>
-		
+      	<br><br>
+        	<h2>고객 지원</h2>
+        	<br><br>
+				<p><a href="faqViewpage.do">FAQ</a></p><br/>
+		    	<p><a href="QnaList.do">QNA</a></p><br/>
+		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
+      	</aside>
 		<section id="main_section">
 			<article class="main_article">
-				<c:if test="${group eq 10}">
-					<h3>공지사항<br>&nbsp;</h3>
-				</c:if>
-				<c:if test="${group eq 20}">
-					<h3>창작물 게시판<br>&nbsp;</h3>
-				</c:if>
-				<c:if test="${group eq 30}">
-					<h3>중고장터<br>&nbsp;</h3>
-				</c:if>
-				<!-- 
-		  		<div style="background-color: #aaa; width: 100%; padding: 10px;">
-					<h3>공지사항<br>&nbsp;</h3>
-		        </div>
-		         -->
-		        <div id="move_list">
-		        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
-		        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-		        	<a href="postListBull.do">목록</a>
-	        	</div>
-	        	<!--  삭제수정링크 -->
-		        <div id="move_list2">
-						<a href="postDelete.do?p_no=${p.p_no }&&p_id=${p.p_id}">삭제하기</a>	        	
-						<a href="postUpdate.do?p_no=${p.p_no }&&p_id=${p.p_id}">수정하기</a>
-		        </div>
-		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
-					<div id="p_title">
-						<p>${p.p_title }</p>
-						<br>
-						<p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p>
+				QNA 게시판
+	        <div id="move_list">
+	        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
+	        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
+	        	<a href="QnaList.do">목록</a>
+	        </div>
+	        <div id="move_list2">
+					<a href="QnaDeletePage.do?p_no=${p_no }">삭제하기</a>	        	
+					<a href="QnaUpdatePage.do?p_no=${p_no }&&p_id=${p_id}">수정하기</a>
+	        </div>
+	        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
+				<div id="p_title">
+					<p>${p_title }</p>
+					<br>
+					<p style="font-size: 15px; color: #aaa;">게시일 ${p_regdate} | 작성자 ${p_writer} | 조회 ${p_hit }</p>
+				</div>
+				<div id="p_content">
+					${p_content }
+				</div>
+				<div>
+					<div id="re_Submit">
+						<span>댓글</span>
+						<input type="submit" value="등록하기">
+						<textarea></textarea>
 					</div>
-					<div id="p_content">
-						${p.p_content }
-					</div>
-					<div>
-						<div id="re_Submit">
-							<span>댓글</span>
-							<input type="submit" value="등록하기">
-							<textarea></textarea>
-						</div>
-						<div id="re_content">
-							<c:forEach var="r" items="${listReply }">
-								<div>
-									<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
-									<p style="font-size: 15px; color: #aaa;">${r.re_regdate }</p>
-									<p>${r.re_content }</p>
-								</div>
-							</c:forEach>
-						</div>
+					<div id="re_content">
+						<c:forEach var="r" items="${listReply }">
+							<div>
+								<p style="font-weight: bold; background-color: #eff3f8; padding: 5px;">${r.re_writer}</p>
+								<p style="font-size: 15px; color: #aaa;">${r.date }</p>
+								<p>${r.re_content }</p>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
-			</article>
+			</div>
+			
 		</section>
 	</div>
 	<footer id="main_footer">

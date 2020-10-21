@@ -56,6 +56,11 @@
             </exclusion>
          </exclusions>
       </dependency>
+       <!-- 코드 수정 실시간 반영 -->
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+         </dependency>
       
       <dependency>
          <groupId>javax.servlet</groupId>
@@ -112,7 +117,6 @@
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-devtools</artifactId>
       </dependency>
-      
       
    </dependencies>
 

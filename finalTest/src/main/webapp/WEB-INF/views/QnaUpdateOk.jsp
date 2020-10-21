@@ -9,7 +9,7 @@
 <body>
 
 <%
-	response.sendRedirect("Home.do");
+	response.sendRedirect("QnaList.do");
 %>
 </body>
 </html>
