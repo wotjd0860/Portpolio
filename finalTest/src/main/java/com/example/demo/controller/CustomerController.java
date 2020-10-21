@@ -23,7 +23,7 @@ public class CustomerController {
    
    @Autowired
    private HomeDAO dao2;
-   
+
    public void setDao(CustomerDAO dao) {
       this.dao = dao;
    }
@@ -33,6 +33,21 @@ public class CustomerController {
    public void home(Model model, CustomerVO
            custVO, String loginOk, HttpServletRequest request) {
       
+	   if (request.getParameter("loginOk") != null) {
+		   HashMap map = new HashMap();
+		   String email = request.getParameter("email");
+		   String password = request.getParameter("pw");
+		   map.put("email",email);
+		   map.put("pw",password);
+		   custVO = dao.getLoginInfo(map);
+			
+			if (email.equals(custVO.getEmail()) && password.equals(custVO.getPw())) {
+				HttpSession session = request.getSession();
+				session.setAttribute("cust_no", custVO.getCust_no());
+				request.setAttribute("cust_no", custVO.getCust_no());
+			}
+		}
+	   
       model.addAttribute("SRlist", dao2.getStaffRecommend());
       model.addAttribute("Newlist", dao2.getNewRecommend());
       model.addAttribute("HNlist", dao2.getHomePost(10));
