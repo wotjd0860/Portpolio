@@ -35,7 +35,7 @@
 	</delete>
 	
 	<!-- 게시판 게시글 가져오기 -->
-	<select id="getListPost" resultType="postVO">
+	<select id="getpostList" resultType="postVO">
 		select * from post where p_no like #{group}||'%'
 	</select>
 	

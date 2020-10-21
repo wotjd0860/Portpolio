@@ -37,17 +37,17 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="listQna.do">Q&A</a></li>
+						<li><a href="QnaList.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
@@ -69,7 +69,7 @@
         	<h2>고객 지원</h2>
         	<br><br>
 				<p><a href="faqViewpage.do">FAQ</a></p><br/>
-		    	<p><a href="listQna.do">Q&A</a></p><br/>
+		    	<p><a href="QnaList.do">Q&A</a></p><br/>
 		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
       	</aside>
 <section id="main_section">
@@ -79,7 +79,7 @@
 				<img src="img/icon.PNG" width="80" height="60"><h2>QNA</h2>
 			</div>
 			
-			<form action="listQna.do" method="post" id="search">
+			<form action="QnaList.do" method="post" id="search">
 		       	
 		        <p align="right">총 ${totalCount} 개    
 			        <select name="option" size="1">
@@ -106,7 +106,7 @@
 				<c:forEach var="q" items="${list }">
 				<tr>
 				    <td>${q.p_no}</td>
-				    <td><a href="detailQna.do?p_id=${q.p_id }">${q.p_title }</a></td>
+				    <td><a href="QnaDetail?p_id=${q.p_id }">${q.p_title }</a></td>
 				    <td>${q.p_regdate}</td>
 				    <td>${q.p_writer}</td>
 				    <td>${q.p_hit}</td>

@@ -81,10 +81,10 @@ public class DBManager {
 	}
 	
 	// 게시판으로 이동
-	public static List<PostVO> getListPost(Map map) {
+	public static List<PostVO> getpostList(Map map) {
 		List<PostVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
-		list = session.selectList("main.getListPost", map);
+		list = session.selectList("main.getpostList", map);
 		return list;
 	}
 	

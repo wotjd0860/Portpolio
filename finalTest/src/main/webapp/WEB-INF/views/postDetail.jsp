@@ -112,7 +112,7 @@
 		
 		<div id="title">
 			<a href="Home.do">
-			<img alt="홈페이지" src="img/DelibraryLogo.png" width=500px; height=150px;>
+			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
 			</a>
 		</div>
 		
@@ -131,7 +131,7 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="postList.do?group=10">커뮤니티</a>
 					<ul class="sub">
 						<li><a href="postList.do?group=10">공지사항</a></li>
 						<li><a href="postList.do?group=20">창작물 게시판</a></li>
@@ -140,9 +140,9 @@
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
-						<li><a href="faqViewpage.jsp">FAQ</a></li>
+						<li><a href="faqViewpage.do">FAQ</a></li>
 						<li><a href="qna.do">Q&A</a></li>
-						<li><a href="addrViewpage.jsp">오시는길</a></li>
+						<li><a href="addrViewpage.do">오시는길</a></li>
 					</ul>
 				</li>
 				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>

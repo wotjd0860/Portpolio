@@ -1,4 +1,4 @@
-PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="StyleSheet" type="text/css" href="TeamCSS.css">
+<link rel="StyleSheet" type="text/css" href="/resource/TeamCSS.css">
 
 <script>
     function value_check() {
@@ -177,7 +177,7 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 		        <div id="move_list">
 		        	<a href="#">&lt; 이전</a>&nbsp;&nbsp;
 		        	<a href="#">다음 &gt;</a>&nbsp;&nbsp;
-		        	<a href="postList.do">목록</a>
+		        	<a href="postListBull.do">목록</a>
 		        </div>
 		        
 		     <%--    <div id="move_list2">
@@ -187,21 +187,30 @@ PreparedStatement stmt = conn.prepareStatement(sql);<%@ page language="java" con
 		        
 		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
 		        
-		        <form action="postUpdateOk.do" method="post">
+		       <!--  INSERT FORM START -->
+		        <form action="postInsert.do" method="post" enctype="multipart/form-data">
 					<div id="p_title">
-						제목:<input type="text" name="p_title" value="${p_title }">
-						<input type="hidden" name="p_no" value="${p_no }">
+					게시판:<select name="group">
+							<option value="20">창작물게시판</option>
+							<option value="30">중고장터</option>
+						</select><br>
+						 
+						<input type="hidden" name="p_no">
+						제목: <input type="text" name="p_title" value="글제목">
 						<input type="hidden" name="cust_no" value="${cust_no }">
 						<br>
+						작성자: ${nickname }
+						<input type="hidden" name="p_writer" value="${nickname }">
 						<%-- <p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p> --%>
 					</div>
 					<div id="p_content">
-						<textarea rows="15" cols="90" name="p_content">${p_content }</textarea>
+						<textarea rows="15" cols="90" name="p_content"></textarea>
 					</div>
 					<%-- <input type="hidden" value="${cust_no }"> --%>
-					<input type="submit" value="수정하기">
+					<input type="submit" value="글 등록하기">
 				</form>	
-				
+			<!-- INSERT FORM END -->
+
 					<%-- <div>
 						<div id="re_Submit">
 							<span>댓글</span>

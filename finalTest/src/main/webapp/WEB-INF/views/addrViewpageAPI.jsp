@@ -39,11 +39,11 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤티니</a>
+				<li><a href="postList.do?group=10">커뮤티니</a>
 					<ul class="sub">
-						<li><a href="listPost.do?group=10">공지사항</a></li>
-						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
-						<li><a href="listPost.do?group=30">중고장터</a></li>
+						<li><a href="postList.do?group=10">공지사항</a></li>
+						<li><a href="postList.do?group=20">창작물 게시판</a></li>
+						<li><a href="postList.do?group=30">중고장터</a></li>
 					</ul>
 				</li>
 				<li><a href="faqViewpage.do">고객지원</a>
@@ -76,7 +76,7 @@
       	</aside>
  
 	    <div class="addr">
-		<img src="img/addricon.PNG" widrh='80' height='60'> <h2>오시는 길</h2>
+		<img src="img/addricon.PNG" width='80' height='60'> <h2>오시는 길</h2>
 		<hr>
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.
 		1103800594706!2d126.93563751468302!3d37.552463132692885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
