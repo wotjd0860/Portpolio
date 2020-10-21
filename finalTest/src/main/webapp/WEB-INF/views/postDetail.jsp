@@ -112,7 +112,7 @@
 		
 		<div id="title">
 			<a href="Home.do">
-			<img alt="홈페이지" src="img/DelibraryLogo.png" width=500px; height=150px;>
+			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
 			</a>
 		</div>
 		
