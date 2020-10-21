@@ -134,4 +134,8 @@
 		<img alt="" src="img/youtube_icon.png">
 	</footer>
 </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch '나영' of https://github.com/ohna93/Delibrary.git
 </html>

@@ -41,10 +41,14 @@
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
 <<<<<<< HEAD
-						<li><a href="listQna.do">Q&A</a></li>
-=======
 						<li><a href="QnaList.do">Q&A</a></li>
+<<<<<<< HEAD
 >>>>>>> branch 'kimin' of https://github.com/ohna93/Delibrary.git
+=======
+=======
+						<li><a href="listQna.do">Q&A</a></li>
+>>>>>>> branch '현왕' of https://github.com/ohna93/Delibrary
+>>>>>>> branch '나영' of https://github.com/ohna93/Delibrary.git
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
@@ -104,7 +108,7 @@
 		
 					<c:forEach var="p" items="${list }" begin="${start }" end="${end }">
 						<tr>
-							<td align="center">${p.p_id }</td>
+							<td align="center">${p.p_no%10000 }</td>
 							<td>
 								<a href="postDetail.do?p_id=${p.p_id}&&group=${group}">${p.p_title }</a>
 							</td>

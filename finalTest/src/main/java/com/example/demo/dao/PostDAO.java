@@ -13,7 +13,7 @@ import com.example.demo.vo.PostVO;
 @Repository
 public class PostDAO {
 	
-	//게시판 전체글 수 조회
+	//게시판 전체 게시글수
 	public int getTotalCount(HashMap map) {
 		return PostManager.getTotalCount(map);
 	}	
@@ -23,14 +23,23 @@ public class PostDAO {
 		return PostManager.findAll(map);
 	}
 	
-	//게시판 상세글 보기
+	//게시글 상세보기
 	public PostVO findById(HashMap map) {
 		return PostManager.findById(map);
 	}
 	
+	//게시글 조회수
+	public int updateHit(int p_id) {
+		return PostManager.updateHit(p_id);
+	}
+	
+	//새글 번호 불러오기
+	public int getNextNo(int group) {
+		return PostManager.getNextNo(group);
+	}
 	//새글 작성
-	public int insertCreate(PostVO p) {
-		return PostManager.insertCreate(p);
+	public int insert(PostVO p) {
+		return PostManager.insert(p);
 	}
 	
 	//글 수정

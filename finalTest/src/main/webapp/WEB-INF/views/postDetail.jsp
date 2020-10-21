@@ -113,10 +113,14 @@
 		<div id="title">
 			<a href="Home.do">
 <<<<<<< HEAD
-			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
-=======
 			<img alt="홈페이지" src="../img/Logo.png" width=500px; height=150px;>
+<<<<<<< HEAD
 >>>>>>> branch 'kimin' of https://github.com/ohna93/Delibrary.git
+=======
+=======
+			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
+>>>>>>> branch '현왕' of https://github.com/ohna93/Delibrary
+>>>>>>> branch '나영' of https://github.com/ohna93/Delibrary.git
 			</a>
 		</div>
 		

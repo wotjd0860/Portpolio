@@ -1,52 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="StyleSheet" type="text/css" href="/resource/TeamCSS.css">
-<style type="text/css">
-
-.faq{
-	width: 600px;
-	margin: 0 auto;
-}
-.faq .hgroup{
-	border-bottom: 2px solid ;
-}
-.faq .hgroup:after{
-	content:'';
-	display: block;
-	clear: both;
-}
-.faq .hgroup: h2{
-	float: left;
-	margin: 15px 0;
-}
-
-.faq ul .q a {
-	display: block;
-	border-bottom: 1px solid ;
-	padding: 8px 10px ;
-	color: #FF91D1;
-	font-weight: bold;
-}
-.faq ul .a {
-	display: none;
-	padding: 8px 10px;
-	border-bottom: 1px solid;
-	color: #6270BF;
-	line-height: 1.6;
-}
-.faq ul .article .a:target {
-	display: block;
-}
-</style>
 </head>
-
 <body>
 	<header id="main_header">
 		<!-- <div id="logo">
@@ -64,6 +25,7 @@
 		<nav id="main_gnb">
 			<ul>
 				<c:if test="${empty cust_no }">
+<<<<<<< HEAD
 					<li><a href="LoginPage.do">로그인</a></li>
 					<li><a href="insertCustomer.do">회원가입</a></li>
 				</c:if>
@@ -101,9 +63,9 @@
 			</ul>
 		</nav>
 	</header>
-   
-   	<div id="content">
-    	<aside id="main_aside">
+	
+	<div id="content">
+		<aside id="main_aside">
       	<br><br>
         	<h2>고객 지원</h2>
         	<br><br>
@@ -111,48 +73,57 @@
 		    	<p><a href="QnaList.do">Q&A</a></p><br/>
 		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
       	</aside>
-
-		<section id="main_section">      
-			<div class="faq">
-				<div class="hgroup">
-					<img src="img/icon.PNG" width="80" height="60"><h2>FAQ</h2>
-				</div>
-				
-				<form action="#">
-				&nbsp;
-				<p align="right">
+<section id="main_section">
+					
+		<div class="qna">
+			<div class="hgroup">
+				<img src="img/icon.PNG" width="80" height="60"><h2>QNA</h2>
+			</div>
+			
+			<form action="QnaList.do" method="post" id="search">
+		        <p align="right">총 ${totalCount} 개    
 			        <select name="option" size="1">
 			           <option value="제목">제목</option>
 			           <option value="내용">내용</option>
+			           <option value="작성자">작성자</option>
 			        </select>
+			        
 			        <input type="text" value="검색어를 입력해주세요" size="60px;">
 			        <input type="submit" value="Search">
-			    </p>
-			    </form>
-			<br>
-			<br>
+		        </p>
+		    </form>
+		
+			<table border="2" width="600">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>게시일</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					
+				</tr>
 				
-				<ul>
-					<li class="article">
-						<p class="t"><a href="#a2">Q : 회원가입을 하면 편리한 점이 무엇인가요?</a></p>
-						<p class="a" id="a2">A :<br> ㅇ 도서관 홈페이지 이용시 반복되던 신분확인 절차가 회원가입시 한번의 인증으로 간소화 됩니다.<br>
-												ㅇ 홈페이지에서 등록된 아이디로 간편하게 도서관 서비스 신청이 가능합니다.<br>
-												ㅇ 회원가입시 입력하신 관심 주제분야의 추천도서를 제공 받을 수 있습니다.</p>
-					</li>
-					
-					<li class="article">
-						<p class="t"><a href="#a1">Q : 등록된 내 정보를 변경하고 싶습니다.</a></p>
-						<p class="a" id="a1">A :<br> Delibrary의 회원정보 변경은 고객님께서 직접 홈페이지 로그인 후<br>
-						[마이페이지 > 회원정보 > 회원 정보 조회/수정] 에서 정보를 변경하실 수 있습니다. </p>
-					</li>
-					
-					<li class="article">
-						<p class="t"><a href="#a3">Q : 탈퇴는 어떻게 하나요?</a></p>
-						<p class="a" id="a3">A : Delibrary 홈페이지 로그인 => ‘회원정보수정’ => ‘회원탈퇴’ 메뉴 클릭</p>
-					</li>
-				</ul>
-			</div>
-		</section>
+				<c:forEach var="q" items="${list }">
+				<tr>
+				    <td>${q.p_no}</td>
+				    <td><a href="detailQna.do?p_id=${q.p_id }">${q.p_title }</a></td>
+				    <td>${q.p_regdate}</td>
+				    <td>${q.p_writer}</td>
+				    <td>${q.p_hit}</td>
+				    	    
+				 </tr>
+				 </c:forEach>
+				 
+			</table>
+		<p align="right">	
+		<input type="submit" value="글쓰기">
+		</p>
+		</div>
+</section>
 	</div>
+	<footer id="main_footer">
+		<h3>HTML5 + CSS3 Basic</h3>
+		<address>Website Layout Basic</address>
+	</footer>
 </body>
 </html>
