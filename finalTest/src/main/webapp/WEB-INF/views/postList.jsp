@@ -100,7 +100,7 @@
 		
 					<c:forEach var="p" items="${list }" begin="${start }" end="${end }">
 						<tr>
-							<td align="center">${p.p_id }</td>
+							<td align="center">${p.p_no%10000 }</td>
 							<td>
 								<a href="postDetail.do?p_id=${p.p_id}&&group=${group}">${p.p_title }</a>
 							</td>
