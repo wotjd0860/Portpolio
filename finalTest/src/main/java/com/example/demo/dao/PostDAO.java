@@ -1,12 +1,12 @@
-package com.example.demo.DAO;
+package com.example.demo.dao;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.DB.DBManager;
-import com.example.demo.VO.PostVO;
+import com.example.demo.db.DBManager;
+import com.example.demo.vo.PostVO;
 
 @Repository
 public class PostDAO {

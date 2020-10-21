@@ -1,4 +1,4 @@
-package com.example.demo.DB;
+package com.example.demo.db;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.example.demo.VO.BookVO;
-import com.example.demo.VO.CustomerVO;
-import com.example.demo.VO.PostVO;
+import com.example.demo.vo.BookVO;
+import com.example.demo.vo.CustomerVO;
+import com.example.demo.vo.PostVO;
 
 public class DBManager {
 	
