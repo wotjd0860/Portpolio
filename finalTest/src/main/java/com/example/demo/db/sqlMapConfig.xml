@@ -9,7 +9,6 @@
 	<typeAliases>
 		<typeAlias type="com.example.demo.VO.BookVO" alias="bookVo" />
 		<typeAlias type="com.example.demo.VO.PostVO" alias="postVo" />
-		<typeAlias type="com.example.demo.VO.CustomerVO" alias="customerVo" />
 	</typeAliases>
 
 	<environments default="development">
