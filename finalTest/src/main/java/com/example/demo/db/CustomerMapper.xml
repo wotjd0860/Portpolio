@@ -20,14 +20,17 @@
     	select nvl(max(cust_no),0)+1 from customer
   	</select>
  
+  <!-- 회원정보 전체출력 [현왕] -->
   <select id="selectAll" resultType="customerVO">
     select * from customer
   </select>
   
-  <select id="selectByCust_No" resultType="customerVo">
+  <!-- 회원정보 갖고오기 [현왕] -->
+  <select id="selectByCust_No" resultType="customerVO">
   	select * from customer where cust_no=#{cust_no}
   </select>
   
+  <!-- 회원수정 [현왕] -->
   <update id="updateCustomer">
   	update customer set fname=#{fname}, nickname=#{nickname}, pw=#{pw}, m_phone=#{m_phone}, addr=#{addr}, email=#{email}, interest=#{interest}, name=#{name} where cust_no=#{cust_no}
   </update>

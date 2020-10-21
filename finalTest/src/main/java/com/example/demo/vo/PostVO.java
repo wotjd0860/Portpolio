@@ -11,13 +11,21 @@ public class PostVO {
 	private int p_hit;
 	private Date p_regdate;
 	private int cust_no;
-
+	private String fname;
+	
 	public PostVO() {
 		super();
 	}
 	
+	public PostVO(int p_id, int p_no, String p_title) {
+		super();
+		this.p_id = p_id;
+		this.p_no = p_no;
+		this.p_title = p_title;
+	}
+	
 	public PostVO(int p_id, int p_no, String p_title, String p_writer, String p_content, int p_hit, Date p_regdate,
-			int cust_no) {
+			int cust_no, String fname) {
 		super();
 		this.p_id = p_id;
 		this.p_no = p_no;
@@ -27,6 +35,14 @@ public class PostVO {
 		this.p_hit = p_hit;
 		this.p_regdate = p_regdate;
 		this.cust_no = cust_no;
+		this.fname = fname;
+	}
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
 	
 	public int getP_id() {

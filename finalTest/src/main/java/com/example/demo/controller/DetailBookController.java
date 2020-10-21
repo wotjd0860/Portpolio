@@ -5,21 +5,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dao.BookDao;
-import com.example.demo.dao.BookStoreDao;
+import com.example.demo.dao.BookDAO;
+import com.example.demo.dao.BookStoreDAO;
 
 @Controller
 public class DetailBookController {
 	@Autowired
-	private BookDao dao;
+	private BookDAO dao;
 
-	public void setDao(BookDao dao) {
+	public void setDao(BookDAO dao) {
 		this.dao = dao;
 	}
 	@Autowired
-	private BookStoreDao dao2;
+	private BookStoreDAO dao2;
 
-	public void setDao2(BookStoreDao dao2) {
+	public void setDao2(BookStoreDAO dao2) {
 		this.dao2 = dao2;
 	}
 	@RequestMapping("/detailBook.do")

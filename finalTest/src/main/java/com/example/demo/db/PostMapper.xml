@@ -8,12 +8,12 @@
 		select count(*) from post where p_no like ''||#{group}||'%'
 	</select>
 	<!-- 전체 게시글 목록 -->
-	<select id="selectAll" resultType="postVo">
+	<select id="selectAll" resultType="postVO">
 		select * from post where p_no like ''||#{group}||'%'
 	</select>
 	
 	<!-- 게시글 상세보기 -->
-	<select id="selectById" resultType="postVo">
+	<select id="selectById" resultType="postVO">
 		select * from post where p_id=#{p_id} and p_no like ''||#{group}||'%'
 	</select>
 	
