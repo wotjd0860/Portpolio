@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="StyleSheet" type="text/css" href="/resource/TeamCSS.css">
+	<link rel="StyleSheet" type="text/css" href="resource/TeamCSS.css">
 </head>
 <body>
 	<header id="main_header">
@@ -37,7 +37,7 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="listPost.do?group=10">커뮤니티</a>
+				<li><a href="listPost.do?group=10">커뮤티니</a>
 					<ul class="sub">
 						<li><a href="listPost.do?group=10">공지사항</a></li>
 						<li><a href="listPost.do?group=20">창작물 게시판</a></li>
@@ -46,16 +46,16 @@
 				</li>
 				<li><a href="faqViewpage.jsp">고객지원</a>
 					<ul class="sub">
-						<li><a href="faqViewpage.do">FAQ</a></li>
+						<li><a href="faqViewpage.jsp">FAQ</a></li>
 						<li><a href="listQna.do">Q&A</a></li>
-						<li><a href="addrViewpageAPI.do">오시는길</a></li>
+						<li><a href="addrViewpageAPI.jsp">오시는길</a></li>
 					</ul>
 				</li>
 				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>
 					<ul class="sub">
 						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
 						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
-						<li><a href="optOutCustomer.jsp">회원탈퇴</a></li>
+						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
 					</ul>
 				</li>
 				<li><a href="siteMap.jsp">사이트맵</a></li>
@@ -65,61 +65,60 @@
 	
 	<div id="content">
 		<aside id="main_aside">
-      	<br><br>
-        	<h2>고객 지원</h2>
-        	<br><br>
-				<p><a href="faqViewpage.do">FAQ</a></p><br/>
-		    	<p><a href="listQna.do">Q&A</a></p><br/>
-		    	<p><a href="addrViewpageAPI.do">오시는 길</a></p>
-      	</aside>
-<section id="main_section">
-					
-		<div class="qna">
-			<div class="hgroup">
-				<img src="img/icon.PNG" width="80" height="60"><h2>QNA</h2>
-			</div>
-			
-			<form action="listQna.do" method="post" id="search">
-		       	
-		        <p align="right">총 ${totalCount} 개    
-			        <select name="option" size="1">
-			           <option value="제목">제목</option>
-			           <option value="내용">내용</option>
-			           <option value="작성자">작성자</option>
-			        </select>
-			        
-			        <input type="text" value="검색어를 입력해주세요" size="60px;">
-			        <input type="submit" value="Search">
-		        </p>
-		    </form>
-		
-			<table border="2" width="600">
+      <br><br>
+         <h2>&nbsp;마이페이지</h2><br><br>
+            <a href="MyPage_Info.do?cust_no=${cust_no }"><p>&nbsp;&nbsp;내정보</p></a><br>
+             <a href="MyPage_Folder.do?cust_no=${cust_no }"><p>&nbsp;&nbsp;나의서재</p></a><br>
+             <a href="optOutCustomer.jsp"><p>&nbsp;&nbsp;회원탈퇴</p></a>
+      </aside>
+		<section id="main_section">
+		<br>
+  		<div style="background-color: #aaa; width: 100% padding: 20px">
+    	<img src="img/men.jpg" width="100" heigth="100" align="left"><br>
+		<p align="left" style="font-size: large; font-weight: bold;">탈주금지 님의 서재</p>
+		<p>&nbsp;</p>
+        </div>
+       	<br>
+   		<br>
+   		<p align="left">
+   		<font style="font-size: x-large; font-weight: bold;" >세줄독후감</font>
+   		</p>
+   		<hr>
+        <br>
+        <p align="center" style="background-color: gray; ">
+				<font style="font-weight: bold; color: white; font-size: x-large;">
+				${p.p_no % 10000}<br/>
+				</font>
+        </p>
+			<table border="1" width="100%">
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>게시일</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					
+					<td>
+					<img src="img/${p.fname }" width="100" height="100">
+					</td>
+					<td>
+					<font style="font-size: medium; font-weight: bold;">${p.p_content }</font>
+					</td>
 				</tr>
-				
-				<c:forEach var="q" items="${list }">
 				<tr>
-				    <td>${q.p_no}</td>
-				    <td><a href="detailQna.do?p_id=${q.p_id }">${q.p_title }</a></td>
-				    <td>${q.p_regdate}</td>
-				    <td>${q.p_writer}</td>
-				    <td>${q.p_hit}</td>
-				    	    
-				 </tr>
-				 </c:forEach>
-				 
+					<th>
+					<font style="font-weight: bold; font-size: small;">${p.p_title }</font>
+					</th>
+					<td>
+					<font style="font-size: small; font-weight: bold;">${p.p_writer }</font>
+					</td>
+				</tr>
+				<%-- <tr>
+					<td>
+					</td>
+				</tr> --%>
 			</table>
-		<p align="right">	
-		<input type="submit" value="글쓰기">
-		</p>
-		</div>
-</section>
+			<p align="left">
+			<font style="font-size: medium; font-weight: bold;" >
+			등록일 : ${p.p_regdate}<br/>
+			조회수 : ${p.p_hit}<br/>
+			</font>
+			</p>
+		</section>
 	</div>
 	<footer id="main_footer">
 		<h3>HTML5 + CSS3 Basic</h3>

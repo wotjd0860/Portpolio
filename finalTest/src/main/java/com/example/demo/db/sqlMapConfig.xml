@@ -17,6 +17,7 @@
   	<typeAlias type="com.example.demo.vo.PostVO" alias="postVO"/>
   	<typeAlias type="com.example.demo.vo.ReplyVO" alias="replyVO"/>
   	<typeAlias type="com.example.demo.vo.StaffVO" alias="staffVO"/>
+  	<typeAlias type="com.example.demo.vo.FolderVO" alias="folderVO"/>
   </typeAliases>
 	
   <environments default="development">
@@ -39,6 +40,7 @@
     <mapper resource="com/example/demo/db/QnaMapper.xml"/> 
 	<mapper resource="com/example/demo/db/ReplyMapper.xml"/>
 	<mapper resource="com/example/demo/DB/MainMapper.xml" />
+	<mapper resource="com/example/demo/DB/MypageMapper.xml" />
   </mappers>
   
 </configuration>
