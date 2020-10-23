@@ -168,21 +168,36 @@ img {
 	float: right;
 }
 
-.recommend {
-	width: 100px;
+.recommend1 {
+	width: 90px;
 	height: 130px;
 	float: left;
 	margin-right: 10px;
 }
 
-.recommend img {
-	width: 80px; height: 80px;
+.recommend2 {
+	width: 90px;
+	height: 130px;
+	float: left;
+	margin-right: 10px;
+}
+
+.recommend1 img, .recommend2 img {
+	width: 90px; height: 130px;
 }
 
 #main_section>article.main_article {
 	margin-bottom: 10px;
 	padding: 20px;
 	height: 300px;
+	overflow: hidden;
+}
+
+#wrapper {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 25%;
 }
 
 .tab_item {
@@ -230,4 +245,18 @@ img {
 #main_footer img {
 	width: 30px;
 	height: 30px;	
+}
+
+#prev_sr, #next_sr {
+	height: 130px;
+	width: 40px;
+	float: left;
+	line-height: 130px;
+}
+
+#prev_new, #next_new {
+	height: 130px;
+	width: 40px;
+	float: left;
+	line-height: 130px;
 }
