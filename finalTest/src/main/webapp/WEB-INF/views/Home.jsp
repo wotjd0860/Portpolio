@@ -7,16 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="StyleSheet" type="text/css" href="resource/TeamCSSHome.css">
+	<script type="text/javascript" src="js/HomeJS.js"></script>
 </head>
 <body>
 	<header id="main_header">
-		<!-- <div id="logo">
-			<a href="Home.do">
-			<img alt="홈페이지 로고" src="img/home.png" width=150px; height=150px;>
-			<p style="font-weight: bold;">통합도서 관리시스템</p>
-			</a>
-		</div> -->
-		
 		<div id="title">
 			<a href="Home.do">
 			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
@@ -37,7 +31,7 @@
 		<nav id="main_lnb">
 			<ul>
 				<li><a href="#">도서대여</a></li>
-				<li><a href="postList.do?group=10">커뮤니티</a>
+				<li><a href="listPost.do?group=10">커뮤니티</a>
 					<ul class="sub">
 						<li><a href="postList.do?group=10">공지사항</a></li>
 						<li><a href="postList.do?group=20">창작물 게시판</a></li>
@@ -47,7 +41,7 @@
 				<li><a href="faqViewpage.do">고객지원</a>
 					<ul class="sub">
 						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="QnaList.do">Q&A</a></li>
+						<li><a href="listQna.do">Q&A</a></li>
 						<li><a href="addrViewpageAPI.do">오시는길</a></li>
 					</ul>
 				</li>
@@ -65,7 +59,6 @@
 	
 	<div id="search_area">
 		<form class="sbar" action="searchBook.do" method="post">
-			<!-- <span class="sbar">검색 <input type="text" name="search" placeholder="search"><input type="submit" value="검색"></span> -->
 			<div class="search__container">
     			<input class="search__input" type="text" placeholder="Search">
 			</div>
@@ -76,32 +69,40 @@
 		<section id="main_section">
 			<article class="main_article">
 				<h1>사서추천도서</h1>
-				<c:forEach items="${SRlist}" var="sr">
-					<p class="recommend">
-						<a href="detailBook.do?b_no=${sr.b_no }">
-							<img alt="book image" src="img/${sr.b_image }"><br>
-							${sr.b_title }<br>
-							${sr.b_writer }
-						</a><br/>
-					</p>
-				</c:forEach>
+				<div id="wrapper">
+					<div id="prev_sr">&#10094</div>
+					<c:forEach items="${SRlist}" var="sr">
+							<p class="recommend1">
+								<a href="detailBook.do?b_no=${sr.b_no }">
+									<img alt="book image" src="img/${sr.b_image }"><br>
+									<%-- ${sr.b_title }<br>
+									${sr.b_writer } --%>
+								</a><br/>
+							</p>
+					</c:forEach>
+					<div id="next_sr">&#10095</div>
+				</div>
 			</article>
 			<article class="main_article">
 				<h1>신작 도서</h1>
-				<c:forEach items="${Newlist}" var="nr">
-					<p class="recommend">
-						<a href="detailBook.do?b_no=${nr.b_no }">
-							<img alt="book image" src="img/${nr.b_image }"><br/>
-							${nr.b_title }<br/>
-							${nr.b_writer }
-						</a>
-					</p>
-				</c:forEach>
+				<div id="wrapper">
+					<div id="prev_new">&#10094</div>
+					<c:forEach items="${Newlist}" var="nr">
+						<p class="recommend2">
+							<a href="detailBook.do?b_no=${nr.b_no }">
+								<img alt="book image" src="img/${nr.b_image }"><br/>
+								<%-- ${nr.b_title }<br/>
+								${nr.b_writer } --%>
+							</a>
+						</p>
+					</c:forEach>
+					<div id="next_new">&#10095</div>
+				</div>
 			</article>
 		</section>
 		<aside id="main_aside">
 			<div class="tab_item">
-				<h3><a href="postList.do?group=10">공지사항</a></h3>
+				<h3><a href="listPost.do?group=10">공지사항</a></h3>
 				<ul>
 					<c:forEach items="${HNlist}" var="hn">
 						<li><a href="postDetail.do?p_id=${hn.p_id}&&p_no=${hn.p_no}&&group=10">${hn.p_title }</a></li>
@@ -109,7 +110,7 @@
 				</ul>
 			</div>
 			<div class="tab_item">
-				<h3><a href="postList.do?group=20">창작물 게시판</a></h3>
+				<h3><a href="listPost.do?group=20">창작물 게시판</a></h3>
 				<ul>
 					<c:forEach items="${HMakinglist}" var="hmaking">
 						<li><a href="postDetail.do?p_id=${hmaking.p_id}&&p_no=${hmaking.p_no}&&group=20">${hmaking.p_title }</a></li>
@@ -117,7 +118,7 @@
 				</ul>
 			</div>
 			<div class="tab_item">
-				<h3><a href="postList.do?group=30">중고장터</a></h3>
+				<h3><a href="listPost.do?group=30">중고장터</a></h3>
 				<ul>
 					<c:forEach items="${HMarketlist}" var="hmarket">
 						<li><a href="postDetail.do?p_id=${hmarket.p_id}&&p_no=${hmarket.p_no}&&group=30">${hmarket.p_title }</a></li>
@@ -134,8 +135,4 @@
 		<img alt="" src="img/youtube_icon.png">
 	</footer>
 </body>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch '나영' of https://github.com/ohna93/Delibrary.git
 </html>
