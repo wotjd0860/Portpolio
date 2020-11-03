@@ -91,6 +91,7 @@ public class PostController {
 	   model.addAttribute("group", group);
 	   model.addAttribute("c", c_dao.findByCust_No(cust_no));
    }
+   
    @RequestMapping(value="/postInsert.do", method = RequestMethod.POST)
    public ModelAndView submit(HttpServletRequest request, PostVO p, int group) {
       

@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.CustomerDAO;
@@ -98,49 +97,6 @@ public class CustomerController {
       
       return mav;
    }
-   
-   /*
-   //회원가입OK
-   @RequestMapping(value="/insertCustomer.do", method=RequestMethod.POST)
-   public ModelAndView insertCustomerOk(CustomerVO c, HttpServletRequest request) {
-      ModelAndView mav = new ModelAndView();
-      String path = request.getRealPath("img");
-      MultipartFile uploadFile = c.getUploadImg();
-      String fname = uploadFile.getOriginalFilename();
-      byte[] data = null;
-      if(fname!=null && fname.equals("")) {
-         try {
-            data = uploadFile.getBytes();
-         } catch(Exception e) {
-            System.out.println("회원가입 사진업로드 예외발생1 " + e.getMessage());
-         }
-      } else {
-         fname = "";
-      }
-      c.setFname(fname);
-      //System.out.println(fname);
-      
-      c.setCust_no(customerDao.getNextNo());
-      
-      int re = customerDao.insertCustomer(c);
-      
-      if(re>0) {
-         mav.addObject("msg","회원가입오류");
-      }else {
-         if(!fname.equals("")) {
-            try {
-               data = uploadFile.getBytes();
-               FileOutputStream fos = new FileOutputStream(path + "/" + fname);
-               fos.write(data);
-               fos.close();
-            } catch (Exception e) {
-               System.out.println("회원가입 사진업로드 예외발생2 " + e.getMessage());
-            }
-         }
-      }
-      return mav; 
-   }
-   */
    
    //로그인 FORM
    @RequestMapping(value="/LoginPage.do", method=RequestMethod.GET)
