@@ -59,31 +59,6 @@
 					</div>
 				</div>
 			<div class="menu"><a href="siteMap.do">사이트맵</a></div>
-			<%-- <ul>
-				<li><a href="#">도서대여</a></li>
-				<li><a href="postList.do?group=10">커뮤니티</a>
-					<ul class="sub">
-						<li><a href="postList.do?group=10">공지사항</a></li>
-						<li><a href="postList.do?group=20">창작물 게시판</a></li>
-						<li><a href="postList.do?group=30">중고장터</a></li>
-					</ul>
-				</li>
-				<li><a href="faqViewpage.do">고객지원</a>
-					<ul class="sub">
-						<li><a href="faqViewpage.do">FAQ</a></li>
-						<li><a href="QnaList.do">Q&A</a></li>
-						<li><a href="addrViewpageAPI.do">오시는길</a></li>
-					</ul>
-				</li>
-				<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a>
-					<ul class="sub">
-						<li><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></li>
-						<li><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></li>
-						<li><a href="optOutCustomer.do">회원탈퇴</a></li>
-					</ul>
-				</li>
-				<li><a href="siteMap.do">사이트맵</a></li>
-			</ul> --%>
 		</nav>
 	</header>
 	
@@ -99,27 +74,23 @@
 		<section id="main_section">
 			<article class="main_article">
 				<h1>사서추천도서</h1>
-				<div class="wrapper">
 					<c:forEach items="${SRlist}" var="sr">
 							<p class="recommend">
 								<a href="detailBook.do?b_no=${sr.b_no }">
-									<img alt="book image" src="img/${sr.b_image }"><br>
+									<img alt="book image" src="img/${sr.b_image }">
 								</a><br/>
 							</p>
 					</c:forEach>
-				</div>
 			</article>
 			<article class="main_article">
 				<h1>신작 도서</h1>
-				<div class="wrapper">
 					<c:forEach items="${Newlist}" var="nr">
 						<p class="recommend">
 							<a href="detailBook.do?b_no=${nr.b_no }">
-								<img alt="book image" src="img/${nr.b_image }"><br/>
+								<img alt="book image" src="img/${nr.b_image }">
 							</a>
 						</p>
 					</c:forEach>
-				</div>
 			</article>
 		</section>
 		<aside id="main_aside">
