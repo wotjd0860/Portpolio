@@ -6,126 +6,327 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Insert title here</title>
-	<link rel="StyleSheet" type="text/css" href="resource/TeamCSSHome.css">
-	<script type="text/javascript" src="js/HomeJS.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+<link rel="stylesheet" href="css/style.css">
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+<script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    // Configure Slider
+    $('.carousel').carousel({
+		interval: 6000,
+		pause: 'hover'
+    });
+
+    // Lightbox Init
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+		event.preventDefault();
+		$(this).ekkoLightbox();
+    });
+
+    // Video Play
+    $(function () {
+		// Auto play modal video
+		$(".video").click(function () {
+			var theModal = $(this).data("target"),
+			videoSRC = $(this).attr("data-video"),
+			videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+			$(theModal + ' iframe').attr('src', videoSRCauto);
+			$(theModal + ' button.close').click(function () {
+				$(theModal + ' iframe').attr('src', videoSRC);
+			});
+		});
+    });
+	
+	
+    $('.slider').slick({
+		infinite: true,
+		slideToShow: 1,
+		slideToScroll: 1
+    });
+</script>
+
+<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+	
+	#img_title {
+	  text-align: center;
+	  font-size: 48px;
+	  text-transform: uppercase;
+	  letter-spacing: 3px;
+	  color: #222;
+	}
+	
+	.RecoImg {
+	  display: inline-block;
+	  width: 200px;
+	  height: 250px;
+	  margin-right: 200px;
+	}
+	  
+	.carousel {
+	  width: 1200px;
+	  height: 300px;
+	  overflow: hidden;
+	  padding: 8px;
+	  box-sizing: border-box;
+	  border: 2px solid #999;
+	  box-shadow: 0 0 4px #000;
+	  margin: 0 auto;
+	  border-radius: 5px;
+	  
+	}
+	
+	.holder {
+	  animation: carousel 25s linear infinite;
+	  white-space: nowrap;
+	  will-change: transform;
+	}
+	
+	.holder:hover {
+    	animation-play-state: paused;
+  	}
+  	
+	@keyframes carousel {
+	  0% {
+	    transform: translateX(0);
+	  }
+	  
+	  50% {
+	    transform: translateX(-100%);
+	  }
+	  
+	  100% {
+	    transform: translateX(0);
+	  }
+	}
+</style>
 </head>
 <body>
-	<header id="main_header">
-		<div id="title">
-			<a href="Home.do">
-			<img alt="홈페이지" src="img/Logo.png" width=500px; height=150px;>
-			</a>
+	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
+		<div class="container-fluid">
+			<a href="home.html" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark2.jpg" height="40"></a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-0">
+					<li class="nav-item">
+						<a href="about.html" class="nav-link"><b>도서관소개</b></a>
+					</li>
+					<li class="nav-item">
+						<a href="books.html" class="nav-link"><b>도서정보</b></a>
+					</li>
+					<li class="nav-item">
+						<a href="community.html" class="nav-link"><b>커뮤니티</b></a>
+					</li>
+					<li class="nav-item">
+						<a href="mypage.html" class="nav-link"><b>나의도서</b></a>
+					</li>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a href="sitemap.html" class="nav-link"><img class="icons" alt="로그인" src="img/login.png"></a>
+					</li>
+					<li class="nav-item">
+						<a href="sitemap.html" class="nav-link"><img class="icons" alt="회원가입" src="img/add_user.png"></a>
+					</li>
+					<li class="nav-item">
+						<a href="sitemap.html" class="nav-link"><img class="icons" alt="북카트" src="img/book.png"></a>
+					</li>
+					<li class="nav-item">
+						<a href="sitemap.html" class="nav-link"><img class="icons" alt="사이트맵" src="img/map.png"></a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<nav id="main_gnb">
-			<ul>
-				<c:if test="${empty cust_no }">
-					<li><a href="LoginPage.do">로그인</a></li>
-					<li><a href="insertCustomer.do">회원가입</a></li>
-				</c:if>
-				<c:if test="${not empty cust_no }">
-					<li><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a></li>
-					<li><a href="logout.do?cust_no=${cust_no }">로그아웃</a></li>
-				</c:if>
-			</ul>
-		</nav>
-		<nav id="main_lnb">
-			<div class="menu"><a>도서대여</a></div>
-			<div class="menu"><a href="postList.do?group=10">커뮤니티</a></div>
-				<div class="dropdown">
-					<img src="resource/img/community icon.png" class="menu_icon">
-					<div class="subWrapper">
-						<div class="sub"><a href="postList.do?group=10">공지사항</a></div><br>
-						<div class="sub"><a href="postList.do?group=20">창작물 게시판</a></div><br>
-						<div class="sub"><a href="postList.do?group=30">중고장터</a></div>
-					</div>
-				</div>
-			<div class="menu"><a href="faqViewpage.do">고객지원</a></div>
-				<div class="dropdown">
-					<img src="resource/img/customer service icon.png" class="menu_icon">
-					<div class="subWrapper">
-						<div class="sub"><a href="faqViewpage.do">FAQ</a></div><br>
-						<div class="sub"><a href="QnaList.do">Q&A</a></div><br>
-						<div class="sub"><a href="addrViewpageAPI.do">오시는길</a></div>
-					</div>
-				</div>
-			<div class="menu"><a href="MyPage_Info.do?cust_no=${cust_no }">마이페이지</a></div>
-				<div class="dropdown">
-					<img src="resource/img/mypage icon.png" class="menu_icon">
-					<div class="subWrapper">
-						<div class="sub"><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></div><br>
-						<div class="sub"><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></div><br>
-						<div class="sub"><a href="optOutCustomer.do">회원탈퇴</a></div>
-					</div>
-				</div>
-			<div class="menu"><a href="siteMap.do">사이트맵</a></div>
-		</nav>
-	</header>
+	</nav>
 	
-	<div id="search_area">
-		<form class="sbar" action="searchBook.do" method="post">
-			<div class="search__container">
-    			<input class="search__input" type="text" placeholder="Search">
+  <!-- HOME HEADING SECTION -->
+	<section id="home-heading" class="p-5">
+		<div class="dark-overlay">
+		  <div class="row">
+			<div class="col">
+			  <div class="container pt-5">
+				<div class="input-group mb-3 pt-5">
+					<input class="form-control searchbar" type="text" placeholder="검색어를 입력하세요">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary btn-l" type="button">검색</button>
+						<button class="btn btn-outline-secondary btn-r" type="button">상세검색</button>
+					</div>
+				</div>
+			  </div>
 			</div>
-		</form>
+		  </div>
+		</div>
+	</section>
+  
+	<!-- PHOTO GALLERY -->
+	<section id="gallery" class="py-5">
+		<div class="container">
+		  <h4 class="text-center">도서관 소식</h4>
+		  <div class="row mb-4">
+				<div class="col-md-4">
+					달력을 넣어보아요
+				</div>
+
+				<div class="col-md-4">
+					이벤트 소식을 넣어보아요
+				</div>
+
+				<div class="col-md-4">
+					로그인 비번 이쪽에서 하기
+				</div>
+		  </div>
+		</div>
+	</section>
+  
+	<!-- SHOWCASE SLIDER   -->
+	<section id="showcase">
+	<h1 id="img_title">css3 carousel</h1>
+
+		<div class="carousel">
+		  <div class="holder">
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/300x200" class="RecoImg" />
+		    <img src="http://fakeimg.pl/400x300" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		  </div>
+		</div>
+	</section>
+
+
+	<!--HOME ICON SECTION  -->
+	<section id="home-icons" class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 mb-4 text-left">
+					<h5>공지사항</h5>
+					<a href=""><p>공지 어쩌구</p></a>
+					<p>공지 어쩌구</p>
+					<p>공지 어쩌구</p>
+					<p>공지 어쩌구</p>
+				</div>
+				<div class="col-md-3 mb-4 text-left">
+					<h6>창작물 게시판</h6>
+					<p>창작물 저쩌구</p>
+					<p>창작물 저쩌구</p>
+					<p>창작물 저쩌구</p>
+				</div>
+				<div class="col-md-3 mb-4 text-left">
+					<h4>중고장터</h4>
+					<p>중고가 어쩌구</p>
+					<p>중고가 어쩌구</p>
+					<p>중고가 어쩌구</p>
+					<p>중고가 어쩌구</p>
+				</div>
+				<div class="col-md-3 mb-4 text-left">
+					<h4>자유게시판</h4>
+					<p>자유롭게 저쩌구</p>
+					<p>자유롭게 저쩌구</p>
+					<p>자유롭게 저쩌구</p>
+					<p>자유롭게 저쩌구</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- TESTIMONIALS -->
+	<section id="testimonials" class="p-4 bg-danger text-white">
+		<div class="container">
+			<h4 class="text-center">광고자리</h4>
+			<div class="row text-center">
+				<div class="col">
+					<div class="slider">
+						<div>
+							<blockquote class="blockquote">
+								<p class="mb-0">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quaerat.
+								</p>
+								<footer class="blockquote-footer">John Doe From
+									<cite title="Company 1">Company 1</cite>
+								</footer>
+							</blockquote>
+						</div>
+						<div>
+							<blockquote class="blockquote">
+								<p class="mb-0">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quaerat.
+								</p>
+								<footer class="blockquote-footer">Sam Smith From
+									<cite title="Company 2">Company 2</cite>
+								</footer>
+							</blockquote>
+						</div>
+						<div>
+							<blockquote class="blockquote">
+								<p class="mb-0">
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quaerat.
+								</p>
+								<footer class="blockquote-footer">Meghan Williams From
+									<cite title="Company 3">Company 3</cite>
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+  
+  
+	<!-- VIDEO MODAL -->
+	<div class="modal fade" id="videoModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button class="close" data-dismiss="modal">
+					<span>&times;</span>
+					</button>
+					<iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-	<div id="content">
-		<section id="main_section">
-			<article class="main_article">
-				<h1>사서추천도서</h1>
-					<c:forEach items="${SRlist}" var="sr">
-							<p class="recommend">
-								<a href="detailBook.do?b_no=${sr.b_no }">
-									<img alt="book image" src="img/${sr.b_image }">
-								</a><br/>
-							</p>
-					</c:forEach>
-			</article>
-			<article class="main_article">
-				<h1>신작 도서</h1>
-					<c:forEach items="${Newlist}" var="nr">
-						<p class="recommend">
-							<a href="detailBook.do?b_no=${nr.b_no }">
-								<img alt="book image" src="img/${nr.b_image }">
-							</a>
-						</p>
-					</c:forEach>
-			</article>
-		</section>
-		<aside id="main_aside">
-			<div class="tab_item">
-				<h3><a href="postList.do?group=10">공지사항</a></h3>
-				<ul>
-					<c:forEach items="${HNlist}" var="hn">
-						<li><a href="postDetail.do?p_id=${hn.p_id}&&p_no=${hn.p_no}&&group=10">${hn.p_title }</a></li>
-					</c:forEach>
-				</ul>
+  
+	<!-- FOOTER -->
+	<footer id="main-footer" class="text-center p-4">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<p>Copyright &copy;
+					<span id="year"></span> Glozzom</p>
+				</div>
 			</div>
-			<div class="tab_item">
-				<h3><a href="postList.do?group=20">창작물 게시판</a></h3>
-				<ul>
-					<c:forEach items="${HMakinglist}" var="hmaking">
-						<li><a href="postDetail.do?p_id=${hmaking.p_id}&&p_no=${hmaking.p_no}&&group=20">${hmaking.p_title }</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-			<div class="tab_item">
-				<h3><a href="postList.do?group=30">중고장터</a></h3>
-				<ul>
-					<c:forEach items="${HMarketlist}" var="hmarket">
-						<li><a href="postDetail.do?p_id=${hmarket.p_id}&&p_no=${hmarket.p_no}&&group=30">${hmarket.p_title }</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</aside>
-	</div>
-	<footer id="main_footer">
-		<p>&copy; 탈주금지조. All rights reserved. | Design by members of 탈주금지조</a>.</p>
-		<img alt="" src="img/twitter_icon.png">
-		<img alt="" src="img/facebook_icon.png">
-		<img alt="" src="img/insta_icon.png">
-		<img alt="" src="img/youtube_icon.png">
+		</div>
 	</footer>
+
+
+
+
+
+	
 </body>
 </html>

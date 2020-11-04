@@ -32,32 +32,30 @@ public class CustomerController {
 
    //홈화면 임시
    @RequestMapping("/Home.do")
-   public void home(Model model, CustomerVO
-           custVO, String loginOk, HttpServletRequest request) {
-      
-	   if (request.getParameter("loginOk") != null) {
-		   HashMap map = new HashMap();
-		   String email = request.getParameter("email");
-		   String password = request.getParameter("pw");
-		   map.put("email",email);
-		   map.put("pw",password);
-		   custVO = dao.getLoginInfo(map);
-			
+   public void home(Model model, CustomerVO custVO, String loginOk, HttpServletRequest request) {
+		if (request.getParameter("loginOk") != null) {
+			HashMap map = new HashMap();
+			String email = request.getParameter("email");
+			String password = request.getParameter("pw");
+			map.put("email",email);
+			map.put("pw",password);
+			custVO = dao.getLoginInfo(map);
+					
 			if (email.equals(custVO.getEmail()) && password.equals(custVO.getPw())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("cust_no", custVO.getCust_no());
 				request.setAttribute("cust_no", custVO.getCust_no());
 			}
 		}
-	   
-      model.addAttribute("SRlist", dao2.getStaffRecommend());
-      model.addAttribute("Newlist", dao2.getNewRecommend());
-      model.addAttribute("HNlist", dao2.getHomePost(10));
-      model.addAttribute("HMakinglist", dao2.getHomePost(20));
-        model.addAttribute("HMarketlist", dao2.getHomePost(30));
-      
-      HttpSession session = request.getSession();
-      request.setAttribute("cust_no", session.getAttribute("cust_no"));
+			   
+		model.addAttribute("SRlist", dao2.getStaffRecommend());
+		model.addAttribute("Newlist", dao2.getNewRecommend());
+		model.addAttribute("HNlist", dao2.getHomePost(10));
+		model.addAttribute("HMakinglist", dao2.getHomePost(20));
+		model.addAttribute("HMarketlist", dao2.getHomePost(30));
+		      
+		HttpSession session = request.getSession();
+		request.setAttribute("cust_no", session.getAttribute("cust_no"));
    }
    
    //회원가입FORM
