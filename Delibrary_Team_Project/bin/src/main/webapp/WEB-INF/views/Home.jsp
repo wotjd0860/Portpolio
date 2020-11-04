@@ -21,10 +21,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
 
 <!-- 이 아래로는 따로 빼야하는 CSS, JavaScript -->
-<!-- 추천도서 -->
 <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
@@ -62,6 +62,7 @@
 		slideToScroll: 1
     });
 </script>
+
 <style type="text/css">
 	@import url(https://fonts.googleapis.com/css?family=PT+Sans);
 	
@@ -122,69 +123,6 @@
 	}
 </style>
 
-<style type="text/css">
-	#tabs:after {
-		 content: "";
-		 display: block;
-		 clear: both;
-	}
-	#tab1, #tab2, #tab3, #tab4 {
-		float: left;
-		width: 25%;
-		text-align: center;
-	}
-	#content1 {
-		display: block;
-		text-align: center;
-	}
-	
-	#content2, #content3, #content4{
-		display: none;
-		text-align: center;
-	}
-</style>
-
-<script type="text/javascript">
-	window.onload = function() {
-		let tab1 = document.getElementById('tab1');
-		let tab2 = document.getElementById('tab2');
-		let tab3 = document.getElementById('tab3');
-		let tab4 = document.getElementById('tab4');
-
-		let content1 = document.getElementById('content1');
-		let content2 = document.getElementById('content2');
-		let content3 = document.getElementById('content3');
-		let content4 = document.getElementById('content4');
-
-		tab1.addEventListener('click', function(e) {
-			content1.style.display = 'block';
-			content2.style.display = 'none';
-			content3.style.display = 'none';
-			content4.style.display = 'none';
-		}, true);
-
-		tab2.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'block';
-			content3.style.display = 'none';
-			content4.style.display = 'none';
-		}, true);
-
-		tab3.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'none';
-			content3.style.display = 'block';
-			content4.style.display = 'none';
-		}, true);
-
-		tab4.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'none';
-			content3.style.display = 'none';
-			content4.style.display = 'block';
-		}, true);
-	}
-</script>
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
@@ -306,32 +244,7 @@
 
 	<!--HOME ICON SECTION  -->
 	<section id="home-icons" class="py-5">
-		<div class="container">
-			<div class="tabs">
-				<div id="tab1"><h4>공지사항</h4></div>
-				<div id="tab2"><h4>창작물 게시판</h4></div>
-				<div id="tab3"><h4>중고장터</h4></div>
-				<div id="tab4"><h4>자유게시판</h4></div>
-			</div>
-			
-			<div class="contents">
-				<div id="content1">
-					공지사항 게시물
-				</div>
-				
-				<div id="content2">
-					창작물 게시물
-				</div>
-				
-				<div id="content3">
-					중고장터 게시물
-				</div>
-				
-				<div id="content4">
-					자유게시판 게시물
-				</div>
-			</div>
-		</div>
+		
 	</section>
 
 	<!-- TESTIMONIALS -->

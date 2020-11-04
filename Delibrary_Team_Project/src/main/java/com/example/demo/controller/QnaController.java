@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.dao.QnaDAO;
 import com.example.demo.dao.ReplyDAO;
 
-import jdk.jfr.SettingDefinition;
 import lombok.Setter;
 
 @Controller
