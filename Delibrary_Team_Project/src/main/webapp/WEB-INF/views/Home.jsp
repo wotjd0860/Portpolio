@@ -23,6 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+
+<!-- 이 아래로는 따로 빼야하는 CSS, JavaScript -->
 <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
@@ -72,6 +74,10 @@
 	  color: #222;
 	}
 	
+	#showcase {
+		margin-top: 50px;
+	}
+	
 	.RecoImg {
 	  display: inline-block;
 	  width: 200px;
@@ -116,6 +122,7 @@
 	  }
 	}
 </style>
+
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
@@ -198,8 +205,26 @@
   
 	<!-- SHOWCASE SLIDER   -->
 	<section id="showcase">
-	<h1 id="img_title">css3 carousel</h1>
-
+		<h1 id="img_title">이달의 사서 추천도서</h1>
+		<div class="carousel">
+		  <div class="holder">
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/300x200" class="RecoImg" />
+		    <img src="http://fakeimg.pl/400x300" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		  </div>
+		</div>
+	</section>
+	
+	<section id="showcase">
+		<h1 id="img_title">(x-1)월의 신작 도서</h1>
 		<div class="carousel">
 		  <div class="holder">
 		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
@@ -217,40 +242,9 @@
 		</div>
 	</section>
 
-
 	<!--HOME ICON SECTION  -->
 	<section id="home-icons" class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 mb-4 text-left">
-					<h5>공지사항</h5>
-					<a href=""><p>공지 어쩌구</p></a>
-					<p>공지 어쩌구</p>
-					<p>공지 어쩌구</p>
-					<p>공지 어쩌구</p>
-				</div>
-				<div class="col-md-3 mb-4 text-left">
-					<h6>창작물 게시판</h6>
-					<p>창작물 저쩌구</p>
-					<p>창작물 저쩌구</p>
-					<p>창작물 저쩌구</p>
-				</div>
-				<div class="col-md-3 mb-4 text-left">
-					<h4>중고장터</h4>
-					<p>중고가 어쩌구</p>
-					<p>중고가 어쩌구</p>
-					<p>중고가 어쩌구</p>
-					<p>중고가 어쩌구</p>
-				</div>
-				<div class="col-md-3 mb-4 text-left">
-					<h4>자유게시판</h4>
-					<p>자유롭게 저쩌구</p>
-					<p>자유롭게 저쩌구</p>
-					<p>자유롭게 저쩌구</p>
-					<p>자유롭게 저쩌구</p>
-				</div>
-			</div>
-		</div>
+		
 	</section>
 
 	<!-- TESTIMONIALS -->
