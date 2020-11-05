@@ -191,17 +191,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#search').click(function() {
-			$.ajax({
-				method: "GET",
-				url: "https://dapi.kakao.com/v3/search/book?target=title",
-				data: { query: $("#bookName").val() },
-				headers: {Authorization: "KakaoAK e4b09847099d9a9997219f891e2f6172"}
-			})
-				.done(function(msg) {
-					console.log(msg);
-					$('#result').text(JSON.stringify(msg));
-					window.open("http://localhost:8088/SearchResult.do", "도서검색결과창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );
-				});
+			location.href = "http://localhost:8088/SearchResult.do?query=" + $("#bookName").val();
 		})
 	});
 </script>
@@ -275,7 +265,7 @@
 		  <h4 class="text-center">도서관 소식</h4>
 		  <div class="row mb-4">
 				<div class="col-md-4">
-					<div id="result"></div>
+					ddd
 				</div>
 
 				<div class="col-md-4">
