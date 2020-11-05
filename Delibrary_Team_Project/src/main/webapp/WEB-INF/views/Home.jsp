@@ -144,6 +144,7 @@
 	}
 </style>
 
+<!-- 탭 -->
 <script type="text/javascript">
 	window.onload = function() {
 		let tab1 = document.getElementById('tab1');
@@ -185,6 +186,31 @@
 		}, true);
 	}
 </script>
+
+<!-- 검색 -->
+<script type="text/javascript">
+	$(function() {
+		$('#search').click(function() {
+			$.ajax({
+				method: "GET",
+				url: "https://dapi.kakao.com/v3/search/book?target=title",
+				data: { query: $("#bookName").val() },
+				headers: {Authorization: "KakaoAK e4b09847099d9a9997219f891e2f6172"}
+			})
+				.done(function(msg) {
+					console.log(msg);
+					$('#result').text(JSON.stringify(msg));
+					window.open("http://localhost:8088/SearchResult.do", "도서검색결과창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );
+				});
+		})
+	});
+</script>
+
+<style type="text/css">
+	#result {
+		/* display: none; */
+	}
+</style>
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
@@ -225,7 +251,6 @@
 			</div>
 		</div>
 	</nav>
-	
   <!-- HOME HEADING SECTION -->
 	<section id="home-heading" class="p-5">
 		<div class="dark-overlay">
@@ -233,10 +258,9 @@
 			<div class="col">
 			  <div class="container pt-5">
 				<div class="input-group mb-3 pt-5">
-					<input class="form-control searchbar" type="text" placeholder="검색어를 입력하세요">
+					<input class="form-control searchbar" id="bookName" type="text" placeholder="검색어를 입력하세요">
 					<div class="input-group-append">
-						<button class="btn btn-outline-secondary btn-l" type="button">검색</button>
-						<button class="btn btn-outline-secondary btn-r" type="button">상세검색</button>
+						<button class="btn btn-outline-secondary btn-r" type="button" id="search">검색</button>
 					</div>
 				</div>
 			  </div>
@@ -251,7 +275,7 @@
 		  <h4 class="text-center">도서관 소식</h4>
 		  <div class="row mb-4">
 				<div class="col-md-4">
-					달력을 넣어보아요
+					<div id="result"></div>
 				</div>
 
 				<div class="col-md-4">
@@ -270,7 +294,7 @@
 		<h1 id="img_title">이달의 사서 추천도서</h1>
 		<div class="carousel">
 		  <div class="holder">
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
+		    <img src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1755607%3Ftimestamp%3D20190201023135" class="RecoImg" />
 		    <img src="http://fakeimg.pl/300x200" class="RecoImg" />
 		    <img src="http://fakeimg.pl/400x300" class="RecoImg" />
 		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
