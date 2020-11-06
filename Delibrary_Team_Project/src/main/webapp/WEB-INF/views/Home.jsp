@@ -25,7 +25,7 @@
 
 <!-- 이 아래로는 따로 빼야하는 CSS, JavaScript -->
 <!-- 추천도서 -->
-<script>
+<!-- <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
 
@@ -120,8 +120,61 @@
 	    transform: translateX(0);
 	  }
 	}
+</style> -->
+<!-- carousel -->
+<style type="text/css">
+	.carousel-indicators1 {
+	  right: 0;
+	  bottom: -30px;
+	}
+	.carousel-indicators1 li {
+	  outline: 1px solid lightgray;
+	}
+	.carousel-indicators1 .active {
+	  outline: 1px solid black;
+	}
+	
+	.img-fluid {
+	  height: 250px;
+	}
+	.card-body {
+		height: 60px;
+		padding: 0;
+		text-align: center;
+	}
+	.book-title {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-size: large;
+		font-weight: bold;
+	}
+	.controls-bottom {
+		display: inline-block;
+		float: right;
+	}
+	.carousel-inner {
+		height: 340px;
+	}
 </style>
 
+<script type="text/javascript">
+	$('.carousel.carousel-multi .carousel-item').each(function () {
+		var next = $(this).next();
+		if (!next.length) {
+			next = $(this).siblings(':first');
+		}
+		next.children(':first-child').clone().attr("aria-hidden", "true").appendTo($(this));
+	
+		if (next.next().length > 0) {
+			next.next().children(':first-child').clone().attr("aria-hidden", "true").appendTo($(this));
+		}
+		else {
+			$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+		}
+	});
+</script>
+<!-- 탭 -->
 <style type="text/css">
 	#tabs:after {
 		 content: "";
@@ -134,23 +187,24 @@
 		text-align: center;
 	}
 	.content {
-		display: block;
+		display: none;
 		text-align: center;
 	}
 </style>
 
-<!-- 탭 -->
 <script type="text/javascript">
 	window.onload = function() {
 		let tabs = document.getElementsByClassName('tab');
 		let contents = document.getElementsByClassName('content');
 
+		contents[0].style.display = 'block';
+		
 		for(let i = 0; i < tabs.length; i++) {
 			tabs[i].addEventListener('click', function(e) {
 				for(let i = 0; i < tabs.length; i++) {
-					tabs[i].style.display = 'none';
+					contents[i].style.display = 'none';
 				}
-				tabs[i].style.display = 'block';
+				contents[i].style.display = 'block';
 			}, true);
 		};
 	}
@@ -165,11 +219,6 @@
 	});
 </script>
 
-<style type="text/css">
-	#result {
-		/* display: none; */
-	}
-</style>
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
@@ -249,44 +298,236 @@
 	</section>
   
 	<!-- SHOWCASE SLIDER   -->
-	<section id="showcase">
-		<h1 id="img_title">이달의 사서 추천도서</h1>
-		<div class="carousel">
-		  <div class="holder">
-		    <img src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F1755607%3Ftimestamp%3D20190201023135" class="RecoImg" />
-		    <img src="http://fakeimg.pl/300x200" class="RecoImg" />
-		    <img src="http://fakeimg.pl/400x300" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		  </div>
+	<div class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col">
+				<!--Carousel Wrapper-->
+				<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example">
+					<h3 class="d-inline-block mb-3">추천 도서</h3><!--Controls-->
+					<div class="controls-bottom pull-right">
+						<a class="btn btn-outline-secondary prev" data-slide="prev" href="#multi-item-example"><i class="fa fa-chevron-left"></i></a> <a class="btn btn-outline-secondary next" data-slide="next" href="#multi-item-example"><i class="fa fa-chevron-right"></i></a>
+					</div><!--/.Controls-->
+					<!--Slides-->
+					<div class="carousel-inner" role="listbox">
+						<!--First slide-->
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--/.First slide-->
+						<!--Second slide-->
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--/.Second slide-->
+					</div><!--/.Slides-->
+				</div><!--/.Carousel Wrapper-->
+			</div>
 		</div>
-	</section>
+	</div>
 	
-	<section id="showcase">
-		<h1 id="img_title">(x-1)월의 신작 도서</h1>
-		<div class="carousel">
-		  <div class="holder">
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/300x200" class="RecoImg" />
-		    <img src="http://fakeimg.pl/400x300" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		    <img src="http://fakeimg.pl/200x100" class="RecoImg" />
-		  </div>
+	<div class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col">
+				<!--Carousel Wrapper-->
+				<div class="carousel slide carousel-multi-item" data-ride="carousel" id="multi-item-example2">
+					<h3 class="d-inline-block mb-3">이번달 신작 도서</h3><!--Controls-->
+					<div class="controls-bottom pull-right">
+						<a class="btn btn-outline-secondary prev" data-slide="prev" href="#multi-item-example2"><i class="fa fa-chevron-left"></i></a> <a class="btn btn-outline-secondary next" data-slide="next" href="#multi-item-example2"><i class="fa fa-chevron-right"></i></a>
+					</div><!--/.Controls-->
+					<!--Slides-->
+					<div class="carousel-inner" role="listbox">
+						<!--First slide-->
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5495847%3Ftimestamp%3D20201106153628">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">얼마나 닮았는가</div>
+												<h6>김보영</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5508720%3Ftimestamp%3D20201106153718">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">먹을수록 강해지는 폭식투수. 5</div>
+												<h6>키르슈</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5508612%3Ftimestamp%3D20201103160903">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">하늘과 땅의 수호자. 2(수호자 시리즈 9)</div>
+												<h6>우에하시 나호코</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5508526%3Ftimestamp%3D20201106140927">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">남극해</div>
+												<h6>이윤길</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--/.First slide-->
+						<!--Second slide-->
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5508519%3Ftimestamp%3D20201106141009">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">그대의 강</div>
+												<h6>전진우</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5507591%3Ftimestamp%3D20201103160737">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">하조대 해수욕장에서 생긴 일</div>
+												<h6>꿀데이</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5507544%3Ftimestamp%3D20201103160931">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">정조의 비밀사관, 은서</div>
+												<h6>베이다</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3 clearfix d-none d-md-block">
+									<div class="card">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5507512%3Ftimestamp%3D20201103160818">
+										<div class="card-body">
+											<div class="card-title">
+												<div class="book-title">삼각산에는 호랑이가 산다</div>
+												<h6>임영은</h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--/.Second slide-->
+					</div><!--/.Slides-->
+				</div><!--/.Carousel Wrapper-->
+			</div>
 		</div>
-	</section>
-
+	</div>
+	
 	<!--HOME ICON SECTION  -->
 	<section id="home-icons" class="py-5">
 		<div class="container">
