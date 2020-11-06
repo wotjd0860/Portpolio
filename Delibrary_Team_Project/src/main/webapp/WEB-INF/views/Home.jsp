@@ -128,18 +128,13 @@
 		 display: block;
 		 clear: both;
 	}
-	#tab1, #tab2, #tab3, #tab4 {
+	.tab {
 		float: left;
 		width: 25%;
 		text-align: center;
 	}
-	#content1 {
+	.content {
 		display: block;
-		text-align: center;
-	}
-	
-	#content2, #content3, #content4{
-		display: none;
 		text-align: center;
 	}
 </style>
@@ -147,43 +142,17 @@
 <!-- 탭 -->
 <script type="text/javascript">
 	window.onload = function() {
-		let tab1 = document.getElementById('tab1');
-		let tab2 = document.getElementById('tab2');
-		let tab3 = document.getElementById('tab3');
-		let tab4 = document.getElementById('tab4');
+		let tabs = document.getElementsByClassName('tab');
+		let contents = document.getElementsByClassName('content');
 
-		let content1 = document.getElementById('content1');
-		let content2 = document.getElementById('content2');
-		let content3 = document.getElementById('content3');
-		let content4 = document.getElementById('content4');
-
-		tab1.addEventListener('click', function(e) {
-			content1.style.display = 'block';
-			content2.style.display = 'none';
-			content3.style.display = 'none';
-			content4.style.display = 'none';
-		}, true);
-
-		tab2.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'block';
-			content3.style.display = 'none';
-			content4.style.display = 'none';
-		}, true);
-
-		tab3.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'none';
-			content3.style.display = 'block';
-			content4.style.display = 'none';
-		}, true);
-
-		tab4.addEventListener('click', function(e) {
-			content1.style.display = 'none';
-			content2.style.display = 'none';
-			content3.style.display = 'none';
-			content4.style.display = 'block';
-		}, true);
+		for(let i = 0; i < tabs.length; i++) {
+			tabs[i].addEventListener('click', function(e) {
+				for(let i = 0; i < tabs.length; i++) {
+					tabs[i].style.display = 'none';
+				}
+				tabs[i].style.display = 'block';
+			}, true);
+		};
 	}
 </script>
 
@@ -322,26 +291,26 @@
 	<section id="home-icons" class="py-5">
 		<div class="container">
 			<div class="tabs">
-				<div id="tab1"><h4>공지사항</h4></div>
-				<div id="tab2"><h4>창작물 게시판</h4></div>
-				<div id="tab3"><h4>중고장터</h4></div>
-				<div id="tab4"><h4>자유게시판</h4></div>
+				<div class="tab"><h4>공지사항</h4></div>
+				<div class="tab"><h4>창작물 게시판</h4></div>
+				<div class="tab"><h4>중고장터</h4></div>
+				<div class="tab"><h4>자유게시판</h4></div>
 			</div>
 			
 			<div class="contents">
-				<div id="content1">
+				<div class="content">
 					공지사항 게시물
 				</div>
 				
-				<div id="content2">
+				<div class="content">
 					창작물 게시물
 				</div>
 				
-				<div id="content3">
+				<div class="content">
 					중고장터 게시물
 				</div>
 				
-				<div id="content4">
+				<div class="content">
 					자유게시판 게시물
 				</div>
 			</div>
