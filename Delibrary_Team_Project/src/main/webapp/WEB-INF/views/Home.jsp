@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,103 +25,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
 
 <!-- 이 아래로는 따로 빼야하는 CSS, JavaScript -->
-<!-- 추천도서 -->
-<!-- <script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-
-    // Configure Slider
-    $('.carousel').carousel({
-		interval: 6000,
-		pause: 'hover'
-    });
-
-    // Lightbox Init
-    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-		event.preventDefault();
-		$(this).ekkoLightbox();
-    });
-
-    // Video Play
-    $(function () {
-		// Auto play modal video
-		$(".video").click(function () {
-			var theModal = $(this).data("target"),
-			videoSRC = $(this).attr("data-video"),
-			videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
-			$(theModal + ' iframe').attr('src', videoSRCauto);
-			$(theModal + ' button.close').click(function () {
-				$(theModal + ' iframe').attr('src', videoSRC);
-			});
-		});
-    });
-	
-	
-    $('.slider').slick({
-		infinite: true,
-		slideToShow: 1,
-		slideToScroll: 1
-    });
-</script>
-<style type="text/css">
-	@import url(https://fonts.googleapis.com/css?family=PT+Sans);
-	
-	#img_title {
-	  text-align: center;
-	  font-size: 48px;
-	  text-transform: uppercase;
-	  letter-spacing: 3px;
-	  color: #222;
-	}
-	
-	#showcase {
-		margin-top: 50px;
-	}
-	
-	.RecoImg {
-	  display: inline-block;
-	  width: 200px;
-	  height: 250px;
-	  margin-right: 200px;
-	}
-	  
-	.carousel {
-	  width: 1200px;
-	  height: 300px;
-	  overflow: hidden;
-	  padding: 8px;
-	  box-sizing: border-box;
-	  border: 2px solid #999;
-	  box-shadow: 0 0 4px #000;
-	  margin: 0 auto;
-	  border-radius: 5px;
-	  
-	}
-	
-	.holder {
-	  animation: carousel 25s linear infinite;
-	  white-space: nowrap;
-	  will-change: transform;
-	}
-	
-	.holder:hover {
-    	animation-play-state: paused;
-  	}
-  	
-	@keyframes carousel {
-	  0% {
-	    transform: translateX(0);
-	  }
-	  
-	  50% {
-	    transform: translateX(-100%);
-	  }
-	  
-	  100% {
-	    transform: translateX(0);
-	  }
-	}
-</style> -->
 <!-- carousel -->
 <style type="text/css">
 	.carousel-indicators1 {
@@ -185,10 +89,30 @@
 		float: left;
 		width: 25%;
 		text-align: center;
+		border-bottom: 2px solid gray;
+		background-color: gray;
+		color: white;
+	}
+	h4 {
+		padding-top : 10px;
+		padding-bottom: 10px;
+		margin : 0;
+		vertical-align: middle;
 	}
 	.content {
 		display: none;
 		text-align: center;
+	}
+	.home_post_title {
+		width: 888px;
+		text-align: left;
+		font-size: large;
+		font-weight: bold;
+	}
+	.home_post_date {
+		width: 222px;
+		font-size: large;
+		font-weight: lighter;
 	}
 </style>
 
@@ -262,6 +186,7 @@
   <!-- HOME HEADING SECTION -->
 	<section id="home-heading" class="p-5">
 		<div class="dark-overlay">
+		
 		  <div class="row">
 			<div class="col">
 			  <div class="container pt-5">
@@ -314,44 +239,44 @@
 							<div class="row">
 								<div class="col-md-3">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5416922%3Ftimestamp%3D20201108134648">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">달러구트 꿈 백화점</div>
+												<h6>이미예</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F532619%3Ftimestamp%3D20201108132924">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">아몬드(양장본 HardCover)</div>
+												<h6>손원평</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F541125%3Ftimestamp%3D20201108132749">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">보건교사 안은영(오늘의 젊은 작가 9)(양장본 HardCover)</div>
+												<h6>정세랑</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5501269%3Ftimestamp%3D20201108134015">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">추리소설가의 살인사건(양장본 HardCover)</div>
+												<h6>히가시노 게이 고</h6>
 											</div>
 										</div>
 									</div>
@@ -363,44 +288,44 @@
 							<div class="row">
 								<div class="col-md-3">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5439518%3Ftimestamp%3D20201108133930">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">그 환자</div>
+												<h6>재스퍼 드윗</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5487218%3Ftimestamp%3D20201108133757">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">나의 하루는 4시 30분에 시작된다</div>
+												<h6>김유진</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5450043%3Ftimestamp%3D20201108133956">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">철학의 숲</div>
+												<h6>브렌던 오도너 휴</h6>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3 clearfix d-none d-md-block">
 									<div class="card">
-										<img alt="Card image cap" class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg">
+										<img alt="Card image cap" class="img-fluid" src="https://search1.kakaocdn.net/thumb/R120x174.q85/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flbook%2Fimage%2F5465804%3Ftimestamp%3D20201108134321">
 										<div class="card-body">
 											<div class="card-title">
-												<div class="book-title">얼마나 닮았는가</div>
-												<h6>김보영</h6>
+												<div class="book-title">마음 챙김의 시</div>
+												<h6>류시화, 루이즈 글릭</h6>
 											</div>
 										</div>
 									</div>
@@ -540,15 +465,36 @@
 			
 			<div class="contents">
 				<div class="content">
-					공지사항 게시물
+					<table>
+						<c:forEach items="${HNlist}" var="notice">
+							<tr>
+								<td class="home_post_title">${notice.p_title }</td>
+								<td class="home_post_date"><fmt:formatDate value="${notice.p_regdate }" pattern="YYYY-MM-dd" /></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				
 				<div class="content">
-					창작물 게시물
+					<table>
+						<c:forEach items="${HMakinglist}" var="making">
+							<tr>
+								<td class="home_post_title">${making.p_title }</td>
+								<td class="home_post_date"><fmt:formatDate value="${making.p_regdate }" pattern="YYYY-MM-dd" /></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				
 				<div class="content">
-					중고장터 게시물
+					<table>
+						<c:forEach items="${HMarketlist}" var="market">
+							<tr>
+								<td class="home_post_title">${market.p_title }</td>
+								<td class="home_post_date"><fmt:formatDate value="${market.p_regdate }" pattern="YYYY-MM-dd" /></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				
 				<div class="content">

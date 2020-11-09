@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="getHomePost" resultType="postVO">
-		select rownum, p_id, p_no, p_title from (select p_id, p_no, p_title from post where p_no like #{group}||'%') <![CDATA[where rownum <= 3]]>
+		select rownum, p_id, p_no, p_title, p_regdate from (select p_id, p_no, p_title, p_regdate from post where p_no like #{group}||'%') <![CDATA[where rownum <= 3]]>
 	</select>
 
 	<!-- 로그인 -->
