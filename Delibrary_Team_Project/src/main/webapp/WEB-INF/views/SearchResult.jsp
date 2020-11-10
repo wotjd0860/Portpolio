@@ -12,91 +12,115 @@
   <link rel="stylesheet" href="css/style.css">
 <title>Insert title here</title>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <!-- kakao 검색 API -->
 <script type="text/javascript">
 	$(function() {
-		alert('1');
-		alert($("#query").text());
-		$.ajax({
-			method: "GET",
-			url: "https://dapi.kakao.com/v3/search/book?target=title&size=50",
-			data: { query:  $("#query").text() },
-			headers: {Authorization: "KakaoAK 0050577fad730d5470e0f11bcdf64cd6"}
-		})
-			.done(function(msg) {
-				var ul = $('<ul></ul>').addClass('card-list');
+		let booklist;
 
-				for(let i = 0; i < msg.documents.length; i++) {
-					var li = $('<li></li>').addClass('card');
-					var a = $('<a></a>').addClass('card-image')
-					$(a).css('background-image', 'url(' + msg.documents[i].thumbnail + ')');
-					$(a).attr('data-image-full', msg.documents[i].thumbnail);
-					//$(a).attr('href', );
-					var img = $('<img>').attr('src', msg.documents[i].thumbnail);
+		let search = function(pageNUM) {
+			if(pageNUM === undefined){
+				pageNUM = 1;
+			}
+			let size = 48;
+			$.ajax({
+				method: "GET",
+				url: "https://dapi.kakao.com/v3/search/book?target=title&size=" + size + "&page=" + pageNUM,
+				data: { query:  $("#query").val() },
+				headers: {Authorization: "KakaoAK 0050577fad730d5470e0f11bcdf64cd6"}
+			})
+				.done(function(msg) {
+					if(pageNUM == 1){
+						booklist = msg;
+					}
+					alert(msg.documents[0].title);
+					var ul = $('<ul></ul>').addClass('card-list');
+					var totalPage;
+	
+					for(let i = 0; i < msg.documents.length; i++) {
+						var li = $('<li></li>').addClass('card');
+						var a = $('<a></a>').addClass('card-image')
+						$(a).css('background-image', 'url(' + msg.documents[i].thumbnail + ')');
+						$(a).attr('data-image-full', msg.documents[i].thumbnail);
+						a.css("width", "120px");
+						a.css("height","174px");
+						//$(a).attr('href', );
+						var img = $('<img>').attr('src', msg.documents[i].thumbnail);
+						//img.css("width", "120px");
+						//img.css("height","174px");
+	
+						var a2 = $('<a></a>');
+						$(a2).addClass('card-description');
+						//$(a2).attr('href', );
+						$(a2).attr('target', '_blank');
+						
+						var h4 = $('<h4></h4>').text(msg.documents[i].title);
+						var p = $('<p></p>').text(msg.documents[i].authors);
+	
+						$(a).append(img);
+						$(li).append(a);
+						
+						$(a2).append(h4);
+						$(a2).append(p);
+						$(li).append(a2);
+	
+						$(ul).append(li);
+						$('.searchResult-body').append(ul);
+					}
 					
-					var a2 = $('<a></a>');
-					$(a2).addClass('card-description');
-					//$(a2).attr('href', );
-					$(a2).attr('target', '_blank');
+					let totalCount = msg.meta["pageable_count"];
+					if(pageNUM != 1){
+						totalCount = booklist.meta["pageable_count"];
+					}
+					console.log(pageNUM);
+					console.log(size);
+					console.log(totalCount);
+					totalPage = totalCount / size + 1;
+					if(totalCount / size === 0){
+						totalPage = totalCount / size;
+					}
 					
-					var h4 = $('<h4></h4>').text(msg.documents[i].title);
-					var p = $('<p></p>').text(msg.documents[i].authors);
+					for(let i = 1; i <= totalPage; i++) {
+						$('.paging').append($('<a></a>').addClass('paging-num').text(i));
+					}
 
-					$(a).append(img);
-					$(li).append(a);
-					
-					$(a2).append(h4);
-					$(a2).append(p);
-					$(li).append(a2);
+					$('.paging-num').click(function() {
+						let clickedPage = $(this).text();
+						$('.searchResult-body').children().remove();
+						$('.paging').children().remove();
+						search(clickedPage);
+					});
+				});
+		}
 
-					$(ul).append(li);
-					$('.card-body').append(ul);
-				}
-			});
+		search();
+
+		// footer
+		$('#year').text(new Date().getFullYear());
 	});
 </script>
 
-<!-- 도서 검색 결과 출력용 card -->
-<script type="text/javascript">
-	window.addEventListener("load", function () {
-		setTimeout(lazyLoad, 1000);
-	});
-	
-	function lazyLoad() {
-		var card_images = document.querySelectorAll(".card-image");
-	
-		card_images.forEach(function (card_image) {
-			var image_url = card_image.getAttribute("data-image-full");
-			var content_image = card_image.querySelector("img");
-	
-			content_image.src = image_url;
-	
-			content_image.addEventListener("load", function () {
-				card_image.style.backgroundImage = "url(" + image_url + ")";
-				card_image.className = card_image.className + " is-loaded";
-			});
-		});
-	}
-</script>
 <style type="text/css">
 	/* Lazy Load Styles */
 	.card-image {
 		display: block;
 		background: #fff center center no-repeat;
 		background-size: cover;
-		filter: blur(3px); /* blur the lowres image */
+		margin: 0 auto;
+		/* filter: blur(3px); /* blur the lowres image */ */
 	}
 	
 	.card-image > img {
 		display: block;
-		width: 198px;
-		height: 198px;
+		width: 100%;
 		opacity: 0; /* visually hide the img element */
 	}
 	
 	.card-image.is-loaded {
 		filter: none; /* remove the blur on fullres image */
 		transition: filter 1s;
+		margin: 0 auto;
 	}
 	
 	/* Layout Styles */
@@ -105,7 +129,7 @@
 		display: block;
 		padding: 0;
 		font-size: 0;
-		text-align: center;
+		/* text-align: center; */
 		list-style: none;
 	}
 	
@@ -116,7 +140,7 @@
 	.card {
 		display: inline-block;
 		width: 200px;
-		height: 300px;
+		height: 250px;
 		margin: 1rem;
 		font-size: 1rem;
 		text-decoration: none;
@@ -134,7 +158,8 @@
 		display: block;
 		color: #515151;
 		width: 200px;
-		height: 200px;
+		height: 100px;
+		text-align: center;
 	}
 	
 	.card-description > h4 {
@@ -146,12 +171,32 @@
 	}
 	
 	.searchResult-body {
-		margin-left: 60px;
+		margin-right: 150px;
+		float: left;
+		width: 60%;
+	}
+	
+	.searchResult-options {
+		margin-left: 150px;
+		float: left;
+		width: 20%;
+		text-align: center;
+	}
+	
+	.paging {
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+		float: left;
+	}
+	
+	.paging-num {
+		margin: 0 10px;
 	}
 </style>
 </head>
 <body>
-	<a id="query">${query}</a>
+	<input id="query" value="${query}" type="hidden">
 	<!-- <div id="result"></div> -->
 
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
@@ -206,62 +251,21 @@
 	
     <!-- MAIN SECTION -->
 	<section id="contact" class="py-3">
-		<div class="container">
-		  <div class="row">
-			<div class="searchResut-options">
+			<div class="searchResult-options">
 			  <h4>Options</h4>
 			  <br>
 			  	리스트 출력 옵션들
 			  	
 			</div>
 			<div class="searchResult-body">
-				<div class="card-body">
-				  <ul class="card-list">
-					<li class="card">
-						<a class="card-image" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-500.jpg">
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg" alt="Psychopomp" />
-						</a>
-						<a class="card-description" href="https://michellezauner.bandcamp.com/album/psychopomp-2" target="_blank">
-							<h4>Psychopomp</h4>
-							<p>Japanese Breakfast</p>
-						</a>
-					</li>
 				
-					<li class="card">
-						<a class="card-image" href="https://inlovewithaghost.bandcamp.com/album/lets-go" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-500.jpg">
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg" alt="let's go" />
-						</a>
-						<a class="card-description" href="https://inlovewithaghost.bandcamp.com/album/lets-go" target="_blank">
-							<h4>let's go</h4>
-							<p>In Love With A Ghost</p>
-						</a>
-					</li>
-				
-					<li class="card">
-						<a class="card-image" href="https://vulfpeck.bandcamp.com/album/the-beautiful-game" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-500.jpg">
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-100.jpg" alt="The Beautiful Game" />
-						</a>
-						<a class="card-description" href="https://vulfpeck.bandcamp.com/album/the-beautiful-game" target="_blank">
-							<h4>The Beautiful Game</h4>
-							<p>Vulfpeck</p>
-						</a>
-					</li>
-				
-					<li class="card">
-						<a class="card-image" href="https://convergecult.bandcamp.com/album/jane-doe" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-500.jpg">
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg" alt="Jane Doe" />
-						</a>
-						<a class="card-description" href="https://convergecult.bandcamp.com/album/jane-doe" target="_blank">
-							<h4>Jane Doe</h4>
-							<p>Converge</p>
-						</a>
-					</li>
-				  </ul>
-				</div>
 			</div>
-		  </div>
-		</div>
+			<div class="paging">
+				
+			</div>
 	</section>
+	
+	<div style="clear: both"></div>
 
   <!-- FOOTER -->
   <footer id="main-footer" class="text-center p-4">
@@ -274,19 +278,5 @@
       </div>
     </div>
   </footer>
-
-
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
-
-  <script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-
-  </script>
 </body>
 </html>
