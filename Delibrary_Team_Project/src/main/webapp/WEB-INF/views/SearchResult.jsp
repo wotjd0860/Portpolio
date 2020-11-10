@@ -24,8 +24,6 @@
 			headers: {Authorization: "KakaoAK 0050577fad730d5470e0f11bcdf64cd6"}
 		})
 			.done(function(msg) {
-				/* $('#result').append("<h2>" + msg.documents[0].title + "</h2><br>");
-				$('#result').append("<img src='" + msg.documents[0].thumbnail + "'/><br>"); */
 				var ul = $('<ul></ul>').addClass('card-list');
 
 				for(let i = 0; i < msg.documents.length; i++) {
@@ -33,11 +31,24 @@
 					var a = $('<a></a>').addClass('card-image')
 					$(a).css('background-image', 'url(' + msg.documents[i].thumbnail + ')');
 					$(a).attr('data-image-full', msg.documents[i].thumbnail);
-					//alert(msg.documents[0].thumbnail);
-					var img = $('<img>').attr('src', msg.documents[i].thumbnail); 
+					//$(a).attr('href', );
+					var img = $('<img>').attr('src', msg.documents[i].thumbnail);
+					
+					var a2 = $('<a></a>');
+					$(a2).addClass('card-description');
+					//$(a2).attr('href', );
+					$(a2).attr('target', '_blank');
+					
+					var h4 = $('<h4></h4>').text(msg.documents[i].title);
+					var p = $('<p></p>').text(msg.documents[i].authors);
 
 					$(a).append(img);
 					$(li).append(a);
+					
+					$(a2).append(h4);
+					$(a2).append(p);
+					$(li).append(a2);
+
 					$(ul).append(li);
 					$('.card-body').append(ul);
 				}
@@ -78,7 +89,8 @@
 	
 	.card-image > img {
 		display: block;
-		width: 100%;
+		width: 198px;
+		height: 198px;
 		opacity: 0; /* visually hide the img element */
 	}
 	
