@@ -191,7 +191,7 @@
 			<div class="col">
 			  <div class="container pt-5">
 				<div class="input-group mb-3 pt-5">
-					<input class="form-control searchbar" id="bookName" type="text" placeholder="검색어를 입력하세요">
+					<input class="form-control searchbar" id="bookName" type="text" placeholder="책 제목 검색">
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary btn-r" type="button" id="search">검색</button>
 					</div>

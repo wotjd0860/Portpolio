@@ -196,9 +196,6 @@
 </style>
 </head>
 <body>
-	<input id="query" value="${query}" type="hidden">
-	<!-- <div id="result"></div> -->
-
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
 		<div class="container">
 			<a href="home.html" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="24"></a>
@@ -255,6 +252,7 @@
 			  <h4>Options</h4>
 			  <br>
 			  	리스트 출력 옵션들
+			  	<input id="query" value="${query}" type="hidden">
 			  	
 			</div>
 			<div class="searchResult-body">
