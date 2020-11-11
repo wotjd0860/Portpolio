@@ -23,10 +23,20 @@
 			if(pageNUM === undefined){
 				pageNUM = 1;
 			}
+			let target = $("#target :selected").val();
+			if(target == null) {
+				target = 'title';
+			}
+
+			let sort = $("#sort :selected").val();
+			if(sort == null) {
+				sort = 'accuracy';
+			}
+			alert(sort);
 			let size = 48;
 			$.ajax({
 				method: "GET",
-				url: "https://dapi.kakao.com/v3/search/book?target=title&size=" + size + "&page=" + pageNUM,
+				url: "https://dapi.kakao.com/v3/search/book?target=" + target + "&size=" + size + "&page=" + pageNUM + "&sort=" + sort,
 				data: { query:  $("#query").val() },
 				headers: {Authorization: "KakaoAK 0050577fad730d5470e0f11bcdf64cd6"}
 			})
@@ -95,6 +105,12 @@
 		}
 
 		search();
+		
+		$("#research").click(function() {
+			$('.searchResult-body').children().remove();
+			$('.paging').children().remove();
+			search();
+		});
 
 		// footer
 		$('#year').text(new Date().getFullYear());
@@ -249,10 +265,21 @@
     <!-- MAIN SECTION -->
 	<section id="contact" class="py-3">
 			<div class="searchResult-options">
-			  <h4>Options</h4>
+			  <h4>검색</h4>
 			  <br>
-			  	리스트 출력 옵션들
-			  	<input id="query" value="${query}" type="hidden">
+			  	<select id="target" name="target">
+			  		<option value="title">제목</option>
+			  		<option value="publisher">출판사</option>
+			  		<option value="person">인명</option>
+			  	</select>
+			  	<input id="query" type="text" value="${query}">
+			  	<button id="research">검색</button><br>
+			  	정렬 :
+			  	<select id="sort" name="sort">
+			  		<option value="accuracy">정확도</option>
+			  		<option value="recency">최신순</option>
+			  	</select>
+			  	
 			  	
 			</div>
 			<div class="searchResult-body">
