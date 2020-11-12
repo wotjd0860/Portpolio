@@ -34,12 +34,16 @@ public class PostDAO {
 	}
 	
 	//새글 번호 불러오기
+	public int getNextId(int group) {
+		return PostManager.getNextId(group);
+	}
+	//새글 번호 불러오기
 	public int getNextNo(int group) {
 		return PostManager.getNextNo(group);
 	}
 	//새글 작성
-	public int insert(PostVO p) {
-		return PostManager.insert(p);
+	public int insert(HashMap map) {
+		return PostManager.insert(map);
 	}
 	
 	//글 수정

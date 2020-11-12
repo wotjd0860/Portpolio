@@ -150,10 +150,10 @@
 				</c:if>
 		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
 		        
-		        <form action="postDelete.do?p_id=${p_id }&&cus_no=${cust_no}" method="post">
+		        <form action="postDelete.do?p_id=${z.p_id }&&cus_no=${cust_no}" method="post">
 					<div id="p_del">
 						<h4>게시물을 삭제하시겠습니까?</h4>
-						<input type="hidden" name="p_id" value="${p_id }">
+						<input type="hidden" name="p_id" value="${z.p_id }">
 						<input type="hidden" name="cust_no" value="${cust_no }">
 						<br><br>
 						<%-- <p style="font-size: 15px; color: #aaa;">게시일 ${p.p_regdate} | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p> --%>

@@ -5,14 +5,14 @@
 <mapper namespace="customer">
 
 	<insert id="insertCustomer" parameterType="customerVO">
-		insert into customer values(#{cust_no},#{email},#{pw},#{addr},#{nickname},#{interest},#{name},#{m_phone},#{birthday},#{fname})
+		insert into customer values(#{cust_no}, #{email}, #{pw}, #{addr}, #{addr2}, #{nickname}, #{interest}, #{name}, #{m_phone}, #{fname}, #{birthday})
 	</insert>
 	
 	<select id="login" resultType="customerVO">
 		select * from customer where email=#{email} and pw=#{pw}
 	</select>
 	
-	<delete id="deleteCustomer" parameterType="customerVO">
+	<delete id="deleteCustomer">
 		delete customer where email=#{email} and pw=#{pw}
 	</delete>
 	
@@ -31,8 +31,9 @@
   </select>
   
   <!-- 회원수정 [현왕] -->
+  <!-- 현왕 회원 컬럼에 addr2 추가 ================================================================================================== -->
   <update id="updateCustomer">
-  	update customer set fname=#{fname}, nickname=#{nickname}, pw=#{pw}, m_phone=#{m_phone}, addr=#{addr}, email=#{email}, interest=#{interest}, name=#{name} where cust_no=#{cust_no}
+  	update customer set fname=#{fname}, nickname=#{nickname}, pw=#{pw}, m_phone=#{m_phone}, addr=#{addr}, addr2=#{addr2}, email=#{email}, interest=#{interest}, name=#{name} where cust_no=#{cust_no}
   </update>
   
   <select id="getLoginInfo" resultType="customerVO">

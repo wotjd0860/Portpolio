@@ -20,7 +20,7 @@ public static SqlSessionFactory sqlSessionFactory;
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (Exception e) {
-			System.out.println("static 예외발생: "+e.getMessage());
+			System.out.println("static �삁�쇅諛쒖깮: "+e.getMessage());
 		}
 	}
 	
@@ -28,27 +28,18 @@ public static SqlSessionFactory sqlSessionFactory;
 	public static int insertCustomer(CustomerVO c) {
 		int re = -1;
 		SqlSession session = sqlSessionFactory.openSession(true);
+		int n = session.selectOne("customer.getNextNo");
+		c.setCust_no(n);
 		re = session.insert("customer.insertCustomer",c);
 		session.close();
 		return re;
 	}
 	
-	//회원번호
-	public static int getNextNo() {
-		int n = -1;
-		SqlSession session = sqlSessionFactory.openSession();
-		n = session.selectOne("customer.getNextNo");
-		session.close();
-		return n;
-	}
-	
 	//회원탈퇴
-	public static int deleteCustomer(HashMap map) {
-		int re = -1;
+	public static void deleteCustomer(HashMap map) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		re = session.delete("customer.deleteCustomer",map);
+		session.delete("customer.deleteCustomer",map);
 		session.close();
-		return re;
 	}
 	
 	public static CustomerVO getLoginInfo(HashMap map) {

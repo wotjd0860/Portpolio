@@ -15,25 +15,6 @@
 		select rownum, p_id, p_no, p_title, p_regdate from (select p_id, p_no, p_title, p_regdate from post where p_no like #{group}||'%') <![CDATA[where rownum <= 3]]>
 	</select>
 
-	<!-- 로그인 -->
-	<select id="getCustInfo" parameterType="customerVO" resultType="customerVO">
-		select cust_no, email, pw from customer where email=#{email} and pw=#{pw}
-	</select>
-	
-	<!-- 회원가입 -->
-	<select id="newCust_no" resultType="Integer">
-		select nvl(max(cust_no),0)+1 from customer
-	</select>
-	
-	<insert id="insertCustomer" parameterType="customerVO">
-		insert into customer values(#{cust_no}, #{email}, #{pw}, #{addr}, #{nickname}, #{interest}, #{name}, #{m_phone}, #{birthday}, #{fname})
-	</insert>
-	
-	<!-- 회원 탈퇴 -->
-	<delete id="optOut">
-		delete customer where email=#{email} and pw=#{pw}
-	</delete>
-	
 	<!-- 게시판 게시글 가져오기 -->
 	<select id="getListPost" resultType="postVO">
 		select * from post where p_no like #{group}||'%'

@@ -17,15 +17,10 @@ public class CustomerDAO {
 	}
 	
 	//회원탈퇴
-	public int deleteCustomer(HashMap map) {
-		return CustomerManager.deleteCustomer(map);
+	public void deleteCustomer(HashMap map) {
+		CustomerManager.deleteCustomer(map);
 	}
-	
-	//회원넘버받아오기
-	public int getNextNo() {
-		return CustomerManager.getNextNo();
-	}
-	
+
 	//로그인
 	public CustomerVO logIn(HashMap map) {
 		return CustomerManager.logInCustomer(map);
@@ -46,6 +41,7 @@ public class CustomerDAO {
 		return CustomerManager.update(c);
 	}
 	
+	// 재성씨가 넣은 부분
 	public CustomerVO getLoginInfo(HashMap map) {
 		// TODO Auto-generated method stub
 		return CustomerManager.getLoginInfo(map);

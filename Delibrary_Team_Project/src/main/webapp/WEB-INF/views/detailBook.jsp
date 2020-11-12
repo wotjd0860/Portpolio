@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <link rel="StyleSheet" type="text/css"
 	href="/resource/TeamCSS_nonAside.css">
 <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
 
 <!-- 용택 css 추가시작  사진 -->
 <style>
@@ -206,14 +208,31 @@ $(function(){
 			
 	});
 	document.getElementById("defaultOpen").click();
-	
+
+	<!-- 홈화면에서 책 누르면 자동으로 검색되는 ajax (재성이 추가)-->
+	let search = function() {
+		$.ajax({
+			method: "GET",
+			url: "https://dapi.kakao.com/v3/search/book?target=title",
+			data: { query:  $("#query").val() },
+			headers: {Authorization: "KakaoAK 0050577fad730d5470e0f11bcdf64cd6"}
+		})
+			.done(function(msg) {
+				$('#b_image').attr("src", msg.documents[0].thumbnail);
+				$('#b_title').text("책 제목 : " + msg.documents[0].title);
+				$('#b_writer').text("저자 : " + msg.documents[0].authors);
+				$('#b_year').text("출간일 : " + (msg.documents[0].datetime).substr(0, 10));
+				$('#b_price').text("가격 : " + msg.documents[0].price);
+				$('#detail').text(msg.documents[0].contents);
+			});
+	}
+	search();
 });
-
-
 </script>
+
 </head>
 <body>
-
+	<input id="query" value="${query}" type="hidden">
 	<header id="main_header">
 		<div id="title">
 			<a href="Home.do">
@@ -269,20 +288,20 @@ $(function(){
 		<section id="main_section">
 			<article class="main_article">
 				<p>
-					<img class="b_image" width=170px height=220px alt="book image"
+					<img id="b_image" class="b_image" width=170px height=220px alt="book image"
 						src="img/${b.b_image }"><br>
 				</p>
 
 				<div class="b_info1">
-					<h3 class="revers">책제목 : ${b.b_title }</h3>
+					<h3 class="revers" id="b_title"></h3>
 					<br>
-					<h3 class="revers">저자 : ${b.b_writer }</h3>
+					<h3 class="revers" id="b_writer"></h3>
 					<br>
-					<h3 class="revers">출간일 : ${b.b_year }</h3>
+					<h3 class="revers" id="b_year"></h3>
 					<br>
 					<h3 class="revers">이용가능한 서점 : ${bs.website }</h3>
 					<br>
-					<h3 class="revers">가격 : ${b.b_price }</h3>
+					<h3 class="revers" id="b_price"></h3>
 					<br>
 				</div>
 			</article>
@@ -297,20 +316,10 @@ $(function(){
 					<div class="tab">
 						<button class="tablinks" onclick="openD(event, 'detail')"
 							id="defaultOpen">책소개</button>
-						<button class="tablinks" onclick="openD(event, 'index')">목차</button>
-						<button class="tablinks" onclick="openD(event, 'writer')">저자소개</button>
 					</div>
 
 					<div id="detail" class="tabcontent">
 						<h3>${b.b_detail }</h3>
-					</div>
-
-					<div id="index" class="tabcontent">
-						<h3>${b.b_index }</h3>
-					</div>
-
-					<div id="writer" class="tabcontent">
-						<h3>${b.b_writer }</h3>
 					</div>
 				</article>
 			</article>

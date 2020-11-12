@@ -131,19 +131,20 @@
 			<h3>Q&A 게시판</h3>
 			<br>
 			
-			<form action="#" method="post" class="search">
+			<form action="QnaList.do" method="get" class="search">
 		       	<p align="right">
 		       	<span>총 ${totalCount} 개 </span> 
+		       	
 			        <select name="option" size="1">
-			           <option value="작성자">작성자</option>
-			           <option value="제목">제목</option>
-			           <option value="내용">내용</option>
+			           <option value="p_title">제목</option>
+			           <option value="p_writer">작성자</option>
 			        </select>
-			        <input type="search" name="search" value="검색어를 입력하세요">
+			        <input type="search" name="search"> <!-- 검색단어input태그 -->
 					<button id="button_search">검색</button>
 				</p>
 		    </form>
 			<table>
+			
 						<tr align="center">
 		                  <th nowrap width="80">번호</th>
 		                  <th nowrap width="200" align="left">제목</th>
@@ -154,7 +155,7 @@
 				
 				<c:forEach var="q" items="${list }" begin="${start }" end="${end }">
 						<tr class="qna_list" align="center">
-						    <td>${q.p_no}</td>
+						    <td>${q.p_no%10000}</td>
 						    <td><a href="QnaDetail.do?p_id=${q.p_id }">${q.p_title }</a></td>
 							<td><fmt:formatDate pattern = "yyyy-MM-dd" value = "${q.p_regdate }" /></td>
 						    <td>${q.p_writer}</td>
@@ -164,12 +165,12 @@
 				 
 			</table>
 				<p align="right">
-				<button id="button" >글쓰기</button>
+				<a href="QnaInsert.do?cust_no=${cust_no}" class="insert">글쓰기</a>
 				</p>
 				<br>
 				<p align="center">
 					<c:forEach var="i" begin="1" end="${totalPage }">
-						<a href="postList.do?pageNUM=${i }">${i }</a>&nbsp;
+						<a href="QnaList.do?pageNUM=${i }">${i }</a>&nbsp;
 					</c:forEach>
 				</p>
 			</article>

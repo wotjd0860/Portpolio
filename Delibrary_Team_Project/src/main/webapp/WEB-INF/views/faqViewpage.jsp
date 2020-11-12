@@ -135,7 +135,7 @@ $(function(){
 					<h2 id="faq_title">FAQ</h2>
 					<hr>
 				</div>
-					<br>
+
 				<form action="#" method="post" class="search">
 		       	
 			        <select name="option" size="1">

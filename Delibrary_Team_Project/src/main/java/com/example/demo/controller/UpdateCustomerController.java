@@ -36,7 +36,24 @@ public class UpdateCustomerController {
 	public ModelAndView submit(HttpServletRequest request, CustomerVO c, MultipartFile uploadFile) {
 		String path = request.getRealPath("img");
 		String Email = request.getParameter("id")+"@"+request.getParameter("email");
+		
+// ==== 현왕 주소 값 받아와서 DB로 넘기게끔 설정 ========================================================================================
+		String addr_ref = request.getParameter("addr_ref");
+		
+		String addr = request.getParameter("addr_1")+","+request.getParameter("addr_2");
+		String addr2 = request.getParameter("addr_num")+","+request.getParameter("addr_ref");
+		
+		// 주소 변경안하고 그냥 변경하기 버튼 눌렀을때, addr_ref가 계속 추가되는 현상 방지하기 위한 if문
+		// addr에 addr_ref가 포함되있으면 다시 리셋 시킨다는 if문
+		if(addr.contains(addr_ref)) {
+			addr = addr.substring(0, addr.indexOf(" (")) +","+request.getParameter("addr_2");
+	     }
+		
+		c.setAddr2(addr2);
+		c.setAddr(addr);
 		c.setEmail(Email);
+// ===========================================================================================================================
+		
 		String[] values = request.getParameterValues("genre");
 		String interest = "";
 		for (int i = 0; i < values.length; i++) {
@@ -48,8 +65,13 @@ public class UpdateCustomerController {
 		}
 		c.setInterest(interest);
 		
+// ============= 현왕 oldFname 추가======
+		String oldFname = c.getFname();
+// ===================================
+		
 		String fname = uploadFile.getOriginalFilename();
 		if(fname != null && !fname.equals("")) {
+			c.setFname(fname);
 			try {
 				byte[] data = uploadFile.getBytes();
 				FileOutputStream fos = new FileOutputStream(path + "/" + fname);
@@ -59,18 +81,43 @@ public class UpdateCustomerController {
 				System.out.println("예외발생 updateCustomer : " + e.getMessage());
 			}
 			c.setFname(fname);
-		}
+        } else{
+// =========== oldFname set으로 추가====
+           c.setFname(oldFname);
+// ===================================
+        }
+
 		ModelAndView mav = new ModelAndView("redirect:/MyPage_Info.do?cust_no="+c.getCust_no());
 		int re = dao.update(c);
 		if(re <= 0) {
-			mav.addObject("msg", "수정 오류 다시 확인해주세요.");
+			mav.addObject("msg", "오류가 발생하였습니다.");
 			mav.setViewName("error");
 		}else {
 			if(fname != null && !fname.equals("") && !c.getFname().equals("")) {
-				File file = new File(path + "/" + c.getFname());
+// ============================================ oldFname으로 변경 ==
+				File file = new File(path + "/" + oldFname);
+// ==============================================================
 				file.delete();
 			}
 		}
 		return mav;
 	}
+	
+//	// 회원가입 컨트롤러
+//	@RequestMapping(value = "/user/reg", method = RequestMethod.POST)
+//	public String userRegPass(UserVO userVO, Model model, HttpServletRequest request) {
+//
+//		// 암호 확인
+//		System.out.println("첫번째:" + userVO.getUser_pw());
+//		// 비밀번호 암호화 (sha256
+//		String encryPassword = UserSha256.encrypt(userVO.getUser_pw());
+//		userVO.setUser_pw(encryPassword);
+//		System.out.println("두번째:" + userVO.getUser_pw());
+//		// 회원가입 메서드
+//		reg_service.userReg_service(userVO);
+//		// 인증 메일 보내기 메서드
+//		mailsender.mailSendWithUserKey(userVO.getUser_email(), userVO.getUser_id(), request);
+//
+//		return "redirect:/";
+//	}
 }

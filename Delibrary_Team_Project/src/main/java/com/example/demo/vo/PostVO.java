@@ -2,6 +2,8 @@ package com.example.demo.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class PostVO {
 	private int p_id;
 	private int p_no;
@@ -12,6 +14,8 @@ public class PostVO {
 	private Date p_regdate;
 	private int cust_no;
 	private String fname;
+	private int fsize;
+	private MultipartFile uploadFile;
 	
 	public PostVO() {
 		super();
@@ -25,7 +29,7 @@ public class PostVO {
 	}
 	
 	public PostVO(int p_id, int p_no, String p_title, String p_writer, String p_content, int p_hit, Date p_regdate,
-			int cust_no, String fname) {
+			int cust_no, String fname, int fsize, MultipartFile uploadFile) {
 		super();
 		this.p_id = p_id;
 		this.p_no = p_no;
@@ -36,15 +40,19 @@ public class PostVO {
 		this.p_regdate = p_regdate;
 		this.cust_no = cust_no;
 		this.fname = fname;
+		this.fsize = fsize;
+		this.uploadFile = uploadFile;
+	}
+	public void setIdAndNo(int p_id, int p_no) {
+		this.p_id=p_id;
+		this.p_no=p_no;
 	}
 	public String getFname() {
 		return fname;
 	}
-
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-	
 	public int getP_id() {
 		return p_id;
 	}
@@ -93,5 +101,16 @@ public class PostVO {
 	public void setCust_no(int cust_no) {
 		this.cust_no = cust_no;
 	}
-	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public int getFsize() {
+		return fsize;
+	}
+	public void setFsize(int fsize) {
+		this.fsize = fsize;
+	}
 }

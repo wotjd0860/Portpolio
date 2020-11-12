@@ -9,7 +9,7 @@
 	</select>
 	<!-- 전체 게시글 목록 -->
 	<select id="selectAll" resultType="postVO">
-		select * from post where p_no like ''||#{group}||'%'
+		select * from post where p_no like ''||#{group}||'%' order by p_no desc
 	</select>
 	
 	<!-- 게시글 상세보기 -->
@@ -22,24 +22,28 @@
   		update post set p_hit=p_hit+1 where p_id = #{p_id}
   	</update>
 	
+	<!-- 다음 글 ID -->
+	<select id="nextId" resultType="java.lang.Integer">
+	 	 select nvl(max(p_id),0)+1 from post
+	 </select>
 	<!-- 다음 글번호 -->
 	<select id="nextNo" resultType="java.lang.Integer">
-	 	 select nvl(max(p_id),0)+1, ${group}*1000+mod(nvl(max(p_no),0),10000)+1 from post where p_no like ''||#{group}||'%'
+	 	 select ${group}*1000+mod(nvl(max(p_no),0),10000)+1 from post where p_no like ''||#{group}||'%'
 	 </select>
 
 	<!-- 새글 작성 -->
 	<insert id="insert">
-		insert into post values(#{p_id},#{p_no},#{p_title},#{p_writer},#{p_content},#{p_hit},sysdate,#{cust_no})
+		insert into post values(#{p_id},#{p_no},#{p_title},#{p_writer},#{p_content},#{p_hit},sysdate,#{fname},#{cust_no})
 	</insert>	
 
 	<!-- 게시글 수정 -->
 	<update id="update">
-		update post set p_title=#{p_title},p_content=#{p_content} where p_id=#{p_id}
+		update post set p_title=#{p_title},p_content=#{p_content},fname=#{fname} where p_id=#{p_id} and cust_no=#{cust_no}
 	</update>
 	
 	<!-- 게시글 삭제 -->
 	<delete id="delete">
-		delete post where p_id=#{p_id} and cust_no=#{cust_no}
+		delete from post where p_id=#{p_id} and cust_no=#{cust_no}
 	</delete>
 
 </mapper>

@@ -107,7 +107,11 @@
 		</section>
 	</div>
 	<footer id="main_footer">
-		<h3>footer입니다.</h3>
+		<p>&copy; 탈주금지조. All rights reserved. | Design by members of 탈주금지조</a>.</p>
+		<img alt="" src="img/twitter_icon.png">
+		<img alt="" src="img/facebook_icon.png">
+		<img alt="" src="img/insta_icon.png">
+		<img alt="" src="img/youtube_icon.png">
 	</footer>
 </body>
 </html>

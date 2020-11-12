@@ -16,26 +16,34 @@ public class QnaManager {
 	public static SqlSessionFactory sqlSessionFactory;
 	
 	static {
+		String resource = "com/example/demo/db/sqlMapConfig.xml";
 		try {
-			String resource = "com/example/demo/db/sqlMapConfig.xml";
-			InputStream inputStream = Resources.getResourceAsStream(resource);
-			sqlSessionFactory =
-			  new SqlSessionFactoryBuilder().build(inputStream);
-		} catch (Exception e) {
-			System.out.println("占쎌굙占쎌뇚獄쏆뮇源�:"+e.getMessage());
+		InputStream inputStream=Resources.getResourceAsStream(resource);		
+		sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+		}catch (Exception e) {
+			System.out.print("예외발생:"+e.getMessage());
 		}
 	}
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
+	//새글 번호 불러오기
 	public static int getNextNo() {
 	      int re =  -1;
 	      SqlSession session=sqlSessionFactory.openSession();
 	      re=session.selectOne("qna.nextNo");
 	      session.close();
 	      return re;
-	   }
+	}
 
+	//새글 Id 불러오기
+	public static int getNextId() {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession();
+		re=session.selectOne("qna.nextId");
+		session.close();
+		return re;
+	}
 	
 	public static List<PostVO> findAll(HashMap map){
 		List<PostVO> list = null;
@@ -44,7 +52,6 @@ public class QnaManager {
 		session.close();
 		return list;
 	}
-	
 	
 	public static int getTotalCount(HashMap map) {
 		int re =  -1;
@@ -55,11 +62,11 @@ public class QnaManager {
 	}
 
 
-	public static PostVO findById(int p_id) {
+	public static PostVO findById(HashMap map) {
 		// TODO Auto-generated method stub
 		PostVO p = null;
 		SqlSession session = sqlSessionFactory.openSession();
-		p = session.selectOne("qna.selectById",p_id);
+		p = session.selectOne("qna.selectById",map);
 		session.close();
 		return p;
 	}
@@ -68,10 +75,35 @@ public class QnaManager {
 	public static int updateHit(int p_id) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession(true);
-		re = session.update("post.updateHit", p_id);
+		re = session.update("qna.updateHit", p_id);
 		session.close();
 		return re;
 	}
 	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public static int insert(HashMap map) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession(true);
+		PostVO p = new PostVO();
+		re = session.insert("qna.insert", map);
+		session.close();
+		return re;
+	}
+	public static int update(PostVO p) {
+		int re = -1;
+		SqlSession session = sqlSessionFactory.openSession(true);
+		re = session.update("qna.update", p);
+		session.close();
+		return re;
+	}
+	
+	public static int delete(HashMap map) {
+		int re = -1;
+		SqlSession session = sqlSessionFactory.openSession(true);
+		re = session.delete("qna.delete", map);
+		session.close();
+		return re;
+	}
 }
 

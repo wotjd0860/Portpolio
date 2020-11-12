@@ -1,7 +1,6 @@
 package com.example.demo.db;
 
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +24,11 @@ public class DBManager {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (Exception e) {
-			System.out.println("static ì˜ˆì™¸ë°œìƒ: "+e.getMessage());
+			System.out.println("static ¿¹¿Ü¹ß»ı: "+e.getMessage());
 		}
 	}
 	
-	// í™ˆí™”ë©´ ì‚¬ì„œì¶”ì²œë„ì„œ ë½‘ì•„ì˜¤ëŠ” ë©”ì†Œë“œ
+	// È¨È­¸é »ç¼­ÃßÃµµµ¼­ »Ì¾Æ¿À´Â ¸Ş¼Òµå
 	public static List<BookVO> getStaffRecommend() {
 		List<BookVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -38,7 +37,7 @@ public class DBManager {
 		return list;
 	}
 	
-	// í™ˆí™”ë©´ ì‹ ì‘ë„ì„œ ë½‘ì•„ì˜¤ëŠ” ë©”ì†Œë“œ
+	// È¨È­¸é ½ÅÀÛµµ¼­ »Ì¾Æ¿À´Â ¸Ş¼Òµå
 	public static List<BookVO> getNewRecommend() {
 		List<BookVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -47,7 +46,7 @@ public class DBManager {
 		return list;
 	}
 	
-	// í™ˆí™”ë©´ ê²Œì‹œê¸€ ë½‘ì•„ì˜¤ëŠ” ë©”ì†Œë“œ
+	// È¨È­¸é °Ô½Ã±Û »Ì¾Æ¿À´Â ¸Ş¼Òµå
 	public static List<PostVO> getHomePost(int group) {
 		List<PostVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -56,7 +55,7 @@ public class DBManager {
 		return list;
 	}
 	
-	// ë¡œê·¸ì¸ ì‹œì— íšŒì›ì •ë³´ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	// ·Î±×ÀÎ ½Ã¿¡ È¸¿øÁ¤º¸°¡ ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼Òµå
 	public static CustomerVO getCustInfo(CustomerVO custVO) {
 		CustomerVO vo = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -64,24 +63,7 @@ public class DBManager {
 		return vo;
 	}
 	
-	// íšŒì›ê°€ì…
-	public static void insertCustomer(CustomerVO custVO) {
-		SqlSession session = sqlSessionFactory.openSession(true);
-		
-		// ìƒˆ íšŒì›ë²ˆí˜¸ ë°›ì•„ì˜¤ëŠ” ë¡œì§
-		int cust_no = session.selectOne("main.newCust_no");
-		custVO.setCust_no(cust_no);
-		
-		session.insert("main.insertCustomer", custVO);
-	}
-	
-	// íšŒì› íƒˆí‡´
-	public static void OptOut(Map map) {
-		SqlSession session = sqlSessionFactory.openSession(true);
-		session.delete("main.optOut", map);
-	}
-	
-	// ê²Œì‹œíŒìœ¼ë¡œ ì´ë™
+	// °Ô½ÃÆÇÀ¸·Î ÀÌµ¿
 	public static List<PostVO> getpostList(Map map) {
 		List<PostVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -89,7 +71,7 @@ public class DBManager {
 		return list;
 	}
 	
-	// í˜ì´ì§• ì²˜ë¦¬ë¥¼ ìœ„í•´ ëª¨ë“  ê°œì‹œë¬¼ ê°œìˆ˜ë¥¼ ë°›ì•„ì˜¤ëŠ” ë©”ì†Œë“œ
+	// ÆäÀÌÂ¡ Ã³¸®¸¦ À§ÇØ ¸ğµç °³½Ã¹° °³¼ö¸¦ ¹Ş¾Æ¿À´Â ¸Ş¼Òµå
 	public static int getTotalCount(Map map) {
 		int re = -1;
 		SqlSession session = sqlSessionFactory.openSession();

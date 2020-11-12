@@ -190,18 +190,21 @@
 	        	</div>
 		        <div style="border: 1px solid #eee; padding: 10px; margin: 10px 10px 10px 0px;">
 	        	<!--  삭제수정링크 -->
-		        <div id="move_list2">
-						<a>삭제</a>	        	
-						<a>수정</a>
+		        <div id="move_list2">	        	
+						<a href="QnaDelete.do?p_id=${a.p_id }&&cust_no=${cust_no}">삭제</a>
+						<a href="QnaUpdate.do?p_id=${a.p_id }&&cust_no=${cust_no}">수정</a>
 		        </div>
 					<div id="p_title">
-						<p>${p.p_title }</p>
+						<p>${a.p_title }</p>
 						<br>
 						<p style="font-size: 13px; color: #aaa;">게시일 <fmt:formatDate pattern = "yyyy-MM-dd HH:mm" value = "${p.p_regdate }" /> | 작성자 ${p.p_writer} | 조회 ${p.p_hit }</p>
 					</div>
 					<div id="p_content">
-						${p.p_content }
+						${a.p_content }
 					</div>
+					<div>
+	               	<a href="img/${a.fname }"><img alt="${a.fname }" src="img/${a.fname }" height="150"></a>
+	                </div>
 					<div>
 						<div id="re_Submit">
 							<span>댓글 </span>

@@ -231,11 +231,6 @@ img {
 	float: right;
 }
 
-.recommend {
-	display: inline;
-	float: left;
-}
-
 .recommend img{
 	width: 90px; height: 130px;
 }
@@ -248,7 +243,7 @@ img {
 }
 
 #wrapper {
-	display: hidden;
+	display: flex;
 	justify-content: center;
 	position: relative;
 	top: 25%;
@@ -316,7 +311,7 @@ img {
 }
 
 /* scroll */
-/* @keyframes scroll {
+@keyframes scroll {
  0% {
    -webkit-transform: translateX(0);
            transform: translateX(0);
@@ -364,4 +359,4 @@ img {
   height: 300px;
   width: 200px;
   line-height: 300px;
-} */
+}

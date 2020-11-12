@@ -80,7 +80,7 @@
 					$("#a").dialog("close");
 				},
 				되돌리기:function(){
-					$("#event_content").val("");
+					$("#event_content").val('${p.p_content}');
 				},
 				취소:function(){
 					$("#event_content").val("");
@@ -215,8 +215,11 @@
 		</section>
 	</div>
 	<footer id="main_footer">
-		<h3>HTML5 + CSS3 Basic</h3>
-		<address>Website Layout Basic</address>
+		<p>&copy; 탈주금지조. All rights reserved. | Design by members of 탈주금지조</a>.</p>
+		<img alt="" src="img/twitter_icon.png">
+		<img alt="" src="img/facebook_icon.png">
+		<img alt="" src="img/insta_icon.png">
+		<img alt="" src="img/youtube_icon.png">
 	</footer>
 	
 </body>

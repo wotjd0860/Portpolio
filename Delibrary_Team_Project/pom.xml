@@ -113,6 +113,15 @@
           <version>1.6.3</version>
       </dependency>
       
+      <!--   SHA256 -->
+	  <dependency>
+		  <groupId>org.webjars.npm</groupId>
+		  <artifactId>js-sha256</artifactId>
+		  <version>0.7.1</version>
+	  </dependency>
+
+	
+      
    </dependencies>
 
 	<build>

@@ -48,19 +48,16 @@ public class MypageController {
 		this.re_dao = re_dao;
 	}
 	
-	// 마이페이지 폴더 보기
+	// 留덉씠�럹�씠吏� �뤃�뜑 蹂닿린
 	@RequestMapping("/MyPage_Folder.do")
-	public void mypageFolder(int cust_no, HttpServletRequest request, HttpSession session) {
-		session = request.getSession();
-		
-		cust_no = (int)session.getAttribute("cust_no");
-		
+	public void mypageFolder(int cust_no, HttpServletRequest request) {
+		cust_no = Integer.parseInt(request.getParameter("cust_no"));
 		request.setAttribute("c", dao2.findByCust_No(cust_no));
 		request.setAttribute("flist", dao.getUserFolder(cust_no));
 		request.setAttribute("cust_no", cust_no);
 	}
 	
-	// 마이페이지 폴더에서 클릭하면 파일 나열하기
+	// 留덉씠�럹�씠吏� �뤃�뜑�뿉�꽌 �겢由��븯硫� �뙆�씪 �굹�뿴�븯湲�
 	@RequestMapping("/MyPage_File.do")
 	public void postList(HttpServletRequest request,  HttpSession session, Model model, String group, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
 		HashMap map=new HashMap();
@@ -88,7 +85,7 @@ public class MypageController {
 		request.setAttribute("c", dao2.findByCust_No(cust_no));
 	}
 	
-	// 마이페이지 파일 상세보기
+	// 留덉씠�럹�씠吏� �뙆�씪 �긽�꽭蹂닿린
 	@RequestMapping("/MyPage_DetailFile.do")
 	public void detail(int p_id, String group, Model model, HttpServletRequest request,  HttpSession session) {
 		HashMap map = new HashMap();

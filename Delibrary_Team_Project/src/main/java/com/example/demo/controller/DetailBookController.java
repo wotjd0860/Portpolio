@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +25,10 @@ public class DetailBookController {
 		this.dao2 = dao2;
 	}
 	@RequestMapping("/detailBook.do")
-	public void list(int b_no, Model model) {
+	public void list(int b_no, Model model, HttpServletRequest request) {
 		model.addAttribute("b", dao.findByNo(b_no));
 		model.addAttribute("bs", dao2.findByNo());
+		model.addAttribute("query", request.getParameter("query"));
+		System.out.println(request.getParameter("query"));
 	}
 }

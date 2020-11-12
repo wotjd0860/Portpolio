@@ -62,6 +62,14 @@ public class PostManager {
 		return re;
 	}
 	
+	//새글 Id 불러오기
+	public static int getNextId(int group) {
+		int re =  -1;
+		SqlSession session=sqlSessionFactory.openSession();
+		re=session.selectOne("post.nextId", group);
+		session.close();
+		return re;
+	}
 	//새글 번호 불러오기
 	public static int getNextNo(int group) {
 		int re =  -1;
@@ -70,12 +78,19 @@ public class PostManager {
 		session.close();
 		return re;
 	}
-	
 	//새글 작성
-	public static int insert(PostVO p) {
+	public static int insert(HashMap map) {
 		int re =  -1;
 		SqlSession session=sqlSessionFactory.openSession(true);
-		re=session.insert("post.insert", p);
+		PostVO p=new PostVO();
+//		//새글 Id
+//		int p_id=session.selectOne("post.nextId");
+//		p.setP_id(p_id);
+//		//새글 No
+//		int p_no=session.selectOne("post.nextNo");
+//		p.setP_no(p_no);
+		
+		re=session.insert("post.insert", map);
 		session.close();
 		return re;
 	}

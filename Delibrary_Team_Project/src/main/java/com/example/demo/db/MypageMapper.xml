@@ -4,7 +4,7 @@
 
 	<!-- 마이페이지 폴더 목록 -->
 	<select id="selectAllFolder" resultType="folderVO">
-		select f.fol_no fol_no, f.fol_name fol_name from folder f, my_library ml, customer c where c.cust_no=ml.cust_no and ml.cust_no=f.cust_no and ml.ml_no=f.ml_no and c.cust_no=#{cust_no}
+		select f.fol_no fol_no, f.fol_name fol_name from folder f, my_library ml, customer c where c.cust_no=ml.cust_no and ml.ml_no=f.ml_no and c.cust_no=#{cust_no}
 	</select>
 </mapper>
 
