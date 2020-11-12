@@ -19,9 +19,6 @@
 <link rel="stylesheet" href="css/style.css">
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
 
 <!-- 이 아래로는 따로 빼야하는 CSS, JavaScript -->
@@ -61,6 +58,20 @@
 		height: 340px;
 	}
 </style>
+
+<!-- 광고자리 -->
+<script>
+	$(function() {
+		// Get the current year for the copyright
+		$('#year').text(new Date().getFullYear());
+
+		$('.slider').slick({
+			infinite : true,
+			slideToShow : 1,
+			slideToScroll : 1
+		});
+	});
+</script>
 
 <script type="text/javascript">
 	$('.carousel.carousel-multi .carousel-item').each(function () {
@@ -616,11 +627,5 @@ $(function() {
 			</div>
 		</div>
 	</footer>
-
-
-
-
-
-	
 </body>
 </html>

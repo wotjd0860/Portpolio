@@ -198,7 +198,7 @@
 <body>
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
 		<div class="container">
-			<a href="home.html" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="24"></a>
+			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="24"></a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
