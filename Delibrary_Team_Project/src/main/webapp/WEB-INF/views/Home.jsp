@@ -112,24 +112,6 @@
 }
 </style>
 
-<script type="text/javascript">
-	window.onload = function() {
-		let tabs = document.getElementsByClassName('tab');
-		let contents = document.getElementsByClassName('content');
-
-		contents[0].style.display = 'block';
-		
-		for(let i = 0; i < tabs.length; i++) {
-			tabs[i].addEventListener('click', function(e) {
-				for(let i = 0; i < tabs.length; i++) {
-					contents[i].style.display = 'none';
-				}
-				contents[i].style.display = 'block';
-			}, true);
-		};
-	}
-</script>
-
 <!-- 검색 -->
 <script type="text/javascript">
 	$(function() {
@@ -148,9 +130,30 @@ $(function() {
 });
 </script>
 
+<!-- 각 도서관 행사정보 링크 -->
+<style type="text/css">
+	.event-link {
+		text-align: center;
+		text-decoration: underline;
+		font-size: x-large;
+		font-weight: bolder;
+		margin: 0;
+		margin-bottom: 20px;
+		padding: 0;
+	}
+	
+	.event-title {
+		background-color: gray;
+		text-align: center;
+		font-size: xx-large;
+		height: 80px;
+		color: white;
+		font-weight: bolder;
+	}
+</style>
 </head>
 <body>
-	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light">
+	<nav class="navbar sticky-top navbar-expand-sm navbar-light bg-light p-0">
 		<div class="container container-fluid">
 			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark2.jpg" height="40"></a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -169,7 +172,7 @@ $(function() {
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="books.html" class="nav-link dropdown-toggle" data-toggle="dropdown"><b>도서정보</b></a>
+						<a href="SearchResult.do" class="nav-link dropdown-toggle" data-toggle="dropdown"><b>도서정보</b></a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
 								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
 								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
@@ -178,10 +181,11 @@ $(function() {
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="community.html" class="nav-link dropdown-toggle" data-toggle="dropdown"><b>커뮤니티</b></a>
+						<a href="postList.do?group=20" class="nav-link dropdown-toggle" data-toggle="dropdown"><b>커뮤니티</b></a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
 								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
 								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
+								<li><a class="dropdown-item" href="#">자유게시판</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
@@ -195,28 +199,25 @@ $(function() {
 					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
+					<c:if test="${cust_no == null}">
 						<li class="nav-item" v-bind:title="login">
 							<a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a>
 						</li>
 						<li class="nav-item" v-bind:title="signup">
 							<a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a>
 						</li>
-						<li class="nav-item" v-bind:title="bookcart">
-							<a href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
+					</c:if>
+					<c:if test="${cust_no != null}">
+						<li class="nav-item" v-bind:title="logout">
+							<a href="logout.do" class="nav-link"><i class="fas fa-sign-out-alt"></i></a>
 						</li>
-						<li class="nav-item" v-bind:title="sitemap">
-							<a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a>
-						</li>
-					<script>
-						var app2 = new Vue({
-							el: '#app',	
-							data: {
-								login: '로그인',
-								signup: '회원가입',
-								bookcart: '북카트',
-								sitemap: '사이트맵',
-							}});
-					</script>
+					</c:if>
+					<li class="nav-item" v-bind:title="bookcart">
+						<a href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
+					</li>
+					<li class="nav-item" v-bind:title="sitemap">
+						<a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -243,14 +244,31 @@ $(function() {
 	<!-- PHOTO GALLERY -->
 	<section id="gallery" class="py-5">
 		<div class="container">
-		  <h4 class="text-center">도서관 소식</h4>
+		  <h4 class="text-center event-title">서울시 도서관 소식</h4>
 		  <div class="row mb-4">
-				<div class="col-md-4">
-					달력
+				<div class="event-link col-md-3">
+					<a href="https://www.nl.go.kr/NL/contents/N50601000000.do?schBdcode=_normal020204&page=1">국립중앙도서관</a>
 				</div>
-
-				<div class="col-md-8">
-					이벤트 소식을 넣어보아요
+				<div class="event-link col-md-3">
+					<a href="https://www.nlcy.go.kr/menu/10110/together/40016/togetherList.do">국립어린이청소년도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://lib.gangseo.seoul.kr/education/list/1">강서 통합도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://library.gangnam.go.kr/intro/menu/10045/program/30013/lectureList.do">강남 통합도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://www.gblib.or.kr/gangbuk/commu/event/schedule.do">강북 문화정보도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://www.gdlibrary.or.kr/web/menu/10093/program/30011/lectureList.do">강동구립도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://lib.sen.go.kr/lib/module/teach/index.do?menu_idx=11">서울교육청 통합도서관</a>
+				</div>
+				<div class="event-link col-md-3">
+					<a href="https://lib.seoul.go.kr/libsch/list">서울도서관</a>
 				</div>
 		  </div>
 		</div>

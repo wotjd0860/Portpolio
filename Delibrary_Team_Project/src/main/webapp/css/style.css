@@ -1,14 +1,43 @@
 /*
-�뿰 f8f9fa
-吏� 343a40
+연 f8f9fa
+진 343a40
 */
-body {
-  overflow-x: hidden;
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    margin-top: 0;
+  }
+  .navbar .dropdown-menu.fade-down {
+    top: 80%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+  .navbar .dropdown-menu.fade-up {
+    top: 180%;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    transition: 0.3s;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+    transform: rotateX(0deg);
+  }
 }
 
-h4 {
-	position: relative;
-	padding-top: 20px;
+.sidebar {
+  border: 1px solid gainsboro;
+}
+.side-head {
+  background: url('../img/side-head.jpg');
+  padding: 40px;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .icons {
@@ -34,12 +63,8 @@ h4 {
   padding-right: 1rem !important;
 }
 
-.navbar .nav-item.active {
-  border-left: #444 3px solid;
-}
-
 .carousel-item {
-  height: 450px;
+  height: 600px;
 }
 
 .carousel-image-1 {
@@ -95,9 +120,8 @@ h4 {
 }
 
 #page-header {
-  height: 100px;
-  /*background: url('../img/image1.jpg');*/
-  background-color: darkseagreen;
+  height: 180px;
+  background: url('../img/image1.jpg');
   background-position: 0 -360px;
   background-attachment: fixed;
   color: #fff;

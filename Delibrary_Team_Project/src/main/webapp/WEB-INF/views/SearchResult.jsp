@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
   <link rel="stylesheet" href="css/style.css">
-<title>Insert title here</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <title>도서정보 - 딜리브러리</title>
 <!-- kakao 검색 API -->
+
 <script type="text/javascript">
 	$(function() {
 		let booklist;
@@ -45,14 +47,10 @@
 						$(a).attr('data-image-full', msg.documents[i].thumbnail);
 						a.css("width", "120px");
 						a.css("height","174px");
-						//$(a).attr('href', );
 						var img = $('<img>').attr('src', msg.documents[i].thumbnail);
-						//img.css("width", "120px");
-						//img.css("height","174px");
 	
 						var a2 = $('<a></a>');
 						$(a2).addClass('card-description');
-						//$(a2).attr('href', );
 						$(a2).attr('target', '_blank');
 						
 						var h4 = $('<h4></h4>').text(msg.documents[i].title);
@@ -98,6 +96,13 @@
 
 		// footer
 		$('#year').text(new Date().getFullYear());
+		
+		$('#search').click(function() {
+			$("#query").val($("#bookName").val());
+			$('.searchResult-body').children().remove();
+			$('.paging').children().remove();
+			search();
+		})
 	});
 </script>
 
@@ -129,8 +134,9 @@
 		display: block;
 		padding: 0;
 		font-size: 0;
-		/* text-align: center; */
+		text-align: center;
 		list-style: none;
+		width: 825px;
 	}
 	
 	.card-body {
@@ -193,43 +199,96 @@
 	.paging-num {
 		margin: 0 10px;
 	}
+	
+	.input-group {
+		height: 26px;
+		padding: 25px 5px 25px 5px;
+		border: 1px; 
+		float: left;
+	}
+	
+	.searchResult-body {
+		float: left;
+	}
 </style>
 </head>
 <body>
-	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+	<input type="hidden" value="${query}" id="query">
+	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark p-0">
 		<div class="container">
-			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="24"></a>
+			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-4">
-					<li class="nav-item">
-						<a href="about.html" class="nav-link">도서관소개</a>
+					<li class="nav-item dropdown">
+						<a href="about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="about.html"> 대출/반납/연장</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=10"> 공지사항 </a></li>
+								<li><a class="dropdown-item" href="faqViewpage.do"> 자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="QnaList.do"> 묻고답하기 </a></li>
+								<li><a class="dropdown-item" href="addrViewpageAPI.do"> 오시는길 </a></li>
+							</ul>
 					</li>
-					<li class="nav-item">
-						<a href="books.html" class="nav-link">도서정보</a>
+					<li class="nav-item dropdown">
+						<a href="books.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
+								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
+								<li><a class="dropdown-item" href="#">신착도서</a></li>
+								<li><a class="dropdown-item" href="#">인기도서</a></li>
+							</ul>
 					</li>
-					<li class="nav-item active">
-						<a href="community.html" class="nav-link">커뮤니티</a>
+					<li class="nav-item dropdown">
+						<a href="community.html" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
+								<li><a class="dropdown-item" href="#">자유게시판</a></li>
+							</ul>
 					</li>
-					<li class="nav-item">
-						<a href="mypage.html" class="nav-link">나의도서</a>
+					<li class="nav-item dropdown">
+						<a href="mypage.html" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="mypage.html"> 나의도서정보</a></li>
+								<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
+								<li><a class="dropdown-item" href="#">내서재</a></li>
+								<li><a class="dropdown-item" href="MyPage_Info.do?cust_no=${cust_no}">개인정보수정</a></li>
+							</ul>
 					</li>
 				</ul>
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a href="sitemap.html" class="nav-link"><img class="icons" alt="로그인" src="img/login_bg_dark.png" height="50"></a>
+				<ul id="app" class="navbar-nav ml-auto">
+					<c:if test="${cust_no == null}">
+						<li class="nav-item" v-bind:title="login">
+							<a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a>
+						</li>
+						<li class="nav-item" v-bind:title="signup">
+							<a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a>
+						</li>
+					</c:if>
+					<c:if test="${cust_no != null}">
+						<li class="nav-item" v-bind:title="logout">
+							<a href="logout.do" class="nav-link"><i class="fas fa-sign-out-alt"></i></a>
+						</li>
+					</c:if>
+					<li class="nav-item" v-bind:title="bookcart">
+						<a href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
 					</li>
-					<li class="nav-item">
-						<a href="sitemap.html" class="nav-link"><img class="icons" alt="회원가입" src="img/add_user_bg_dark.png" height="50"></a>
+					<li class="nav-item" v-bind:title="sitemap">
+						<a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a>
 					</li>
-					<li class="nav-item">
-						<a href="sitemap.html" class="nav-link"><img class="icons" alt="북카트" src="img/book_bg_dark.png" height="50"></a>
-					</li>
-					<li class="nav-item">
-						<a href="sitemap.html" class="nav-link"><img class="icons" alt="사이트맵" src="img/map_bg_dark.png" height="50"></a>
-					</li>
+					<!-- <script>
+						var app = new Vue({
+							el: '#app',	
+							data: {
+								login: '로그인',
+								signup: '회원가입',
+								bookcart: '북카트',
+								sitemap: '사이트맵',
+							}});
+					</script> -->
 				</ul>
 			</div>
 		</div>
@@ -248,18 +307,41 @@
 	
     <!-- MAIN SECTION -->
 	<section id="contact" class="py-3">
-			<div class="searchResult-options">
-			  <h4>Options</h4>
-			  <br>
-			  	리스트 출력 옵션들
-			  	<input id="query" value="${query}" type="hidden">
+		<div class="container">
+		  <div class="row">
+			<div class="col-md-3">
+			  <div class="sidebar">
+					<div class="side-head">
+						<h4 class="text-light">도서정보</h4>
+					</div>
+					<ul class="list-group list-group-flush mb-5">
+						<a href="#"><li class="list-group-item active">도서검색</li></a>
+						<a href="#"><li class="list-group-item">사서추천도서</li></a>
+						<a href="#"><li class="list-group-item">신착도서</li></a>						
+						<a href="#"><li class="list-group-item">인기도서</li></a>
+					</ul>
+			  </div>
 			</div>
-			<div class="searchResult-body">
-				
+			<div class="col-md-9">
+				<div class="input-group">
+					<input class="form-control searchbar" id="bookName" type="text"
+						placeholder="책 제목 검색">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary btn-r" type="button"
+							id="search">검색</button>
+					</div>
+				</div>
+				<br><br><br>
+				<!-- CARD COLUMNS -->
+				<div class="searchResult-body">
+					
+				</div>
+				<div class="paging">
+					
+				</div>
 			</div>
-			<div class="paging">
-				
-			</div>
+		  </div>
+		</div>
 	</section>
 	
 	<div style="clear: both"></div>
