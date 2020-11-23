@@ -19,7 +19,8 @@
   <title>도서관소개 - 딜리브러리</title>
 </head>
 
-<body>
+<body class="d-flex flex-column">
+  <div id="page-content">
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
@@ -29,100 +30,99 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-4">
 					<li class="nav-item dropdown">
-						<a href="about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
+						<a href="about.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="about.html"> 대출/반납/연장</a></li>
-								<li><a class="dropdown-item" href="#"> 공지사항 </a></li>
-								<li><a class="dropdown-item" href="#"> 자주묻는질문</a></li>
-								<li><a class="dropdown-item" href="#"> 묻고답하기 </a></li>
-								<li><a class="dropdown-item" href="#"> 오시는길 </a></li>
+								<li><a class="dropdown-item" href="about.do"> 대출/반납/연장</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=10"> 공지사항 </a></li>
+								<li><a class="dropdown-item" href="faqViewpage.do"> 자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="QnaList.do"> 묻고답하기 </a></li>
+								<li><a class="dropdown-item" href="addrViewpageAPI.do"> 오시는길 </a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="books.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
+						<a href="SearchResult.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="books.html">도서검색</a></li>
+								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
 								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
 								<li><a class="dropdown-item" href="#">신착도서</a></li>
 								<li><a class="dropdown-item" href="#">인기도서</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="community.html" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
+						<a href="postList.do?group=20" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="community.html">창작물게시판</a></li>
-								<li><a class="dropdown-item" href="#">중고장터</a></li>
-								<li><a class="dropdown-item" href="#">자유게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
+								<li><a class="dropdown-item" href="Postlist.do?group=60">자유게시판</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="mypage.html" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
+						<a href="mypage_main.do?cust_no=${cust_no }" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="mypage.html"> 나의도서정보</a></li>
+								<li><a class="dropdown-item" href="mypage_main.do?cust_no=${cust_no }"> 나의도서정보</a></li>
 								<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
-								<li><a class="dropdown-item" href="myfolder.html">내서재</a></li>
-								<li><a class="dropdown-item" href="#">개인정보수정</a></li>
+								<li><a class="dropdown-item" href="MyPage_Folder.do?cust_no=${cust_no }&group=50">내서재</a></li>
+								<li><a class="dropdown-item" href="MyPage_Info.do?cust_no=${cust_no }">개인정보수정</a></li>
 							</ul>
 					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
-					<li class="nav-item" v-bind:title="login">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-sign-in-alt"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="signup">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-user-plus"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="bookcart">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="sitemap">
-						<a href="sitemap.html" class="nav-link"><i class="far fa-map"></i></a>
-					</li>
-					<script>
-						var app = new Vue({
-							el: '#app',	
-							data: {
-								login: '로그인',
-								signup: '회원가입',
-								bookcart: '북카트',
-								sitemap: '사이트맵',
-							}});
-					</script>
-				</ul>
+	               <c:if test="${empty cust_no }">
+	                  <li class="nav-item" v-bind:title="login">
+	                     <a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a><p class="sr-only">로그인</p>
+	                  </li>
+	                  <li class="nav-item" v-bind:title="signup">
+	                     <a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a><p class="sr-only">회원가입</p>
+	                  </li>
+	               </c:if>
+	               <c:if test="${not empty cust_no }">
+	                  <li class="nav-item p-1"><small class="text-light">${cust_name} 님</small></li>
+	                  <li class="nav-item" v-bind:title="logout">
+	                     <a href="logout.do?cust_no=${cust_no }" class="nav-link"><i class="fas fa-sign-out-alt"></i></a><p class="sr-only">로그아웃</p>
+	                  </li>
+	               </c:if>
+	               <li class="nav-item" v-bind:title="bookcart">
+	                  <a href="#" class="nav-link"><i class="fas fa-book"></i></a><p class="sr-only">북카트</p>
+	               </li>
+	               <li class="nav-item" v-bind:title="sitemap">
+	                  <a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a><p class="sr-only">사이트맵</p>
+	               </li>
+	            </ul>
 			</div>
 		</div>
 	</nav>
-  
-	<!-- PAGE HEADER -->
+
+	<!-- 도서관소개 PAGE HEADER -->
 	<header id="page-header">
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-6 m-auto text-center">
-			  <h1>오시는 길</h1>
+			  <h1>오시는길</h1>
 			</div>
 		  </div>
 		</div>
 	</header>
 	
 	<!-- MAIN SECTION -->
-	<!-- 사이드바 -->
 	<section id="contact" class="py-3">
+		<!-- 사이드바 -->
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-3">
 			  <div class="sidebar">
 					<div class="side-head">
-						<h4 class="text-light">도서관소개</h4>
+						<h4 class="text-light text-center">도서관소개</h4>
 					</div>
 					<ul class="list-group list-group-flush mb-5">
-						<a href="#"><li class="list-group-item active">대출/반납/연장</li></a>
-						<a href="#"><li class="list-group-item">공지사항</li></a>
+						<a href="about.do"><li class="list-group-item active">대출/반납/연장</li></a>
+						<a href="postList.do?group=10"><li class="list-group-item">공지사항</li></a>
 						<a href="faqViewpage.do"><li class="list-group-item">자주묻는질문</li></a>						
-						<a href="QnaList.do"><li class="list-group-item">묻고 답하기</li></a>
+						<a href="QnaList.do?option=p_title&search="><li class="list-group-item">묻고 답하기</li></a>
 						<a href="addrViewpageAPI.do"><li class="list-group-item">오시는길</li></a>
 					</ul>
 			  </div>
 			</div>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 			<!-- 메인내용 -->
 			<div class="col-md-9">
@@ -153,14 +153,14 @@
 		  </div>
 		</div>
 	</section>
-
+</div>
   <!-- FOOTER -->
   <footer id="main-footer" class="text-center p-4">
     <div class="container">
       <div class="row">
         <div class="col">
           <p>Copyright &copy;
-            <span id="year"></span> Glozzom</p>
+            <span id="year"></span> Delibrary</p>
         </div>
       </div>
     </div>

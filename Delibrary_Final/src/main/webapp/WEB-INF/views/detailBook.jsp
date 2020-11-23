@@ -22,9 +22,234 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	
   <title>도서정보 - 딜리브러리</title>
+	<style>
+	#main-footer {
+  background: #000;
+  color: #fff;
+  flex-shrink: none;
+}
+
+/*  ------------------------------------------ */
+/*          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!          */
+/*          !!!!!!!   공통부분 추가 css 입니다!!!!!!!          */
+/*          !!!!!!!      지우지 마세요           !!!!!!!!          */
+/*          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!          */
+/*  ------------------------------------------ */
+
+html, body{
+   height: 100%;
+}
+
+#page-content{
+   flex: 1 0 auto;
+}
+
+.sidebar {
+  border...
+  
+  
+  /*
+연 f8f9fa
+진 343a40
+*/
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    margin-top: 0;
+  }
+  .navbar .dropdown-menu.fade-down {
+    top: 80%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+  .navbar .dropdown-menu.fade-up {
+    top: 180%;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    transition: 0.3s;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+    transform: rotateX(0deg);
+  }
+}
+
+.sidebar {
+  border: 1px solid gainsboro;
+}
+.side-head {
+  background: url('../img/side-head.jpg');
+  padding: 40px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.icons {
+  height: 15px;
+}
+
+.searchbar {
+  border-radius: 25px;
+  padding: 5px 25px;
+}
+
+#home-icons p {
+  font-size: 14px;
+}
+
+.btn {
+  border-radius: 25px;
+}
+
+.navbar .nav-link {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.carousel-item {
+  height: 600px;
+}
+
+.carousel-image-1 {
+  /* background: url('../img/image1.jpg'); */
+  background-color: cadetblue;
+  background-size: cover;
+}
+
+.carousel-image-2 {
+  /* background: url('../img/image2.jpg'); */
+  background-color: darkgoldenrod;
+  background-size: cover;
+}
+
+.carousel-image-3 {
+  /* background: url('../img/image3.jpg'); */
+  background-color: darkseagreen;
+  background-size: cover;
+}
+
+#home-heading {
+  position: relative;
+  min-height: 250px;
+  /* background: url('../img/lights.jpg'); */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#video-play {
+  position: relative;
+  min-height: 200px;
+  background: url('../img/media.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 0 -300px;
+  text-align: center;
+  color: #fff;
+}
+
+#video-play a {
+  color: #fff;
+}
+
+#page-header {
+  height: 180px;
+  background: url('../img/image1.jpg');
+  background-position: 0 -360px;
+  background-attachment: fixed;
+  color: #fff;
+  border-bottom: 1px #eee solid;
+  padding-top: 20px;
+}
+
+.about-img {
+  margin-top: -50px;
+}
+
+#faq .card {
+  border: #444;
+}
+
+#faq a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#faq .card-body,
+#faq .card-header {
+  background: #333;
+}
+
+#main-footer {
+  background: #000;
+  color: #fff;
+  flex-shrink: none;
+}
+
+/*  ------------------------------------------- */
+/*    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      */
+/*    !!!!!!!  공통부분 추가 css 입니다  !!!!!!!      */
+/*    !!!!!!!      지우지 마세요       !!!!!!!      */
+/*    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      */
+/*  ------------------------------------------- */
+
+
+html, body{
+   height: 100%;
+}
+
+#page-content{
+   flex: 1 0 auto;
+}
+
+.sidebar {
+  border: 1px solid gainsboro;
+}
+.side-head {
+  background: url('../img/side-head.jpg');
+  padding: 40px;
+}
+.sidebar a{
+   color: #343a40;
+}
+
+.searchbar {
+  border-radius: 25px;
+  padding: 5px 25px;
+}
+
+.list-group .active{
+   background-color: #f8f9fa;
+   color: #343a40;
+   border-color: #d8d8d8;
+} 
+
+#tbody a{
+   color: #343a40;
+}
+	
+	</style>
 	
   <style>
-    /* 마우스 갖다대면 효과*/
+    /* 용택 - 마우스 갖다대면 효과*/
   	.reverse {
 	color: white;
 	background-color: #58ACFA;
@@ -76,10 +301,9 @@
 
 
   <style>
-    /*
+    /* 아코디안
 Add a fold-out icon to any element, by adding a data-attribute:
 `data-css-icon` with one of the following values:
-
 - cross
 - dots
 - down
@@ -87,18 +311,13 @@ Add a fold-out icon to any element, by adding a data-attribute:
 - menu
 - plus
 - right
-
 AND a blank <i></i>-tag.
-
 _Example:_
 <span data-css-icon="cross">Title here<i></i><span>.
-
 Extra modifiers are `fill`, `outline` and `square`.
-
 _Example:_
 <span data-css-icon="square cross outline">Title here<i></i><span>.
 */
-
 [data-css-icon] {
 	--animdur: .3s;
   --loading-animdur: 0.8s;
@@ -111,7 +330,6 @@ _Example:_
   --dots-size: 0.5rem;
   --icon-size: 1rem;
 	--size: 3.0rem;
-
 	align-items: center;
   cursor: pointer;
 	display: flex;
@@ -134,7 +352,6 @@ _Example:_
   transform-origin: 50% 50%;
 	transition: all var(--animdur) var(--animtf);
 }
-
 [data-css-icon*="down"] i::after,
 [data-css-icon*="right"] i::after {
   background: transparent;
@@ -159,7 +376,6 @@ _Example:_
   top: 0;
 	transform: rotate(45deg);
 }
-
 [data-css-icon*="equals"] i::after,
 [data-css-icon*="equals"] i::before,
 [data-css-icon*="cross"] i::after,
@@ -206,7 +422,6 @@ _Example:_
 [data-css-icon*="menu"] i::before {
   top: calc(0px - var(--m));
 }
-
 [data-css-icon*="dots"] i,
 [data-css-icon*="dots"] i::after,
 [data-css-icon*="dots"] i::before {
@@ -233,7 +448,6 @@ _Example:_
   left: calc(0px - (var(--dots-size) * 1.5));
   position: absolute;
 }
-
 [data-css-icon*="spin"] i::after {
   animation: spin var(--loading-animdur) infinite linear;
   border-radius: 50%;
@@ -244,7 +458,6 @@ _Example:_
   transform: translateZ(0);
   width: var(--icon-size);
 }
-
 /* STATE */
 [open] > summary > [data-css-icon*="cross"] i::after {
 	transform: rotate(45deg);
@@ -267,14 +480,11 @@ _Example:_
 [open] > summary > [data-css-icon*="plus"] i::before {
 	transform: rotate(-0deg);
 }
-
 [open] > summary > [data-css-icon*="equals"] i::after { transform: rotate(-45deg); }
 [open] > summary > [data-css-icon*="equals"] i::before { transform: rotate(45deg); }
-
 [open] > summary > [data-css-icon*="menu"] i { background-color: transparent; }
 [open] > summary > [data-css-icon*="menu"] i::after { transform: translateY(calc(0px - var(--m))) rotate(-45deg); }
 [open] > summary > [data-css-icon*="menu"] i::before { transform: translateY(var(--m)) rotate(45deg); }
-
 /* RTL: inset-block-end fails */
 [dir="rtl"] [data-css-icon*="right"] i::after {
 	left: calc((var(--icon-size) / 4));
@@ -283,7 +493,6 @@ _Example:_
 	left: 0.5rem;
   right: auto;
 }
-
 /* MODIFIERS */
 [data-css-icon*="outline"] i {
   border: var(--bdw) solid var(--c);
@@ -295,7 +504,6 @@ _Example:_
 [data-css-icon*="square"] {
   --bdrs: 5px;
 }
-
 /* For this demo only */
 body { font-family: system-ui, sans-serif; padding: 1rem; }
 /*버튼크기 
@@ -326,7 +534,6 @@ summary {
 }
 summary::marker { display: none; }
 summary::-webkit-details-marker { display: none; }
-
 /* 4 States of summary */
 button,
 summary {
@@ -354,7 +561,6 @@ summary + * {
   line-height: 1.6;
   padding: 0.5rem;
 }
-
 @keyframes dots {
   0% {
     background-color: var(--c);
@@ -364,7 +570,6 @@ summary + * {
     background-color: var(--dots-bgc);
   }
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -390,8 +595,6 @@ var b_writer="";
 var b_year;
 var b_price;
 var detail;
-
-
 //책소개 아코디안
   function setDetailsHeight(selector, wrapper = document) {
 	const setHeight = (detail, open = false) => {
@@ -417,7 +620,6 @@ var detail;
 		RO.observe(detail);
 	});
 }
-
 /* Run it */
 setDetailsHeight('details');
 $(function(){
@@ -475,7 +677,6 @@ $(function(){
 				}
 			});
 		}
-
 	var insertPost = function(){
 		
 		var P_TITLE="${b.b_title }";
@@ -503,9 +704,8 @@ $(function(){
 	$('#tempList').on("click","tr",function(){
 		//alert($(this).find("td:eq(0)").text());
 		FOL_NO =eval($(this).find("td:eq(0)").text());
-		//alert(FOL_NO);
+		alert(FOL_NO);
 		var result = confirm("폴더에 저장하시겠어요?");
-
 		if(result){
 			insertPost();
 		    alert("저장");
@@ -524,7 +724,6 @@ $(function(){
 	$('.card-text').mouseleave(function() {
 		$(this).removeClass("reverse",700);
 	});
-
 	//대여버튼
 	$('#borrow').click(function(){
 		if (cust_no=null){
@@ -534,9 +733,11 @@ $(function(){
 		
 		$('#dialog-borrow').dialog({
 		modal: true, 
+		height:250,
+		width:340,
 		buttons: {
 			
-			"대출하고싶어요": function() {
+			"대여": function() {
 				//대여 날짜를 선택
 				$('#dialog-borrow-date').dialog({
 					modal: true, 
@@ -548,12 +749,14 @@ $(function(){
 							//let RETURN_DATE = BOR_DATE.setDate(BOR_DATE.getDate()+15);
 							//alert(RETURN_DATE);
 							var count = eval(${b.b_count });
+							var count2 = eval(${sumbook });
+							//alert(count2);
 							 var b_no = eval(${b.b_no });
 							 var cust_no = eval(${cust_no });
 							 alert(cust_no);
 							 var data= {"BOR_DATE" : BOR_DATE, "cust_no":cust_no, }
-							if(count <1){
-								alert("대여가능한 도서가 없습니다")
+							if(count2 >=5){
+								alert("대여가능 도서권수를 초과하였습니다")
 							}else{
 								
 								var b_no =eval(${b.b_no });
@@ -579,7 +782,7 @@ $(function(){
 							}				
 					}										
 				});	$( this ).dialog( "close" );				
-		},"싫어요": function() { alert("취소하셨습니다.") }
+		},"취소": function() { alert("취소하셨습니다.") }
 				 },					
 	});						
 	});
@@ -588,7 +791,6 @@ $(function(){
 		//var result = confirm('내서재에 추가하시겠습니까??'); 
 			//if(result){
 				//var cust_no =eval(${cust_no });
-
 			
 			
 								
@@ -611,90 +813,82 @@ $(function(){
 						
 				});
 				});
-
 });
-
   </script>
   </head>
-
-<body>
-	
-	<input id="query" value="${query}" type="hidden">
-
+<body class="d-flex flex-column">
+  <div id="page-content">
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark p-0">
 		<div class="container">
-		<!--  
-			<a href="home.html" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>-->
+			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-4">
 					<li class="nav-item dropdown">
-						<a href="about.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
+						<a href="about.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="about.html"> 대출/반납/연장</a></li>
-								<li><a class="dropdown-item" href="#"> 공지사항 </a></li>
-								<li><a class="dropdown-item" href="#"> 자주묻는질문</a></li>
-								<li><a class="dropdown-item" href="#"> 묻고답하기 </a></li>
-								<li><a class="dropdown-item" href="#"> 오시는길 </a></li>
+								<li><a class="dropdown-item" href="about.do"> 대출/반납/연장</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=10"> 공지사항 </a></li>
+								<li><a class="dropdown-item" href="faqViewpage.do"> 자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="QnaList.do"> 묻고답하기 </a></li>
+								<li><a class="dropdown-item" href="addrViewpageAPI.do"> 오시는길 </a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="books.html" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
+						<a href="SearchResult.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="books.html">도서검색</a></li>
+								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
 								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
 								<li><a class="dropdown-item" href="#">신착도서</a></li>
 								<li><a class="dropdown-item" href="#">인기도서</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="community.html" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
+						<a href="postList.do?group=20" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="community.html">창작물게시판</a></li>
-								<li><a class="dropdown-item" href="#">중고장터</a></li>
-								<li><a class="dropdown-item" href="#">자유게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
+								<li><a class="dropdown-item" href="Postlist.do?group=60">자유게시판</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="mypage.html" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
+						<a href="mypage_main.do?cust_no=${cust_no }" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="mypage.html"> 나의도서정보</a></li>
+								<li><a class="dropdown-item" href="mypage_main.do?cust_no=${cust_no }"> 나의도서정보</a></li>
 								<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
-								<li><a class="dropdown-item" href="Mylibrary.jsp">내서재</a></li>
-								<li><a class="dropdown-item" href="#">개인정보수정</a></li>
+								<li><a class="dropdown-item" href="MyPage_Folder.do?cust_no=${cust_no }&group=50">내서재</a></li>
+								<li><a class="dropdown-item" href="MyPage_Info.do?cust_no=${cust_no }">개인정보수정</a></li>
 							</ul>
 					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
-					<li class="nav-item" v-bind:title="login">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-sign-in-alt"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="signup">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-user-plus"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="bookcart">
-						<a href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="sitemap">
-						<a href="sitemap.html" class="nav-link"><i class="far fa-map"></i></a>
-					</li>
-					<script>
-						var app = new Vue({
-							el: '#app',	
-							data: {
-								login: '로그인',
-								signup: '회원가입',
-								bookcart: '북카트',
-								sitemap: '사이트맵',
-							}});
-					</script>
-				</ul>
+	               <c:if test="${empty cust_no }">
+	                  <li class="nav-item" v-bind:title="login">
+	                     <a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a><p class="sr-only">로그인</p>
+	                  </li>
+	                  <li class="nav-item" v-bind:title="signup">
+	                     <a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a><p class="sr-only">회원가입</p>
+	                  </li>
+	               </c:if>
+	               <c:if test="${not empty cust_no }">
+	                  <li class="nav-item p-1"><small class="text-light">${cust_name} 님</small></li>
+	                  <li class="nav-item" v-bind:title="logout">
+	                     <a href="logout.do?cust_no=${cust_no }" class="nav-link"><i class="fas fa-sign-out-alt"></i></a><p class="sr-only">로그아웃</p>
+	                  </li>
+	               </c:if>
+	               <li class="nav-item" v-bind:title="bookcart">
+	                  <a href="#" class="nav-link"><i class="fas fa-book"></i></a><p class="sr-only">북카트</p>
+	               </li>
+	               <li class="nav-item" v-bind:title="sitemap">
+	                  <a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a><p class="sr-only">사이트맵</p>
+	               </li>
+	            </ul>
 			</div>
 		</div>
 	</nav>
-  
+
 	<!-- PAGE HEADER -->
 	<header id="page-header">
 		<div class="container">
@@ -792,10 +986,10 @@ $(function(){
              <!-- 도서대여 클릭시 첫화면 -->
              
 			<div id="dialog-borrow" title="도서대여" style='display: none'>
-			<img width="50px" height="60px" alt="book image"
-					src="img/${b.b_image }"><span
-					style='color: green; font-size: 15pt;'> 도서 재고 현재</span> <span
-					style='font-size: 20pt;'>${b.b_count } 개</span> <span><b><u>대출하시겠습니까??</u></b></span>
+			<img width="85px" height="70px" alt="book image"
+					src="img/borrow.png"><span
+					style='color: green; font-size: 15pt;'> 대출하시겠습니까? </span> <!--  <span
+					style='font-size: 20pt;'>${sumbook } 개</span> --><span><b><u></u></b></span>
 			</div>
 			<!-- 도서대여 클릭시 두번째 화면 -->
 			<div id="dialog-borrow-date" title="대출일을 선택해주세요"
@@ -813,56 +1007,22 @@ $(function(){
 					<c:forEach var="g" items="${f }">
 					<tr>
 						<td>${g.fol_no }</td>
+						<!-- <td>${g.fol_no }</td> -->
+						<td><img width="50px" height="60px" alt="book image"
+					src="img/folder.png"></td>
 						<td  id ="test" class="folder">${g.fol_name }</td>				
 					</tr>
 					</c:forEach>						
 				</table>
 				
-			</div>
-                
-             
-                <!--
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>&nbsp;</th>
-                    <th>도서명</th>
-                    <th>대출일자</th>
-                    <th>반납예정일</th>
-                    <th>연체일수</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="#">도서제목1</a></td>
-                    <td>00/00/00</td>
-                    <td>00/00/00</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td><a href="#">도서제목2</a></td>
-                    <td>00/00/00</td>
-                    <td>00/00/00</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td><a href="#">도서제목3</a></td>
-                    <td>00/00/00</td>
-                    <td>00/00/00</td>
-                    <td>0</td>
-                  </tr>
-                </tbody>
-              </table>
-              -->
+			</div>      
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  </div>
 
   <!-- FOOTER -->
   <footer id="main-footer" class="text-center p-4">
@@ -870,8 +1030,7 @@ $(function(){
       <div class="row">
         <div class="col">
           <p>Copyright &copy;
-            <span id="year"></span> Glozzom</p>
-            
+            <span id="year"></span> Delibrary</p>
         </div>
       </div>
     </div>
@@ -890,7 +1049,6 @@ $(function(){
   <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
-
   </script>
 </body>
 

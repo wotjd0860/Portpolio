@@ -19,7 +19,8 @@
   <title>커뮤니티 - 딜리브러리</title>
 </head>
 
-<body>
+<body class="d-flex flex-column">
+  <div id="page-content">
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark p-0">
 		<div class="container">
 			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
@@ -29,19 +30,19 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-4">
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
+						<a href="about.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="#"> 대출/반납/연장</a></li>
+								<li><a class="dropdown-item" href="about.do"> 대출/반납/연장</a></li>
 								<li><a class="dropdown-item" href="postList.do?group=10"> 공지사항 </a></li>
-								<li><a class="dropdown-item" href="#"> 자주묻는질문</a></li>
-								<li><a class="dropdown-item" href="#"> 묻고답하기 </a></li>
-								<li><a class="dropdown-item" href="#"> 오시는길 </a></li>
+								<li><a class="dropdown-item" href="faqViewpage.do"> 자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="QnaList.do"> 묻고답하기 </a></li>
+								<li><a class="dropdown-item" href="addrViewpageAPI.do"> 오시는길 </a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
+						<a href="SearchResult.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="#">도서검색</a></li>
+								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
 								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
 								<li><a class="dropdown-item" href="#">신착도서</a></li>
 								<li><a class="dropdown-item" href="#">인기도서</a></li>
@@ -52,43 +53,41 @@
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
 								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
 								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
-								<li><a class="dropdown-item" href="#">자유게시판</a></li>
+								<li><a class="dropdown-item" href="Postlist.do?group=60">자유게시판</a></li>
 							</ul>
 					</li>
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
+						<a href="mypage_main.do?cust_no=${cust_no }" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
 							<ul class="dropdown-menu dropdown-menu-left fade-down">
-								<li><a class="dropdown-item" href="#"> 나의도서정보</a></li>
-								<li><a class="dropdown-item" href="#">대출현황/이력</a></li>
-								<li><a class="dropdown-item" href="MyPage_Folder.do">내서재</a></li>
-								<li><a class="dropdown-item" href="#">개인정보수정</a></li>
+								<li><a class="dropdown-item" href="mypage_main.do?cust_no=${cust_no }"> 나의도서정보</a></li>
+								<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
+								<li><a class="dropdown-item" href="MyPage_Folder.do?cust_no=${cust_no }&group=50">내서재</a></li>
+								<li><a class="dropdown-item" href="MyPage_Info.do?cust_no=${cust_no }">개인정보수정</a></li>
 							</ul>
 					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
-					<li class="nav-item" v-bind:title="login">
-						<a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a><p class="sr-only">로그인</p>
-					</li>
-					<li class="nav-item" v-bind:title="signup">
-						<a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a><p class="sr-only">회원가입</p>
-					</li>
-					<li class="nav-item" v-bind:title="bookcart">
-						<a href="#" class="nav-link"><i class="fas fa-book"></i></a><p class="sr-only">북카트</p>
-					</li>
-					<li class="nav-item" v-bind:title="sitemap">
-						<a href="siteMap.do" class="nav-link"><i class="far fa-map"></i></a><p class="sr-only">사이트맵</p>
-					</li>
-					<script>
-						var app = new Vue({
-							el: '#app',	
-							data: {
-								login: '로그인',
-								signup: '회원가입',
-								bookcart: '북카트',
-								sitemap: '사이트맵',
-							}});
-					</script>
-				</ul>
+	               <c:if test="${empty cust_no }">
+	                  <li class="nav-item" v-bind:title="login">
+	                     <a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a><p class="sr-only">로그인</p>
+	                  </li>
+	                  <li class="nav-item" v-bind:title="signup">
+	                     <a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a><p class="sr-only">회원가입</p>
+	                  </li>
+	               </c:if>
+	               <c:if test="${not empty cust_no }">
+	                  <li class="nav-item p-1"><small class="text-light">${cust_name} 님</small></li>
+	                  <li class="nav-item" v-bind:title="logout">
+	                     <a href="logout.do?cust_no=${cust_no }" class="nav-link"><i class="fas fa-sign-out-alt"></i></a><p class="sr-only">로그아웃</p>
+	                  </li>
+	               </c:if>
+	               <li class="nav-item" v-bind:title="bookcart">
+	                  <a href="#" class="nav-link"><i class="fas fa-book"></i></a><p class="sr-only">북카트</p>
+	               </li>
+	               <li class="nav-item" v-bind:title="sitemap">
+	                  <a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a><p class="sr-only">사이트맵</p>
+	               </li>
+	            </ul>
 			</div>
 		</div>
 	</nav>
@@ -113,21 +112,39 @@
 	</header>
 	
 	<!-- MAIN SECTION -->
-	<!-- 사이드바 -->
 	<section id="contact" class="py-3">
+		<!-- 사이드바 -->
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-3">
-			  <div class="sidebar">
-					<div class="side-head">
-						<h4 class="text-light">커뮤니티</h4>
-					</div>
-					<ul class="list-group list-group-flush mb-5">
-						<li class="list-group-item active text-dark"><a href="postList.do?group=20">창작물게시판</a></li>
-						<li class="list-group-item"><a href="postList.do?group=30">중고장터</a></li>
-						<li class="list-group-item"><a href="postList.do?group=60">자유게시판</a></li>
-					</ul>
-			  </div>
+				<c:choose>
+					<c:when test="${group eq 10 || group eq 40 }">
+						<div class="sidebar">
+							<div class="side-head">
+								<h4 class="text-light">도서관소개</h4>
+							</div>
+							<ul class="list-group list-group-flush mb-5">
+								<li class="list-group-item"><a href="#">대출/반납/연장</a></li>
+								<li id="post10" class="list-group-item"><a href="postList.do?group=10">공지사항</a></li>
+								<li class="list-group-item"><a href="faqViewpage.do">자주묻는질문</a></li>
+								<li id="post40" class="list-group-item"><a href="postList.do?group=40">묻고답하기</a></li>
+								<li class="list-group-item"><a href="addrViewpageAPI.do">오시는길</a></li>
+							</ul>
+					  </div>		
+					</c:when>
+					<c:otherwise>
+						<div class="sidebar">
+							<div class="side-head">
+								<h4 class="text-light">커뮤니티</h4>
+							</div>
+							<ul class="list-group list-group-flush mb-5">
+								<li id="post20" class="list-group-item"><a href="postList.do?group=20">창작물게시판</a></li>
+								<li id="post30" class="list-group-item"><a href="postList.do?group=30">중고장터</a></li>
+								<li id="post60" class="list-group-item"><a href="postList.do?group=60">자유게시판</a></li>
+							</ul>
+					  </div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			
 			<!-- 메인내용 -->
@@ -146,7 +163,7 @@
 								<span>&nbsp;</span>
 							</div>
               <div class="col-md-4">
-                <input type="submit" value="<i class="fas fa-edit"></i> 수정" class="btn btn-success btn-block">
+                <button class="btn btn-success btn-block"><i class="fas fa-edit"></i> 수정</button>
               </div>
             </div>
           </div>
@@ -170,25 +187,26 @@
                   </div>
                   <div class="card-body">
 											<div class="form-group">
-											<c:if test="${group eq 20}">
-												<label for="category">장르</label>
-	                        <select class="form-control">
-														<option value="" selected>소설</option>
-	                          <option value="">에세이</option>
-	                          <option value="">시</option>
-	                          <option value="">기타</option>
-	                        </select>
-                        </c:if>
-                        <c:if test="${group eq 30}">
-												<label for="category">지역</label>
-	                        <select class="form-control">
-														<option value="" selected>서울</option>
-	                          <option value="">경기남부</option>
-	                          <option value="">경기북부</option>
-	                          <option value="">인천</option>
-	                        </select>
-                        </c:if>
-                      </div>
+												<c:if test="${group eq 20}">
+													<label for="category">장르</label>
+													<select class="form-control" name="p_option" size="1">
+														<option value="소설">소설</option>
+														<option value="에세이">에세이</option>
+														<option value="시">시</option>
+														<option value="기타">기타</option>
+													</select>
+												</c:if>
+												<c:if test="${group eq 30}">
+													<label for="category">지역</label>
+													<select class="form-control" name="p_option" size="1">
+														<option value="서울">서울</option>
+														<option value="경기남부">경기남부</option>
+														<option value="경기북부">경기북부</option>
+														<option value="인천">인천</option>
+													</select>
+												</c:if>
+												<c:if test="${group==60||group==10||group==40}"><input type="hidden" name="p_option" value=""></c:if>
+												</div>
 											<div class="form-group">
 												<label for="title">제목</label>
 												<input type="text" class="form-control" name="p_title" value="${post.p_title }" placeholder="제목을 입력하세요.">
@@ -215,6 +233,7 @@
     	</div>
   	</div>
   </section>
+  </div>
 
   <!-- FOOTER -->
   <footer id="main-footer" class="text-center p-4">
@@ -237,6 +256,13 @@
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
 
+  </script>
+  
+  <!-- 사이드바 열려있는 게시판에 active 속성 붙여주기 -->
+  <script type="text/javascript">
+  	if(${group}){
+			document.getElementById('post'+${group}).classList.add('active');
+		}
   </script>
 </body>
 

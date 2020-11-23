@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/wang.css">
 <link rel="icon" type="image/png" sizes="16x16"	href="favicon/favicon-16x16.png">
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -21,16 +22,6 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-var app = new Vue({
-	el : '#app',
-	data : {
-		login : '로그인',
-		signup : '회원가입',
-		bookcart : '북카트',
-		sitemap : '사이트맵',
-	}
-});
-/* ↑ 원래 있던 코드 */
 <%-- 이미지 수정 하는 코드 시작 --%>
  $(function(){
 	$("#upload_file").click(function(){
@@ -124,26 +115,30 @@ window.onload = function() {
 	$("#btn_pw_ok").click(function(){
         var pwd1 = $("#password_1").val();
         var pwd2 = $("#password_2").val();
- 
         if ( pwd1 != '' && pwd2 == '' ) {
             null;
         } else if (pwd1 != "" || pwd2 != "") {
             if (pwd1 == pwd2) {
-                $("#alert-success").css('display', 'inline-block');
-                $("#alert-danger").css('display', 'none');
-	            alert($("#password_1").val());
+				if(pwd1.length > 16){
+					alert("비밀번호가 너무 깁니다.");
+					$("#alert-success").css('display', 'none');
+					$("#alert-danger").css('display', 'none');
+					$("#alert-danger2").css('display', 'inline-block');
+				} else {
+					$("#alert-success").css('display', 'inline-block');
+					$("#alert-danger").css('display', 'none');
+					$("#alert-danger2").css('display', 'none');
+				}
             } else {
                 alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
                 $("#alert-success").css('display', 'none');
                 $("#alert-danger").css('display', 'inline-block');
+                $("#alert-danger2").css('display', 'none');
             }
+            
         }
         return false;
 	});
-	/* $(".modal_close").click(function(){
-        $("#pw").val($("#password_1").val());
-		return true;
-	}); */
 };
 <!-- ===================================== 현왕 모달창 내용 자바스크립트 추가 종료 =========================================== -->
 
@@ -206,64 +201,86 @@ function sample6_execDaumPostcode() {
 
 </head>
 
-<body>
+<body class="d-flex flex-column">
+  <div id="page-content">
 	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark p-0">
 		<div class="container">
-			<a href="home.html" class="navbar-brand"><img alt="딜리브러리"
-				src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
-			<button class="navbar-toggler" data-toggle="collapse"
-				data-target="#navbarCollapse">
+			<a href="Home.do" class="navbar-brand"><img alt="딜리브러리" src="img/logo_bg_dark.jpg" height="20" class="pl-3 mb-1"></a>
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-4">
-					<li class="nav-item dropdown"><a href="about.html"
-						class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
-						<ul class="dropdown-menu dropdown-menu-left fade-down">
-							<li><a class="dropdown-item" href="about.html"> 대출/반납/연장</a></li>
-							<li><a class="dropdown-item" href="#"> 공지사항 </a></li>
-							<li><a class="dropdown-item" href="#"> 자주묻는질문</a></li>
-							<li><a class="dropdown-item" href="#"> 묻고답하기 </a></li>
-							<li><a class="dropdown-item" href="#"> 오시는길 </a></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a href="books.html"
-						class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
-						<ul class="dropdown-menu dropdown-menu-left fade-down">
-							<li><a class="dropdown-item" href="books.html">도서검색</a></li>
-							<li><a class="dropdown-item" href="#">사서추천도서</a></li>
-							<li><a class="dropdown-item" href="#">신착도서</a></li>
-							<li><a class="dropdown-item" href="#">인기도서</a></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a href="community.html"
-						class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
-						<ul class="dropdown-menu dropdown-menu-left fade-down">
-							<li><a class="dropdown-item" href="#">창작물게시판</a></li>
-							<li><a class="dropdown-item" href="#">중고장터</a></li>
-							<li><a class="dropdown-item" href="#">자유게시판</a></li>
-						</ul></li>
-					<li class="nav-item dropdown"><a href="mypage.html"
-						class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
-						<ul class="dropdown-menu dropdown-menu-left fade-down">
-							<li><a class="dropdown-item" href="mypage.html"> 나의도서정보</a></li>
-							<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
-							<li><a class="dropdown-item" href="myfolder.html">내서재</a></li>
-							<li><a class="dropdown-item" href="#">개인정보수정</a></li>
-						</ul></li>
+					<li class="nav-item dropdown">
+						<a href="about.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서관소개</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="about.do"> 대출/반납/연장</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=10"> 공지사항 </a></li>
+								<li><a class="dropdown-item" href="faqViewpage.do"> 자주묻는질문</a></li>
+								<li><a class="dropdown-item" href="QnaList.do"> 묻고답하기 </a></li>
+								<li><a class="dropdown-item" href="addrViewpageAPI.do"> 오시는길 </a></li>
+							</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="SearchResult.do" class="nav-link dropdown-toggle" data-toggle="dropdown">도서정보</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="SearchResult.do">도서 검색</a></li>
+								<li><a class="dropdown-item" href="#">사서추천도서</a></li>
+								<li><a class="dropdown-item" href="#">신착도서</a></li>
+								<li><a class="dropdown-item" href="#">인기도서</a></li>
+							</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="postList.do?group=20" class="nav-link dropdown-toggle" data-toggle="dropdown">커뮤니티</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="postList.do?group=20">창작물게시판</a></li>
+								<li><a class="dropdown-item" href="postList.do?group=30">중고장터</a></li>
+								<li><a class="dropdown-item" href="Postlist.do?group=60">자유게시판</a></li>
+							</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a href="mypage_main.do?cust_no=${cust_no }" class="nav-link dropdown-toggle" data-toggle="dropdown">나의도서</a>
+							<ul class="dropdown-menu dropdown-menu-left fade-down">
+								<li><a class="dropdown-item" href="mypage_main.do?cust_no=${cust_no }"> 나의도서정보</a></li>
+								<li><a class="dropdown-item" href="lentBooks.html">대출현황/이력</a></li>
+								<li><a class="dropdown-item" href="MyPage_Folder.do?cust_no=${cust_no }&group=50">내서재</a></li>
+								<li><a class="dropdown-item" href="MyPage_Info.do?cust_no=${cust_no }">개인정보수정</a></li>
+							</ul>
+					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
-					<li class="nav-item" v-bind:title="login"><a
-						href="sitemap.html" class="nav-link"><i
-							class="fas fa-sign-in-alt"></i></a></li>
-					<li class="nav-item" v-bind:title="signup"><a
-						href="sitemap.html" class="nav-link"><i
-							class="fas fa-user-plus"></i></a></li>
-					<li class="nav-item" v-bind:title="bookcart"><a
-						href="sitemap.html" class="nav-link"><i class="fas fa-book"></i></a>
-					</li>
-					<li class="nav-item" v-bind:title="sitemap"><a
-						href="sitemap.html" class="nav-link"><i class="far fa-map"></i></a>
-					</li>
-				</ul>
+	               <c:if test="${empty cust_no }">
+	                  <li class="nav-item" v-bind:title="login">
+	                     <a href="LoginPage.do" class="nav-link"><i class="fas fa-sign-in-alt"></i></a><p class="sr-only">로그인</p>
+	                  </li>
+	                  <li class="nav-item" v-bind:title="signup">
+	                     <a href="insertCustomer.do" class="nav-link"><i class="fas fa-user-plus"></i></a><p class="sr-only">회원가입</p>
+	                  </li>
+	               </c:if>
+	               <c:if test="${not empty cust_no }">
+	                  <li class="nav-item p-1"><small class="text-light">${cust_name} 님</small></li>
+	                  <li class="nav-item" v-bind:title="logout">
+	                     <a href="logout.do?cust_no=${cust_no }" class="nav-link"><i class="fas fa-sign-out-alt"></i></a><p class="sr-only">로그아웃</p>
+	                  </li>
+	               </c:if>
+	               <li class="nav-item" v-bind:title="bookcart">
+	                  <a href="#" class="nav-link"><i class="fas fa-book"></i></a><p class="sr-only">북카트</p>
+	               </li>
+	               <li class="nav-item" v-bind:title="sitemap">
+	                  <a href="siteMap.do" class="nav-link"><i class="fas fa-map"></i></a><p class="sr-only">사이트맵</p>
+	               </li>
+	               <script type="text/javascript">
+	               var app = new Vue({
+	                     el: '#app',   
+	                     data: {
+	                        login: '로그인',
+	                        signup: '회원가입',
+	                        bookcart: '북카트',
+	                        sitemap: '사이트맵',
+	                        logout: '로그아웃'
+	                     }});
+	               </script>
+	            </ul>
 			</div>
 		</div>
 	</nav>
@@ -290,10 +307,10 @@ function sample6_execDaumPostcode() {
 							<h4 class="text-light">나의도서</h4>
 						</div>
 						<ul class="list-group list-group-flush mb-5">
-							<a href="mypage_main.do?cust_no=${c.cust_no }"><li class="list-group-item">나의도서정보</li></a>
+							<a href="mypage_main.do?cust_no=${cust_no }"><li class="list-group-item">나의도서정보</li></a>
 							<a href="#"><li class="list-group-item">대출현황/이력</li></a>
-							<a href="MyPage_Folder.do?cust_no=${c.cust_no }"><li class="list-group-item">내서재</li></a>
-							<a href="MyPage_Info.do?cust_no=${c.cust_no }"><li class="list-group-item active">개인정보수정</li></a>
+							<a href="MyPage_Folder.do?cust_no=${cust_no }&group=50"><li class="list-group-item">내서재</li></a>
+							<a href="MyPage_Info.do?cust_no=${cust_no }"><li class="list-group-item active">개인정보수정</li></a>
 						</ul>
 					</div>
 				</div>
@@ -329,7 +346,7 @@ function sample6_execDaumPostcode() {
 							<div class="form-group mt-4">
 								<label for="email">이메일</label> <span class="signup_required">*</span>
 								<div>
-								<input type="text" value="${id }" name="id" id="id"> @ <input type="text" id="email" value="${email }" name="email" placeholder="이메일 주소를 입력해주세요.">
+								<input type="text" value="${id }" name="id" id="id" readonly="readonly"> @ <input type="text" id="email" value="${email }" name="email" placeholder="이메일 주소를 입력해주세요.">
               
 					            <select id="emailSelection" name="emailSelection">
 								   <option value="1" selected="selected">직접입력</option>
@@ -344,13 +361,15 @@ function sample6_execDaumPostcode() {
 <%-- =======================================  현왕 email select로 option 클릭시 자동 써지기 추가 종료 ================================================= --%>
 							<hr>
 <%-- =======================================  현왕 암호 출력 & 모달 시작 ================================================= --%>
-							<!-- 비번 INPUT START -->
+							<%-- =================== 화면에 먼저 보이는 부분 =================== --%>
 							<div class="form-group mt-2">
 								<label for="pw">비밀번호</label> <span class="signup_required">*</span>
 								<div>
-								<input type="password" name="pw" value="${c.pw }" id="pw" readonly="readonly"> <button type='button' id="modal_btn">암호변경</button>
+								<input type="hidden" name="pw" value="${c.pw }" id="pw" readonly="readonly"> <button type='button' id="modal_btn">암호변경</button>
 								</div>
+							<%-- =================== 화면에 먼저 보이는 부분 =================== --%>
 									
+							<%-- =================== 화면에서 안보이는 모달창 부분 [ 버튼 클릭시 모달 화면으로 보이는 내용 ] =================== --%>
 								<div class="black_bg"></div>
 								  <div class="modal_wrap">
 					  			      <div class="title">비밀번호 변경하기</div>
@@ -369,6 +388,7 @@ function sample6_execDaumPostcode() {
 										    <br>
 										    <span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
 										    <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지 않습니다.</span>
+										    <span id="alert-danger2" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 너무 깁니다. 8~16글자 이내로 등록해주세요.</span>
 										</div>
 										<div id="div_result"></div>
 										<br>
@@ -404,11 +424,6 @@ function sample6_execDaumPostcode() {
 								<span class="signup_required">*</span>
 								<div class="input-group mb-3">
 									<input class="form-control" type="tel" id="m_phone" name="m_phone" placeholder="휴대폰번호를 입력해주세요" value="${c.m_phone }">
-									<div class="input-group-append">
-										<button class="btn btn-outline-info btn-Customer" type="button">
-											인증번호 받기
-										</button>
-									</div>
 								</div>
 							</div>
 <%-- =======================================  현왕 핸드폰 번호 종료 ================================================= --%>
@@ -492,17 +507,17 @@ function sample6_execDaumPostcode() {
 			</div>
 		</div>
 	</section>
+</div>
 
 	<!-- FOOTER -->
 	<footer id="main-footer" class="text-center p-4">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<p>
-						Copyright &copy; <span id="year"></span> Glozzom
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Copyright &copy;
+            <span id="year"></span> Delibrary</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

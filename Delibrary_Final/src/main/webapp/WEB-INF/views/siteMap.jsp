@@ -53,7 +53,7 @@
 					<img src="resource/img/mypage icon.png" class="menu_icon">
 					<div class="subWrapper">
 						<div class="sub"><a href="MyPage_Info.do?cust_no=${cust_no}">내정보</a></div><br>
-						<div class="sub"><a href="MyPage_Folder.do?cust_no=${cust_no}">나의서재</a></div><br>
+						<div class="sub"><a href="MyPage_Folder.do?cust_no=${cust_no}&group=50">나의서재</a></div><br>
 						<div class="sub"><a href="optOutCustomer.do">회원탈퇴</a></div>
 					</div>
 				</div>
