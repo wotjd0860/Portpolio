@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+/* carousel */
+.carousel-indicators1 {
+	right: 0;
+	bottom: -30px;
+}
+
+.carousel-indicators1 li {
+	outline: 1px solid lightgray;
+}
+
+.carousel-indicators1 .active {
+	outline: 1px solid black;
+}
+
+.card-body {
+	height: 60px;
+	padding: 0;
+	text-align: center;
+}
+
+.book-title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: large;
+	font-weight: bold;
+}
+
+.controls-bottom {
+	display: inline-block;
+	float: right;
+}
+
+.carousel-inner {
+	height: 340px;
+}
+
+/* tabs */
+.home_post_title {
+	width: 60%;
+	text-align: left;
+	font-size: medium;
+	font-weight: normal;
+}
+
+.home_post_date {
+	width: 40%;
+	font-size: medium;
+	font-weight: lighter;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+/* 각 도서관 행사정보 링크 */
+.event-link {
+	text-align: center;
+	text-decoration: underline;
+	font-size: x-large;
+	font-weight: bolder;
+	margin: 0;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+.event-title {
+	text-align: center;
+	font-size: xx-large;
+	height: 80px;
+	font-weight: bolder;
+}
+
+/* <!--11/21 추가 !--> */
+/*
+연 f8f9fa
+진 343a40
+
+
+스프링 연 #75BD43
+스프링 진 #107637
+*/
+.navbar {
+	height: 70px;
+	background-color: #107637;	
+}
+
+.hr-green{
+	border-bottom: 2px solid #107637;
+}
+
+.img-fit{
+	width: 100px;
+	height: 100px;
+}
+
+
+.home-gray{
+	background-color: #f2f2f2;
+/* 	box-shadow: 0 5px 50px 5px #ccc; */
+}
+
+.home-table{
+	background-color: white;
+	border: 1px solid #cecece;
+}
+
+.ellipsis {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-wrap:normal;
+  width:300px;
+  overflow:hidden;
+}
+
+.footer-table th{
+	border-right: 1px solid white;
+	padding-right: 10px;
+}
+
+.footer-table td{
+	padding-left: 10px;
+}	
+
+#gallery-hr{
+	border-top: 1px solid gray;
+}
+
+#home-display{
+	padding-top: 200px;
+	font-weight: 200;
+}
+	
+#home-searchbar{
+	padding-top: 80px;
+}
+/* <!--11/21 추가끝!--> */
+
