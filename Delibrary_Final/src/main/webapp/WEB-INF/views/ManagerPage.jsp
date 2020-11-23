@@ -32,23 +32,7 @@
 		let radios = document.getElementsByClassName('radios');
 		let tables = document.getElementsByClassName('manage-table');
 		let areas = document.getElementsByClassName('manage-area')
-		let trs = document.getElementsByTagName('tr');
-		let update_inputs = document.getElementsByClassName('update-imput');
-		let update_buttons = document.getElementsByClassName('update-btn');
-		let delete_buttons = document.getElementsByClassName('delete-btn');
-		let update_ok_buttons = document.getElementsByClassName('update-ok');
-		let delete_ok_buttons = document.getElementsByClassName('delete-ok');
-		let update_tds;
-		let inputs;
-		let data = {};
 
-		function makeInputsAndTds(idx) {
-			update_tds = update_buttons[idx].parentNode.parentNode.childNodes;
-			inputs = update_tds[0].parentNode.parentNode.parentNode.parentNode.parentNode.childNodes;
-			for(let i = 1; i < update_tds.length-3; i+=2) {
-				inputs[i].value = update_tds[i].innerText;
-			}
-		}
 
 		for(let i = 0; i < tables.length; i++) {
 			tables[i].style.display = 'none';
@@ -69,6 +53,22 @@
 			}
 		}
 
+		let trs = document.getElementsByTagName('tr');
+		let update_buttons = document.getElementsByClassName('update-btn');
+		let delete_buttons = document.getElementsByClassName('delete-btn');
+		let update_ok_buttons = document.getElementsByClassName('update-ok');
+		let delete_ok_buttons = document.getElementsByClassName('delete-ok');
+		let update_tds;
+		let inputs;
+		let data = {};
+		
+		function makeInputsAndTds(idx) {
+			update_tds = update_buttons[idx].parentNode.parentNode.childNodes;
+			inputs = update_tds[0].parentNode.parentNode.parentNode.parentNode.parentNode.childNodes;
+			for(let i = 1; i < update_tds.length-3; i+=2) {
+				inputs[i].value = update_tds[i].innerText;
+			}
+		}
 		for(let i = 0; i < update_buttons.length; i++) {
 			update_buttons[i].addEventListener('click', function(e) {
 				makeInputsAndTds(i);

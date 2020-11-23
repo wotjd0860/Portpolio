@@ -59,6 +59,7 @@ public class CustomerController {
          System.out.println("password 디비에서 겟함::::::::::"+custVO.getPw());
          
          if (email.equals(custVO.getEmail()) && password.equals(custVO.getPw())) {
+        	 // 세션으로 회원번호를 set 시켜 모든 view 에서 사용 가능하도록 함
             session.setAttribute("cust_no", custVO.getCust_no());
 
 //            request.setAttribute("cust_no", custVO.getCust_no());

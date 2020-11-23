@@ -88,7 +88,6 @@
 					</li>
 				</ul>
 				<ul id="app" class="navbar-nav ml-auto">
-        <ul id="app" class="navbar-nav ml-auto">
 					<c:if test="${cust_no == 1}">
 						<li class="nav-item" v-bind:title="mamagerpage">
 							<a href="ManagerPage.do" class="nav-link"><i class="fas fa-crown" style="color: #107637;"></i></a><p class="sr-only">관리자페이지</p>
